@@ -59,7 +59,7 @@ namespace TechSupport
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(179, 107);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(167, 94);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // usernameTextBox
@@ -68,6 +68,7 @@ namespace TechSupport
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(100, 20);
             this.usernameTextBox.TabIndex = 0;
+            this.usernameTextBox.TextChanged += new System.EventHandler(this.fieldTextBox_TextChanged);
             // 
             // passwordTextBox
             // 
@@ -76,6 +77,7 @@ namespace TechSupport
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
             this.passwordTextBox.TabIndex = 1;
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.fieldTextBox_TextChanged);
             // 
             // usernameLabel
             // 
@@ -97,12 +99,13 @@ namespace TechSupport
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(64, 81);
+            this.loginButton.Location = new System.Drawing.Point(64, 68);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // errorMessageLabel
             // 
@@ -112,9 +115,9 @@ namespace TechSupport
             this.errorMessageLabel.Location = new System.Drawing.Point(3, 52);
             this.errorMessageLabel.MaximumSize = new System.Drawing.Size(175, 0);
             this.errorMessageLabel.Name = "errorMessageLabel";
-            this.errorMessageLabel.Size = new System.Drawing.Size(173, 26);
+            this.errorMessageLabel.Size = new System.Drawing.Size(136, 13);
             this.errorMessageLabel.TabIndex = 5;
-            this.errorMessageLabel.Text = "This is where the error message will appear.";
+            this.errorMessageLabel.Text = "invalid username/password";
             this.errorMessageLabel.Visible = false;
             // 
             // LoginForm
