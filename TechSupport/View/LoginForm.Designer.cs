@@ -35,6 +35,7 @@ namespace TechSupport
             this.usernameLabel = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,14 +50,16 @@ namespace TechSupport
             this.tableLayoutPanel1.Controls.Add(this.passwordTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.usernameLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.passwordLabel, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.loginButton, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.loginButton, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.errorMessageLabel, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(167, 81);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(179, 107);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // usernameTextBox
@@ -94,17 +97,31 @@ namespace TechSupport
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(64, 55);
+            this.loginButton.Location = new System.Drawing.Point(64, 81);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.errorMessageLabel, 2);
+            this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorMessageLabel.Location = new System.Drawing.Point(3, 52);
+            this.errorMessageLabel.MaximumSize = new System.Drawing.Size(175, 0);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(173, 26);
+            this.errorMessageLabel.TabIndex = 5;
+            this.errorMessageLabel.Text = "This is where the error message will appear.";
+            this.errorMessageLabel.Visible = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LoginForm";
@@ -124,6 +141,7 @@ namespace TechSupport
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }
 
