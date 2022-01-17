@@ -25,7 +25,12 @@ namespace TechSupport
                 usernameTextBox.Text != username
                 || passwordTextBox.Text != password
             )
+            {
                 errorMessageLabel.Visible = true;
+                return;
+            }
+
+            this.Close();
         }
 
         private void FieldTextBox_TextChanged(object sender, EventArgs e)
