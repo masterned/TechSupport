@@ -100,7 +100,7 @@ namespace TechSupport
             this.loginButton.Location = new System.Drawing.Point(64, 81);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
-            this.loginButton.TabIndex = 4;
+            this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             // 
