@@ -60,7 +60,8 @@ namespace TechSupport.View
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.usernameLabel);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Tech Support";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
