@@ -29,20 +29,47 @@ namespace TechSupport.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(273, 9);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(53, 13);
+            this.usernameLabel.TabIndex = 0;
+            this.usernameLabel.Text = "username";
+            // 
+            // logoutLinkLabel
+            // 
+            this.logoutLinkLabel.AutoSize = true;
+            this.logoutLinkLabel.Location = new System.Drawing.Point(332, 9);
+            this.logoutLinkLabel.Name = "logoutLinkLabel";
+            this.logoutLinkLabel.Size = new System.Drawing.Size(40, 13);
+            this.logoutLinkLabel.TabIndex = 1;
+            this.logoutLinkLabel.TabStop = true;
+            this.logoutLinkLabel.Text = "Logout";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(384, 261);
+            this.Controls.Add(this.logoutLinkLabel);
+            this.Controls.Add(this.usernameLabel);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.LinkLabel logoutLinkLabel;
     }
 }
