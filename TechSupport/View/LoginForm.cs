@@ -20,19 +20,18 @@ namespace TechSupport
             const string username = "Jane";
             const string password = "test1234";
 
-            if (usernameTextBox.Text != username
-                || passwordTextBox.Text != password)
-            {
+            if
+            (
+                usernameTextBox.Text != username
+                || passwordTextBox.Text != password
+            )
                 errorMessageLabel.Visible = true;
-            }
         }
 
         private void FieldTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (sender is TextBox textBox)
-            {
+            if (sender is TextBox)
                 errorMessageLabel.Visible = false;
-            }
         }
     }
 }
