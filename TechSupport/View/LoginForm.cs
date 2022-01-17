@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TechSupport
@@ -17,7 +10,7 @@ namespace TechSupport
             InitializeComponent();
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
+        private void LoginButton_Click(object sender, EventArgs e)
         {
             /*
              * This is most definitely *not* the way to do it,
@@ -34,7 +27,7 @@ namespace TechSupport
             }
         }
 
-        private void fieldTextBox_TextChanged(object sender, EventArgs e)
+        private void FieldTextBox_TextChanged(object sender, EventArgs e)
         {
             if (sender is TextBox textBox)
             {

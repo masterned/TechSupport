@@ -68,7 +68,7 @@ namespace TechSupport
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(100, 20);
             this.usernameTextBox.TabIndex = 0;
-            this.usernameTextBox.TextChanged += new System.EventHandler(this.fieldTextBox_TextChanged);
+            this.usernameTextBox.TextChanged += new System.EventHandler(this.FieldTextBox_TextChanged);
             // 
             // passwordTextBox
             // 
@@ -77,7 +77,7 @@ namespace TechSupport
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
             this.passwordTextBox.TabIndex = 1;
-            this.passwordTextBox.TextChanged += new System.EventHandler(this.fieldTextBox_TextChanged);
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.FieldTextBox_TextChanged);
             // 
             // usernameLabel
             // 
@@ -105,7 +105,7 @@ namespace TechSupport
             this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // errorMessageLabel
             // 
