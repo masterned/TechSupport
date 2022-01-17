@@ -30,7 +30,7 @@ namespace TechSupport
                 return;
             }
 
-            this.Close();
+            Close();
         }
 
         private void FieldTextBox_TextChanged(object sender, EventArgs e)
