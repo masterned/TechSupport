@@ -38,9 +38,8 @@ namespace TechSupport.View
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Location = new System.Drawing.Point(273, 9);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(53, 13);
+            this.usernameLabel.Size = new System.Drawing.Size(0, 13);
             this.usernameLabel.TabIndex = 0;
-            this.usernameLabel.Text = "username";
             // 
             // logoutLinkLabel
             // 
@@ -51,6 +50,7 @@ namespace TechSupport.View
             this.logoutLinkLabel.TabIndex = 1;
             this.logoutLinkLabel.TabStop = true;
             this.logoutLinkLabel.Text = "Logout";
+            this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logoutLinkLabel_LinkClicked);
             // 
             // MainForm
             // 

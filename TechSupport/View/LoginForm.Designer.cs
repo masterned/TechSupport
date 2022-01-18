@@ -1,5 +1,5 @@
 ﻿
-namespace TechSupport
+namespace TechSupport.View
 {
     partial class LoginForm
     {
@@ -134,6 +134,7 @@ namespace TechSupport
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.TopMost = true;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

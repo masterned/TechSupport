@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace TechSupport.Properties
+namespace TechSupport.View.Properties
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.

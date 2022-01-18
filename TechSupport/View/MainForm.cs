@@ -17,12 +17,24 @@ namespace TechSupport.View
         public MainForm()
         {
             InitializeComponent();
-            loginForm = new LoginForm();
+            loginForm = new LoginForm(this);
+        }
+
+        public void SetUsername(string username)
+        {
+            usernameLabel.Text = username;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            loginForm.ShowDialog();
+            Hide();
+            loginForm.Show();
+        }
+
+        private void logoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Hide();
+            loginForm.Show();
         }
     }
 }

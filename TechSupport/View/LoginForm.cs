@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace TechSupport
+namespace TechSupport.View
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+        MainForm mainForm;
+
+        public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -30,7 +33,10 @@ namespace TechSupport
                 return;
             }
 
-            Close();
+            mainForm.SetUsername(usernameTextBox.Text);
+
+            Hide();
+            mainForm.Show();
         }
 
         private void FieldTextBox_TextChanged(object sender, EventArgs e)
