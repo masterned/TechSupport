@@ -44,5 +44,10 @@ namespace TechSupport.View
             if (sender is TextBox)
                 errorMessageLabel.Visible = false;
         }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
