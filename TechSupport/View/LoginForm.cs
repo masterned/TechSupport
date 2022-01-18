@@ -7,10 +7,10 @@ namespace TechSupport.View
     {
         MainForm mainForm;
 
-        public LoginForm(MainForm mainForm)
+        public LoginForm()
         {
             InitializeComponent();
-            this.mainForm = mainForm;
+            this.mainForm = new MainForm(this);
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -33,9 +33,8 @@ namespace TechSupport.View
                 return;
             }
 
-            mainForm.SetUsername(usernameTextBox.Text);
-
             Hide();
+            mainForm.setUsername(usernameTextBox.Text);
             mainForm.Show();
         }
 

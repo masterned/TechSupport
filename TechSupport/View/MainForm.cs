@@ -14,27 +14,26 @@ namespace TechSupport.View
     {
         LoginForm loginForm;
 
-        public MainForm()
+        public MainForm(LoginForm loginForm)
         {
             InitializeComponent();
-            loginForm = new LoginForm(this);
+            this.loginForm = loginForm;
         }
 
-        public void SetUsername(string username)
+        public void setUsername(string username)
         {
             usernameLabel.Text = username;
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            Hide();
-            loginForm.Show();
         }
 
         private void logoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Hide();
             loginForm.Show();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
