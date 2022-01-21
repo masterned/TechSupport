@@ -11,6 +11,7 @@ namespace TechSupport.View
         LoginForm LoginForm;
 
         AddIncidentForm AddIncidentForm;
+        SearchIncidentForm SearchIncidentForm;
 
         /// <summary>
         /// Initializes the component and registers the loginForm.
@@ -20,7 +21,9 @@ namespace TechSupport.View
         {
             InitializeComponent();
             LoginForm = loginForm;
+
             AddIncidentForm = new AddIncidentForm();
+            SearchIncidentForm = new SearchIncidentForm();
         }
 
         /// <summary>
@@ -57,6 +60,11 @@ namespace TechSupport.View
         private void AddIncidentButton_Click(object sender, System.EventArgs e)
         {
             AddIncidentForm.ShowDialog();
+        }
+
+        private void SearchIncidentButton_Click(object sender, System.EventArgs e)
+        {
+            SearchIncidentForm.ShowDialog();
         }
     }
 }

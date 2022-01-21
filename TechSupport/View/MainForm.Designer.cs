@@ -76,6 +76,7 @@ namespace TechSupport.View
             this.SearchIncidentButton.TabIndex = 3;
             this.SearchIncidentButton.Text = "Search Incident";
             this.SearchIncidentButton.UseVisualStyleBackColor = true;
+            this.SearchIncidentButton.Click += new System.EventHandler(this.SearchIncidentButton_Click);
             // 
             // IncidentsGridView
             // 
