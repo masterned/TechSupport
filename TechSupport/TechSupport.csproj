@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\AddIncidentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddIncidentForm.Designer.cs">
+      <DependentUpon>AddIncidentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\AddIncidentForm.resx">
+      <DependentUpon>AddIncidentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
