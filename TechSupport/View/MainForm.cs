@@ -8,9 +8,9 @@ namespace TechSupport.View
     /// </summary>
     public partial class MainForm : Form
     {
-        LoginForm loginForm;
+        LoginForm LoginForm;
 
-        AddIncidentForm addIncidentForm;
+        AddIncidentForm AddIncidentForm;
 
         /// <summary>
         /// Initializes the component and registers the loginForm.
@@ -19,8 +19,8 @@ namespace TechSupport.View
         public MainForm(LoginForm loginForm)
         {
             InitializeComponent();
-            this.loginForm = loginForm;
-            addIncidentForm = new AddIncidentForm();
+            LoginForm = loginForm;
+            AddIncidentForm = new AddIncidentForm();
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace TechSupport.View
         /// <param name="username">The new string for the username Label text</param>
         public void SetUsername(string username)
         {
-            usernameLabel.Text = username;
+            UsernameLabel.Text = username;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace TechSupport.View
         private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Hide();
-            loginForm.Show();
+            LoginForm.Show();
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace TechSupport.View
 
         private void AddIncidentButton_Click(object sender, System.EventArgs e)
         {
-            addIncidentForm.ShowDialog();
+            AddIncidentForm.ShowDialog();
         }
     }
 }

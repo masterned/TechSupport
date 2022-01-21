@@ -29,77 +29,77 @@ namespace TechSupport.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.usernameLabel = new System.Windows.Forms.Label();
-            this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.addIncidentButton = new System.Windows.Forms.Button();
-            this.searchIncidentButton = new System.Windows.Forms.Button();
-            this.incidentsGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.incidentsGridView)).BeginInit();
+            this.UsernameLabel = new System.Windows.Forms.Label();
+            this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.AddIncidentButton = new System.Windows.Forms.Button();
+            this.SearchIncidentButton = new System.Windows.Forms.Button();
+            this.IncidentsGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.IncidentsGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // usernameLabel
+            // UsernameLabel
             // 
-            this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(273, 9);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(0, 13);
-            this.usernameLabel.TabIndex = 0;
+            this.UsernameLabel.AutoSize = true;
+            this.UsernameLabel.Location = new System.Drawing.Point(273, 9);
+            this.UsernameLabel.Name = "UsernameLabel";
+            this.UsernameLabel.Size = new System.Drawing.Size(0, 13);
+            this.UsernameLabel.TabIndex = 0;
             // 
-            // logoutLinkLabel
+            // LogoutLinkLabel
             // 
-            this.logoutLinkLabel.AutoSize = true;
-            this.logoutLinkLabel.Location = new System.Drawing.Point(332, 9);
-            this.logoutLinkLabel.Name = "logoutLinkLabel";
-            this.logoutLinkLabel.Size = new System.Drawing.Size(40, 13);
-            this.logoutLinkLabel.TabIndex = 1;
-            this.logoutLinkLabel.TabStop = true;
-            this.logoutLinkLabel.Text = "Logout";
-            this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
+            this.LogoutLinkLabel.AutoSize = true;
+            this.LogoutLinkLabel.Location = new System.Drawing.Point(332, 9);
+            this.LogoutLinkLabel.Name = "LogoutLinkLabel";
+            this.LogoutLinkLabel.Size = new System.Drawing.Size(40, 13);
+            this.LogoutLinkLabel.TabIndex = 1;
+            this.LogoutLinkLabel.TabStop = true;
+            this.LogoutLinkLabel.Text = "Logout";
+            this.LogoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
-            // addIncidentButton
+            // AddIncidentButton
             // 
-            this.addIncidentButton.AutoSize = true;
-            this.addIncidentButton.Location = new System.Drawing.Point(315, 93);
-            this.addIncidentButton.Name = "addIncidentButton";
-            this.addIncidentButton.Size = new System.Drawing.Size(77, 23);
-            this.addIncidentButton.TabIndex = 2;
-            this.addIncidentButton.Text = "Add Incident";
-            this.addIncidentButton.UseVisualStyleBackColor = true;
-            this.addIncidentButton.Click += new System.EventHandler(this.AddIncidentButton_Click);
+            this.AddIncidentButton.AutoSize = true;
+            this.AddIncidentButton.Location = new System.Drawing.Point(315, 93);
+            this.AddIncidentButton.Name = "AddIncidentButton";
+            this.AddIncidentButton.Size = new System.Drawing.Size(77, 23);
+            this.AddIncidentButton.TabIndex = 2;
+            this.AddIncidentButton.Text = "Add Incident";
+            this.AddIncidentButton.UseVisualStyleBackColor = true;
+            this.AddIncidentButton.Click += new System.EventHandler(this.AddIncidentButton_Click);
             // 
-            // searchIncidentButton
+            // SearchIncidentButton
             // 
-            this.searchIncidentButton.AutoSize = true;
-            this.searchIncidentButton.Location = new System.Drawing.Point(300, 64);
-            this.searchIncidentButton.Name = "searchIncidentButton";
-            this.searchIncidentButton.Size = new System.Drawing.Size(92, 23);
-            this.searchIncidentButton.TabIndex = 3;
-            this.searchIncidentButton.Text = "Search Incident";
-            this.searchIncidentButton.UseVisualStyleBackColor = true;
+            this.SearchIncidentButton.AutoSize = true;
+            this.SearchIncidentButton.Location = new System.Drawing.Point(300, 64);
+            this.SearchIncidentButton.Name = "SearchIncidentButton";
+            this.SearchIncidentButton.Size = new System.Drawing.Size(92, 23);
+            this.SearchIncidentButton.TabIndex = 3;
+            this.SearchIncidentButton.Text = "Search Incident";
+            this.SearchIncidentButton.UseVisualStyleBackColor = true;
             // 
-            // incidentsGridView
+            // IncidentsGridView
             // 
-            this.incidentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.incidentsGridView.Location = new System.Drawing.Point(33, 64);
-            this.incidentsGridView.Name = "incidentsGridView";
-            this.incidentsGridView.Size = new System.Drawing.Size(240, 150);
-            this.incidentsGridView.TabIndex = 4;
+            this.IncidentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.IncidentsGridView.Location = new System.Drawing.Point(33, 64);
+            this.IncidentsGridView.Name = "IncidentsGridView";
+            this.IncidentsGridView.Size = new System.Drawing.Size(240, 150);
+            this.IncidentsGridView.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 261);
-            this.Controls.Add(this.incidentsGridView);
-            this.Controls.Add(this.searchIncidentButton);
-            this.Controls.Add(this.addIncidentButton);
-            this.Controls.Add(this.logoutLinkLabel);
-            this.Controls.Add(this.usernameLabel);
+            this.Controls.Add(this.IncidentsGridView);
+            this.Controls.Add(this.SearchIncidentButton);
+            this.Controls.Add(this.AddIncidentButton);
+            this.Controls.Add(this.LogoutLinkLabel);
+            this.Controls.Add(this.UsernameLabel);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tech Support";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.incidentsGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncidentsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,10 +107,10 @@ namespace TechSupport.View
 
         #endregion
 
-        private System.Windows.Forms.Label usernameLabel;
-        private System.Windows.Forms.LinkLabel logoutLinkLabel;
-        private System.Windows.Forms.Button addIncidentButton;
-        private System.Windows.Forms.Button searchIncidentButton;
-        private System.Windows.Forms.DataGridView incidentsGridView;
+        private System.Windows.Forms.Label UsernameLabel;
+        private System.Windows.Forms.LinkLabel LogoutLinkLabel;
+        private System.Windows.Forms.Button AddIncidentButton;
+        private System.Windows.Forms.Button SearchIncidentButton;
+        private System.Windows.Forms.DataGridView IncidentsGridView;
     }
 }
