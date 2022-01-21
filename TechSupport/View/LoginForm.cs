@@ -46,7 +46,7 @@ namespace TechSupport.View
             }
 
             Hide();
-            mainForm.setUsername(usernameTextBox.Text);
+            mainForm.SetUsername(usernameTextBox.Text);
             mainForm.Show();
         }
 

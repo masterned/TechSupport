@@ -20,7 +20,7 @@ namespace TechSupport.View
         /// Sets the username in the username Label to the passed value.
         /// </summary>
         /// <param name="username">The new string for the username Label text</param>
-        public void setUsername(string username)
+        public void SetUsername(string username)
         {
             usernameLabel.Text = username;
         }
@@ -30,7 +30,7 @@ namespace TechSupport.View
         /// </summary>
         /// <param name="sender">The logout LabelLink</param>
         /// <param name="e">Event arguments</param>
-        private void logoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LogoutLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Hide();
             loginForm.Show();
