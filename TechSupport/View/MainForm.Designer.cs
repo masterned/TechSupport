@@ -31,6 +31,10 @@ namespace TechSupport.View
         {
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.addIncidentButton = new System.Windows.Forms.Button();
+            this.searchIncidentButton = new System.Windows.Forms.Button();
+            this.incidentsGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.incidentsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // usernameLabel
@@ -52,17 +56,49 @@ namespace TechSupport.View
             this.logoutLinkLabel.Text = "Logout";
             this.logoutLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLinkLabel_LinkClicked);
             // 
+            // addIncidentButton
+            // 
+            this.addIncidentButton.AutoSize = true;
+            this.addIncidentButton.Location = new System.Drawing.Point(315, 93);
+            this.addIncidentButton.Name = "addIncidentButton";
+            this.addIncidentButton.Size = new System.Drawing.Size(77, 23);
+            this.addIncidentButton.TabIndex = 2;
+            this.addIncidentButton.Text = "Add Incident";
+            this.addIncidentButton.UseVisualStyleBackColor = true;
+            // 
+            // searchIncidentButton
+            // 
+            this.searchIncidentButton.AutoSize = true;
+            this.searchIncidentButton.Location = new System.Drawing.Point(300, 64);
+            this.searchIncidentButton.Name = "searchIncidentButton";
+            this.searchIncidentButton.Size = new System.Drawing.Size(92, 23);
+            this.searchIncidentButton.TabIndex = 3;
+            this.searchIncidentButton.Text = "Search Incident";
+            this.searchIncidentButton.UseVisualStyleBackColor = true;
+            // 
+            // incidentsGridView
+            // 
+            this.incidentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.incidentsGridView.Location = new System.Drawing.Point(33, 64);
+            this.incidentsGridView.Name = "incidentsGridView";
+            this.incidentsGridView.Size = new System.Drawing.Size(240, 150);
+            this.incidentsGridView.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 261);
+            this.ClientSize = new System.Drawing.Size(404, 261);
+            this.Controls.Add(this.incidentsGridView);
+            this.Controls.Add(this.searchIncidentButton);
+            this.Controls.Add(this.addIncidentButton);
             this.Controls.Add(this.logoutLinkLabel);
             this.Controls.Add(this.usernameLabel);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tech Support";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.incidentsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,5 +108,8 @@ namespace TechSupport.View
 
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.LinkLabel logoutLinkLabel;
+        private System.Windows.Forms.Button addIncidentButton;
+        private System.Windows.Forms.Button searchIncidentButton;
+        private System.Windows.Forms.DataGridView incidentsGridView;
     }
 }
