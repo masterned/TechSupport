@@ -2,6 +2,10 @@
 
 namespace TechSupport.View
 {
+    /// <summary>
+    /// Serves as the application's main window.
+    /// Will display the core functionality of the program.
+    /// </summary>
     public partial class MainForm : Form
     {
         LoginForm loginForm;

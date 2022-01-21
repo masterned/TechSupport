@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace TechSupport.View
 {
+    /// <summary>
+    /// This window displays the login form to the user.
+    /// </summary>
     public partial class LoginForm : Form
     {
         MainForm mainForm;
