@@ -29,161 +29,161 @@ namespace TechSupport.View
         /// </summary>
         private void InitializeComponent()
         {
-            this.titleTextBox = new System.Windows.Forms.TextBox();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.descriptionLabel = new System.Windows.Forms.Label();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.customerIDLabel = new System.Windows.Forms.Label();
-            this.customerIDTextBox = new System.Windows.Forms.TextBox();
-            this.addButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.TitleTextBox = new System.Windows.Forms.TextBox();
+            this.TitleLabel = new System.Windows.Forms.Label();
+            this.DescriptionLabel = new System.Windows.Forms.Label();
+            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.CustomerIDLabel = new System.Windows.Forms.Label();
+            this.CustomerIDTextBox = new System.Windows.Forms.TextBox();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.IncidentDataPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ControlPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.IncidentDataPanel.SuspendLayout();
+            this.ControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // titleTextBox
+            // TitleTextBox
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.titleTextBox, 2);
-            this.titleTextBox.Location = new System.Drawing.Point(3, 16);
-            this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(275, 20);
-            this.titleTextBox.TabIndex = 0;
+            this.IncidentDataPanel.SetColumnSpan(this.TitleTextBox, 2);
+            this.TitleTextBox.Location = new System.Drawing.Point(3, 16);
+            this.TitleTextBox.Name = "TitleTextBox";
+            this.TitleTextBox.Size = new System.Drawing.Size(275, 20);
+            this.TitleTextBox.TabIndex = 0;
             // 
-            // titleLabel
+            // TitleLabel
             // 
-            this.titleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Location = new System.Drawing.Point(3, 0);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(27, 13);
-            this.titleLabel.TabIndex = 1;
-            this.titleLabel.Text = "Title";
+            this.TitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.Location = new System.Drawing.Point(3, 0);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(27, 13);
+            this.TitleLabel.TabIndex = 1;
+            this.TitleLabel.Text = "Title";
             // 
-            // descriptionLabel
+            // DescriptionLabel
             // 
-            this.descriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(3, 39);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(60, 13);
-            this.descriptionLabel.TabIndex = 2;
-            this.descriptionLabel.Text = "Description";
+            this.DescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DescriptionLabel.AutoSize = true;
+            this.DescriptionLabel.Location = new System.Drawing.Point(3, 39);
+            this.DescriptionLabel.Name = "DescriptionLabel";
+            this.DescriptionLabel.Size = new System.Drawing.Size(60, 13);
+            this.DescriptionLabel.TabIndex = 2;
+            this.DescriptionLabel.Text = "Description";
             // 
-            // descriptionTextBox
+            // DescriptionTextBox
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.descriptionTextBox, 2);
-            this.descriptionTextBox.Location = new System.Drawing.Point(3, 55);
-            this.descriptionTextBox.Multiline = true;
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.descriptionTextBox.Size = new System.Drawing.Size(275, 60);
-            this.descriptionTextBox.TabIndex = 3;
+            this.IncidentDataPanel.SetColumnSpan(this.DescriptionTextBox, 2);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(3, 55);
+            this.DescriptionTextBox.Multiline = true;
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.DescriptionTextBox.Size = new System.Drawing.Size(275, 60);
+            this.DescriptionTextBox.TabIndex = 3;
             // 
-            // customerIDLabel
+            // CustomerIDLabel
             // 
-            this.customerIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.customerIDLabel.AutoSize = true;
-            this.customerIDLabel.Location = new System.Drawing.Point(3, 126);
-            this.customerIDLabel.Name = "customerIDLabel";
-            this.customerIDLabel.Size = new System.Drawing.Size(65, 13);
-            this.customerIDLabel.TabIndex = 4;
-            this.customerIDLabel.Text = "Customer ID";
+            this.CustomerIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CustomerIDLabel.AutoSize = true;
+            this.CustomerIDLabel.Location = new System.Drawing.Point(3, 126);
+            this.CustomerIDLabel.Name = "CustomerIDLabel";
+            this.CustomerIDLabel.Size = new System.Drawing.Size(65, 13);
+            this.CustomerIDLabel.TabIndex = 4;
+            this.CustomerIDLabel.Text = "Customer ID";
             // 
-            // customerIDTextBox
+            // CustomerIDTextBox
             // 
-            this.customerIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.customerIDTextBox.Location = new System.Drawing.Point(74, 122);
-            this.customerIDTextBox.Name = "customerIDTextBox";
-            this.customerIDTextBox.Size = new System.Drawing.Size(100, 20);
-            this.customerIDTextBox.TabIndex = 5;
+            this.CustomerIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CustomerIDTextBox.Location = new System.Drawing.Point(74, 122);
+            this.CustomerIDTextBox.Name = "CustomerIDTextBox";
+            this.CustomerIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CustomerIDTextBox.TabIndex = 5;
             // 
-            // addButton
+            // AddButton
             // 
-            this.addButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.addButton.Location = new System.Drawing.Point(32, 3);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 6;
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
+            this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.AddButton.Location = new System.Drawing.Point(32, 3);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(75, 23);
+            this.AddButton.TabIndex = 6;
+            this.AddButton.Text = "Add";
+            this.AddButton.UseVisualStyleBackColor = true;
             // 
-            // cancelButton
+            // CancelButton
             // 
-            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cancelButton.Location = new System.Drawing.Point(172, 3);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 7;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CancelButton.Location = new System.Drawing.Point(172, 3);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 7;
+            this.CancelButton.Text = "Cancel";
+            this.CancelButton.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // IncidentDataPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.titleLabel, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.titleTextBox, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.descriptionLabel, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.descriptionTextBox, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.customerIDTextBox, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.customerIDLabel, 0, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(280, 147);
-            this.tableLayoutPanel1.TabIndex = 8;
+            this.IncidentDataPanel.ColumnCount = 2;
+            this.IncidentDataPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.IncidentDataPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.IncidentDataPanel.Controls.Add(this.TitleLabel, 0, 0);
+            this.IncidentDataPanel.Controls.Add(this.TitleTextBox, 0, 1);
+            this.IncidentDataPanel.Controls.Add(this.DescriptionLabel, 0, 2);
+            this.IncidentDataPanel.Controls.Add(this.DescriptionTextBox, 0, 3);
+            this.IncidentDataPanel.Controls.Add(this.CustomerIDTextBox, 1, 4);
+            this.IncidentDataPanel.Controls.Add(this.CustomerIDLabel, 0, 4);
+            this.IncidentDataPanel.Location = new System.Drawing.Point(12, 12);
+            this.IncidentDataPanel.Name = "IncidentDataPanel";
+            this.IncidentDataPanel.RowCount = 5;
+            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.IncidentDataPanel.Size = new System.Drawing.Size(280, 147);
+            this.IncidentDataPanel.TabIndex = 8;
             // 
-            // tableLayoutPanel2
+            // ControlPanel
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.addButton, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.cancelButton, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 165);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(280, 29);
-            this.tableLayoutPanel2.TabIndex = 9;
+            this.ControlPanel.ColumnCount = 2;
+            this.ControlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ControlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ControlPanel.Controls.Add(this.AddButton, 0, 0);
+            this.ControlPanel.Controls.Add(this.CancelButton, 1, 0);
+            this.ControlPanel.Location = new System.Drawing.Point(12, 165);
+            this.ControlPanel.Name = "ControlPanel";
+            this.ControlPanel.RowCount = 1;
+            this.ControlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.ControlPanel.Size = new System.Drawing.Size(280, 29);
+            this.ControlPanel.TabIndex = 9;
             // 
             // AddIncidentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 202);
-            this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.ControlPanel);
+            this.Controls.Add(this.IncidentDataPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "AddIncidentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Incident";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.IncidentDataPanel.ResumeLayout(false);
+            this.IncidentDataPanel.PerformLayout();
+            this.ControlPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox titleTextBox;
-        private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Label descriptionLabel;
-        private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.Label customerIDLabel;
-        private System.Windows.Forms.TextBox customerIDTextBox;
-        private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TextBox TitleTextBox;
+        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label DescriptionLabel;
+        private System.Windows.Forms.TextBox DescriptionTextBox;
+        private System.Windows.Forms.Label CustomerIDLabel;
+        private System.Windows.Forms.TextBox CustomerIDTextBox;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.TableLayoutPanel IncidentDataPanel;
+        private System.Windows.Forms.TableLayoutPanel ControlPanel;
     }
 }
