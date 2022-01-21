@@ -10,6 +10,8 @@ namespace TechSupport.View
     {
         LoginForm loginForm;
 
+        AddIncidentForm addIncidentForm;
+
         /// <summary>
         /// Initializes the component and registers the loginForm.
         /// </summary>
@@ -18,6 +20,7 @@ namespace TechSupport.View
         {
             InitializeComponent();
             this.loginForm = loginForm;
+            addIncidentForm = new AddIncidentForm();
         }
 
         /// <summary>
@@ -49,6 +52,11 @@ namespace TechSupport.View
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void AddIncidentButton_Click(object sender, System.EventArgs e)
+        {
+            addIncidentForm.ShowDialog();
         }
     }
 }
