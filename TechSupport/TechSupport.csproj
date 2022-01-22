@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\IncidentDAL.cs" />
     <Compile Include="Model\Incident.cs" />
     <Compile Include="View\AddIncidentForm.cs">
       <SubType>Form</SubType>
@@ -109,7 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
