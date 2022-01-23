@@ -26,6 +26,13 @@ namespace TechSupport.View
         {
             ErrorMessage.Visible = false;
 
+            if (string.IsNullOrEmpty(CustomerIDTextBox.Text.Trim()))
+            {
+                ErrorMessage.Text = "Please enter a CustomerID";
+                ErrorMessage.Visible = true;
+                return;
+            }
+
             try
             {
                 List<Incident> customerIncidents =
