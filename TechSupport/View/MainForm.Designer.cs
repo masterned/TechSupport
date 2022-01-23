@@ -128,6 +128,8 @@ namespace TechSupport.View
             this.Controls.Add(this.PrimaryLayoutTable);
             this.Controls.Add(this.LogoutLinkLabel);
             this.Controls.Add(this.UsernameLabel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tech Support";
