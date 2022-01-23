@@ -132,6 +132,7 @@ namespace TechSupport.View
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tech Support";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.IncidentsGridView)).EndInit();
             this.PrimaryLayoutTable.ResumeLayout(false);
             this.PrimaryLayoutTable.PerformLayout();

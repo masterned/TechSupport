@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using TechSupport.Controller;
 
 namespace TechSupport.View
 {
@@ -13,6 +14,8 @@ namespace TechSupport.View
         AddIncidentForm AddIncidentForm;
         SearchIncidentForm SearchIncidentForm;
 
+        private readonly IncidentController IncidentController;
+
         /// <summary>
         /// Initializes the component and registers the loginForm.
         /// </summary>
@@ -21,6 +24,8 @@ namespace TechSupport.View
         {
             InitializeComponent();
             LoginForm = loginForm;
+
+            IncidentController = new IncidentController();
 
             AddIncidentForm = new AddIncidentForm();
             SearchIncidentForm = new SearchIncidentForm();
@@ -65,6 +70,17 @@ namespace TechSupport.View
         private void SearchIncidentButton_Click(object sender, System.EventArgs e)
         {
             SearchIncidentForm.ShowDialog();
+        }
+
+        private void MainForm_Load(object sender, System.EventArgs e)
+        {
+            RefreshDataGrid();
+        }
+
+        private void RefreshDataGrid()
+        {
+            IncidentsGridView.DataSource = null;
+            IncidentsGridView.DataSource = IncidentController.GetIncidents();
         }
     }
 }
