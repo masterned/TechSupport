@@ -175,7 +175,7 @@ namespace TechSupport.View
             this.ErrorMessage.Text = "Error Message";
             this.ErrorMessage.Visible = false;
             // 
-            // AddIncidentForm
+            // AddIncidentDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -185,7 +185,7 @@ namespace TechSupport.View
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddIncidentForm";
+            this.Name = "AddIncidentDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Incident";
             this.IncidentDataPanel.ResumeLayout(false);

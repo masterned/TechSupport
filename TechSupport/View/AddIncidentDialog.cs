@@ -53,5 +53,12 @@ namespace TechSupport.View
                 ErrorMessage.Visible = false;
             }
         }
+
+        public void ClearAllTextBoxes()
+        {
+            TitleTextBox.Clear();
+            DescriptionTextBox.Clear();
+            CustomerIDTextBox.Clear();
+        }
     }
 }
