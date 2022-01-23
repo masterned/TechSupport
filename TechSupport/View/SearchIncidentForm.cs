@@ -24,6 +24,8 @@ namespace TechSupport.View
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            ErrorMessage.Visible = false;
+
             try
             {
                 List<Incident> customerIncidents =
@@ -32,9 +34,16 @@ namespace TechSupport.View
                 IncidentGridView.DataSource = null;
                 IncidentGridView.DataSource = customerIncidents;
             }
-            catch (KeyNotFoundException)
+            catch (KeyNotFoundException keyNotFoundException)
             {
+                ErrorMessage.Text = keyNotFoundException.Message;
+                ErrorMessage.Visible = true;
             }
+        }
+
+        private void CustomerIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ErrorMessage.Visible = false;
         }
     }
 }
