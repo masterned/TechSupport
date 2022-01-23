@@ -1,7 +1,7 @@
 ﻿
 namespace TechSupport.View
 {
-    partial class SearchIncidentForm
+    partial class SearchIncidentDialog
     {
         /// <summary>
         /// Required designer variable.

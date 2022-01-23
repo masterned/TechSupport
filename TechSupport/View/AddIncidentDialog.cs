@@ -8,7 +8,7 @@ namespace TechSupport.View
     /// <summary>
     /// UI dialog which allows the user to add a new incident to the collection of incidents.
     /// </summary>
-    public partial class AddIncidentForm : Form
+    public partial class AddIncidentDialog : Form
     {
         private IncidentController IncidentController;
 
@@ -16,7 +16,7 @@ namespace TechSupport.View
         /// Creates a new AddIncidentDialog
         /// and initializes its IncidentController
         /// </summary>
-        public AddIncidentForm()
+        public AddIncidentDialog()
         {
             InitializeComponent();
             IncidentController = new IncidentController();

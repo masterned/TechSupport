@@ -9,7 +9,7 @@ namespace TechSupport.View
     /// <summary>
     /// Form allows the user to search for incidents tied to a CustomerID.
     /// </summary>
-    public partial class SearchIncidentForm : Form
+    public partial class SearchIncidentDialog : Form
     {
         private IncidentController IncidentController;
 
@@ -17,7 +17,7 @@ namespace TechSupport.View
         /// Creates a SearchIncidentDialog
         /// and initializes its IncidentController
         /// </summary>
-        public SearchIncidentForm()
+        public SearchIncidentDialog()
         {
             InitializeComponent();
             IncidentController = new IncidentController();

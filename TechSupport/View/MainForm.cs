@@ -11,8 +11,8 @@ namespace TechSupport.View
     {
         LoginForm LoginForm;
 
-        AddIncidentForm AddIncidentForm;
-        SearchIncidentForm SearchIncidentForm;
+        AddIncidentDialog AddIncidentForm;
+        SearchIncidentDialog SearchIncidentForm;
 
         private readonly IncidentController IncidentController;
 
@@ -27,8 +27,8 @@ namespace TechSupport.View
 
             IncidentController = new IncidentController();
 
-            AddIncidentForm = new AddIncidentForm();
-            SearchIncidentForm = new SearchIncidentForm();
+            AddIncidentForm = new AddIncidentDialog();
+            SearchIncidentForm = new SearchIncidentDialog();
         }
 
         /// <summary>
