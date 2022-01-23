@@ -24,14 +24,34 @@ namespace TechSupport.View
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            ErrorMessage.Visible = false;
+
             DialogResult = DialogResult.Cancel;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            Incident newIncident = new Incident(TitleTextBox.Text, DescriptionTextBox.Text, CustomerIDTextBox.Text);
-            IncidentController.AddIncident(newIncident);
-            DialogResult = DialogResult.OK;
+            ErrorMessage.Visible = false;
+
+            try
+            {
+                Incident newIncident = new Incident(TitleTextBox.Text, DescriptionTextBox.Text, CustomerIDTextBox.Text);
+                IncidentController.AddIncident(newIncident);
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage.Text = exception.Message;
+                ErrorMessage.Visible = true;
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                ErrorMessage.Visible = false;
+            }
         }
     }
 }

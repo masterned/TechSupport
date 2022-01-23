@@ -12,22 +12,35 @@ namespace TechSupport.Model
 
         public string Description { get; }
 
-        public string CustomerID { get; }
+        public int CustomerID { get; }
 
         public Incident(string title, string description, string customerID)
         {
             if (string.IsNullOrEmpty(title.Trim()))
-                throw new ArgumentNullException("Title cannot be empty");
+                throw new ArgumentException("Title cannot be empty");
             
             if (string.IsNullOrEmpty(description.Trim()))
-                throw new ArgumentNullException("Description cannot be empty");
+                throw new ArgumentException("Description cannot be empty");
 
             if (string.IsNullOrEmpty(customerID.Trim()))
-                throw new ArgumentNullException("CustomerID cannot be empty");
+                throw new ArgumentException("CustomerID cannot be empty");
+
+            try
+            {
+                CustomerID = int.Parse(customerID.Trim());
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException("CustomerID must be a number");
+            }
+
+            if (CustomerID < 0)
+            {
+                throw new ArgumentException("CustomerID must be greater than or equal to zero");
+            }
 
             Title = title.Trim();
             Description = description.Trim();
-            CustomerID = customerID.Trim();
         }
     }
 }

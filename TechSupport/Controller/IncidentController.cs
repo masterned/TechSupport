@@ -22,7 +22,7 @@ namespace TechSupport.Controller
             return IncidentData.GetIncidents();
         }
 
-        public List<Incident> GetIncidentsOfCustomer(string customerID)
+        public List<Incident> GetIncidentsOfCustomer(int customerID)
         {
             return IncidentData.GetIncidentsOfCustomer(customerID);
         }

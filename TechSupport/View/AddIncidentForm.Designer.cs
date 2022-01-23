@@ -39,6 +39,7 @@ namespace TechSupport.View
             this.CancelButton = new System.Windows.Forms.Button();
             this.IncidentDataPanel = new System.Windows.Forms.TableLayoutPanel();
             this.ControlPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.ErrorMessage = new System.Windows.Forms.Label();
             this.IncidentDataPanel.SuspendLayout();
             this.ControlPanel.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +51,7 @@ namespace TechSupport.View
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(275, 20);
             this.TitleTextBox.TabIndex = 0;
+            this.TitleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // TitleLabel
             // 
@@ -80,6 +82,7 @@ namespace TechSupport.View
             this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DescriptionTextBox.Size = new System.Drawing.Size(275, 60);
             this.DescriptionTextBox.TabIndex = 3;
+            this.DescriptionTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // CustomerIDLabel
             // 
@@ -98,11 +101,12 @@ namespace TechSupport.View
             this.CustomerIDTextBox.Name = "CustomerIDTextBox";
             this.CustomerIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.CustomerIDTextBox.TabIndex = 5;
+            this.CustomerIDTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // AddButton
             // 
             this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AddButton.Location = new System.Drawing.Point(32, 3);
+            this.AddButton.Location = new System.Drawing.Point(32, 25);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
             this.AddButton.TabIndex = 6;
@@ -113,7 +117,7 @@ namespace TechSupport.View
             // CancelButton
             // 
             this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CancelButton.Location = new System.Drawing.Point(172, 3);
+            this.CancelButton.Location = new System.Drawing.Point(172, 25);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 7;
@@ -148,20 +152,34 @@ namespace TechSupport.View
             this.ControlPanel.ColumnCount = 2;
             this.ControlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.ControlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ControlPanel.Controls.Add(this.AddButton, 0, 0);
-            this.ControlPanel.Controls.Add(this.CancelButton, 1, 0);
+            this.ControlPanel.Controls.Add(this.AddButton, 0, 1);
+            this.ControlPanel.Controls.Add(this.CancelButton, 1, 1);
+            this.ControlPanel.Controls.Add(this.ErrorMessage, 0, 0);
             this.ControlPanel.Location = new System.Drawing.Point(12, 165);
             this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.RowCount = 1;
+            this.ControlPanel.RowCount = 2;
             this.ControlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.ControlPanel.Size = new System.Drawing.Size(280, 29);
+            this.ControlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.ControlPanel.Size = new System.Drawing.Size(280, 61);
             this.ControlPanel.TabIndex = 9;
+            // 
+            // ErrorMessage
+            // 
+            this.ErrorMessage.AutoSize = true;
+            this.ControlPanel.SetColumnSpan(this.ErrorMessage, 2);
+            this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.ErrorMessage.Location = new System.Drawing.Point(3, 0);
+            this.ErrorMessage.Name = "ErrorMessage";
+            this.ErrorMessage.Size = new System.Drawing.Size(75, 13);
+            this.ErrorMessage.TabIndex = 8;
+            this.ErrorMessage.Text = "Error Message";
+            this.ErrorMessage.Visible = false;
             // 
             // AddIncidentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 202);
+            this.ClientSize = new System.Drawing.Size(300, 238);
             this.Controls.Add(this.ControlPanel);
             this.Controls.Add(this.IncidentDataPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -173,6 +191,7 @@ namespace TechSupport.View
             this.IncidentDataPanel.ResumeLayout(false);
             this.IncidentDataPanel.PerformLayout();
             this.ControlPanel.ResumeLayout(false);
+            this.ControlPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -189,5 +208,6 @@ namespace TechSupport.View
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.TableLayoutPanel IncidentDataPanel;
         private System.Windows.Forms.TableLayoutPanel ControlPanel;
+        private System.Windows.Forms.Label ErrorMessage;
     }
 }

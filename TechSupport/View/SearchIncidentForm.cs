@@ -29,7 +29,7 @@ namespace TechSupport.View
             try
             {
                 List<Incident> customerIncidents =
-                    IncidentController.GetIncidentsOfCustomer(CustomerIDTextBox.Text);
+                    IncidentController.GetIncidentsOfCustomer(int.Parse(CustomerIDTextBox.Text.Trim()));
 
                 IncidentGridView.DataSource = null;
                 IncidentGridView.DataSource = customerIncidents;

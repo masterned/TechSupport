@@ -11,8 +11,8 @@ namespace TechSupport.DAL
     {
         private static List<Incident> _incidents = new List<Incident>
         {
-            new Incident("Window Crashes on Refresh", "Double clicking the refresh button on the checkout page crashes the app.", "WAL473"),
-            new Incident("Blank Screen on Repaint", "When listening to the main channel for more than an hour, the page becomes blank rather than repainting", "SORCOM1002")
+            new Incident("Window Crashes on Refresh", "Double clicking the refresh button on the checkout page crashes the app.", "437"),
+            new Incident("Blank Screen on Repaint", "When listening to the main channel for more than an hour, the page becomes blank rather than repainting", "1002")
         };
 
         public List<Incident> GetIncidents()
@@ -25,7 +25,7 @@ namespace TechSupport.DAL
             _incidents.Add(newIncident);
         }
 
-        public List<Incident> GetIncidentsOfCustomer(string customerID)
+        public List<Incident> GetIncidentsOfCustomer(int customerID)
         {
             List<Incident> customerIncidents = _incidents.FindAll((Incident incident) =>
             {
