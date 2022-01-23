@@ -97,7 +97,9 @@ namespace TechSupport.View
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.CustomerIDTextBox);
             this.Controls.Add(this.CustomerIDLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SearchIncidentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Incident";
