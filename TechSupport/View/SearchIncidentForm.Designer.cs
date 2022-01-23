@@ -32,8 +32,8 @@ namespace TechSupport.View
             this.CustomerIDLabel = new System.Windows.Forms.Label();
             this.CustomerIDTextBox = new System.Windows.Forms.TextBox();
             this.SearchButton = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.IncidentGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.IncidentGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // CustomerIDLabel
@@ -61,14 +61,15 @@ namespace TechSupport.View
             this.SearchButton.TabIndex = 2;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
-            // dataGridView1
+            // IncidentGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 38);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 3;
+            this.IncidentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.IncidentGridView.Location = new System.Drawing.Point(25, 38);
+            this.IncidentGridView.Name = "IncidentGridView";
+            this.IncidentGridView.Size = new System.Drawing.Size(240, 150);
+            this.IncidentGridView.TabIndex = 3;
             // 
             // SearchIncidentForm
             // 
@@ -76,7 +77,7 @@ namespace TechSupport.View
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(284, 201);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.IncidentGridView);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.CustomerIDTextBox);
             this.Controls.Add(this.CustomerIDLabel);
@@ -84,7 +85,7 @@ namespace TechSupport.View
             this.Name = "SearchIncidentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Incident";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IncidentGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,6 +96,6 @@ namespace TechSupport.View
         private System.Windows.Forms.Label CustomerIDLabel;
         private System.Windows.Forms.TextBox CustomerIDTextBox;
         private System.Windows.Forms.Button SearchButton;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView IncidentGridView;
     }
 }
