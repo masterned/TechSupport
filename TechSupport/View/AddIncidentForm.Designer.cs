@@ -164,7 +164,9 @@ namespace TechSupport.View
             this.ClientSize = new System.Drawing.Size(300, 202);
             this.Controls.Add(this.ControlPanel);
             this.Controls.Add(this.IncidentDataPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddIncidentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Incident";
