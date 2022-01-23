@@ -54,6 +54,9 @@ namespace TechSupport.View
             }
         }
 
+        /// <summary>
+        /// Clears all of the text boxes in the dialog.
+        /// </summary>
         public void ClearAllTextBoxes()
         {
             TitleTextBox.Clear();
