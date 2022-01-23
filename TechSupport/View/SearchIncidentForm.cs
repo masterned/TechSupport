@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
 
 namespace TechSupport.View
 {
+    /// <summary>
+    /// Form allows the user to search for incidents tied to a CustomerID.
+    /// </summary>
     public partial class SearchIncidentForm : Form
     {
         private IncidentController IncidentController;
 
+        /// <summary>
+        /// Creates a SearchIncidentDialog
+        /// and initializes its IncidentController
+        /// </summary>
         public SearchIncidentForm()
         {
             InitializeComponent();
