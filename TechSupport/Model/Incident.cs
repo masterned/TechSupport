@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TechSupport.Model
 {
-    class Incident
+    public class Incident
     {
         public string Title { get; }
 
