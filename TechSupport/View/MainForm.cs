@@ -64,7 +64,10 @@ namespace TechSupport.View
 
         private void AddIncidentButton_Click(object sender, System.EventArgs e)
         {
-            AddIncidentForm.ShowDialog();
+            DialogResult result = AddIncidentForm.ShowDialog();
+
+            if (result == DialogResult.OK)
+                RefreshDataGrid();
         }
 
         private void SearchIncidentButton_Click(object sender, System.EventArgs e)

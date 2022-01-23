@@ -108,6 +108,7 @@ namespace TechSupport.View
             this.AddButton.TabIndex = 6;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // CancelButton
             // 
@@ -118,6 +119,7 @@ namespace TechSupport.View
             this.CancelButton.TabIndex = 7;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // IncidentDataPanel
             // 
