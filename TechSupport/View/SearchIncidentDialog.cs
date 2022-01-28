@@ -42,9 +42,14 @@ namespace TechSupport.View
                 IncidentGridView.DataSource = null;
                 IncidentGridView.DataSource = customerIncidents;
             }
-            catch (KeyNotFoundException keyNotFoundException)
+            catch (FormatException)
             {
-                ErrorMessage.Text = keyNotFoundException.Message;
+                ErrorMessage.Text = "CustomerID must be a whole number";
+                ErrorMessage.Visible = true;
+            }
+            catch (Exception exception)
+            {
+                ErrorMessage.Text = exception.Message;
                 ErrorMessage.Visible = true;
             }
         }
