@@ -21,16 +21,21 @@ namespace TechSupport.View
         {
             InitializeComponent();
             IncidentController = new IncidentController();
+        } 
+
+        private void ShowErrorMessage(string errorMessage)
+        {
+            ErrorMessage.Text = errorMessage;
+            ErrorMessage.Show();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            ErrorMessage.Visible = false;
+            ErrorMessage.Hide();
 
             if (string.IsNullOrEmpty(CustomerIDTextBox.Text.Trim()))
             {
-                ErrorMessage.Text = "Please enter a CustomerID";
-                ErrorMessage.Visible = true;
+                ShowErrorMessage("Please enter a CustomerID");
                 return;
             }
 
@@ -44,19 +49,17 @@ namespace TechSupport.View
             }
             catch (FormatException)
             {
-                ErrorMessage.Text = "CustomerID must be a whole number";
-                ErrorMessage.Visible = true;
+                ShowErrorMessage("CustomerID must be a whole number");
             }
             catch (Exception exception)
             {
-                ErrorMessage.Text = exception.Message;
-                ErrorMessage.Visible = true;
+                ShowErrorMessage(exception.Message);
             }
         }
 
         private void CustomerIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            ErrorMessage.Visible = false;
+            ErrorMessage.Hide();
         }
     }
 }
