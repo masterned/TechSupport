@@ -59,7 +59,8 @@ namespace TechSupport.View
 
         private void CustomerIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            ErrorMessage.Hide();
+            if (ErrorMessage.Visible)
+                ErrorMessage.Hide();
         }
     }
 }
