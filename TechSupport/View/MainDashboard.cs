@@ -51,5 +51,10 @@ namespace TechSupport.View
         {
             Application.Exit();
         }
+
+        private void ViewAllIncidentsTabPage_Enter(object sender, EventArgs e)
+        {
+            ViewAllIncidentsUserControl.RefreshDataGrid();
+        }
     }
 }
