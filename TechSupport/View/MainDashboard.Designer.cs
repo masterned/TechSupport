@@ -33,7 +33,9 @@ namespace TechSupport.View
             this.AddIncidentTabPage = new System.Windows.Forms.TabPage();
             this.ViewAllIncidentsTabPage = new System.Windows.Forms.TabPage();
             this.SearchIncidentTabPage = new System.Windows.Forms.TabPage();
+            this.AddIncidentUserControl = new TechSupport.UserControls.AddIncidentUserControl();
             this.tabControl1.SuspendLayout();
+            this.AddIncidentTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -45,15 +47,16 @@ namespace TechSupport.View
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(624, 441);
+            this.tabControl1.Size = new System.Drawing.Size(404, 261);
             this.tabControl1.TabIndex = 0;
             // 
             // AddIncidentTabPage
             // 
+            this.AddIncidentTabPage.Controls.Add(this.AddIncidentUserControl);
             this.AddIncidentTabPage.Location = new System.Drawing.Point(4, 22);
             this.AddIncidentTabPage.Name = "AddIncidentTabPage";
             this.AddIncidentTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.AddIncidentTabPage.Size = new System.Drawing.Size(616, 415);
+            this.AddIncidentTabPage.Size = new System.Drawing.Size(396, 235);
             this.AddIncidentTabPage.TabIndex = 0;
             this.AddIncidentTabPage.Text = "Add Incident";
             this.AddIncidentTabPage.UseVisualStyleBackColor = true;
@@ -63,7 +66,7 @@ namespace TechSupport.View
             this.ViewAllIncidentsTabPage.Location = new System.Drawing.Point(4, 22);
             this.ViewAllIncidentsTabPage.Name = "ViewAllIncidentsTabPage";
             this.ViewAllIncidentsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ViewAllIncidentsTabPage.Size = new System.Drawing.Size(616, 415);
+            this.ViewAllIncidentsTabPage.Size = new System.Drawing.Size(396, 235);
             this.ViewAllIncidentsTabPage.TabIndex = 1;
             this.ViewAllIncidentsTabPage.Text = "View All Incidents";
             this.ViewAllIncidentsTabPage.UseVisualStyleBackColor = true;
@@ -73,21 +76,30 @@ namespace TechSupport.View
             this.SearchIncidentTabPage.Location = new System.Drawing.Point(4, 22);
             this.SearchIncidentTabPage.Name = "SearchIncidentTabPage";
             this.SearchIncidentTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchIncidentTabPage.Size = new System.Drawing.Size(616, 415);
+            this.SearchIncidentTabPage.Size = new System.Drawing.Size(396, 235);
             this.SearchIncidentTabPage.TabIndex = 2;
             this.SearchIncidentTabPage.Text = "Search Incident";
             this.SearchIncidentTabPage.UseVisualStyleBackColor = true;
+            // 
+            // AddIncidentUserControl
+            // 
+            this.AddIncidentUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddIncidentUserControl.Location = new System.Drawing.Point(3, 3);
+            this.AddIncidentUserControl.Name = "AddIncidentUserControl";
+            this.AddIncidentUserControl.Size = new System.Drawing.Size(390, 229);
+            this.AddIncidentUserControl.TabIndex = 0;
             // 
             // MainDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 441);
+            this.ClientSize = new System.Drawing.Size(404, 261);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tech Support";
             this.tabControl1.ResumeLayout(false);
+            this.AddIncidentTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -98,5 +110,6 @@ namespace TechSupport.View
         private System.Windows.Forms.TabPage AddIncidentTabPage;
         private System.Windows.Forms.TabPage ViewAllIncidentsTabPage;
         private System.Windows.Forms.TabPage SearchIncidentTabPage;
+        private UserControls.AddIncidentUserControl AddIncidentUserControl;
     }
 }

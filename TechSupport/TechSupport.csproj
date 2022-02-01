@@ -49,6 +49,12 @@
     <Compile Include="Controller\IncidentController.cs" />
     <Compile Include="DAL\IncidentDAL.cs" />
     <Compile Include="Model\Incident.cs" />
+    <Compile Include="UserControls\AddIncidentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddIncidentUserControl.Designer.cs">
+      <DependentUpon>AddIncidentUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AddIncidentDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="View\SearchIncidentDialog.Designer.cs">
       <DependentUpon>SearchIncidentDialog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\AddIncidentUserControl.resx">
+      <DependentUpon>AddIncidentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AddIncidentDialog.resx">
       <DependentUpon>AddIncidentDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,8 +127,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
