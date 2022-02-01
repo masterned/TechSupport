@@ -40,5 +40,16 @@ namespace TechSupport.View
             Hide();
             LoginForm.Show();
         }
+
+        /// <summary>
+        /// Handles the event fired when the form is closing.
+        /// Makes sure that the entire application closes.
+        /// </summary>
+        /// <param name="sender">The Main form</param>
+        /// <param name="e">Event arguments</param>
+        private void MainDashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
