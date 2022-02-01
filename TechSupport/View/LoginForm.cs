@@ -8,7 +8,7 @@ namespace TechSupport.View
     /// </summary>
     public partial class LoginForm : Form
     {
-        MainForm mainForm;
+        private readonly MainDashboard MainDashboard;
 
         /// <summary>
         /// Initializes the LoginForm,
@@ -17,7 +17,7 @@ namespace TechSupport.View
         public LoginForm()
         {
             InitializeComponent();
-            this.mainForm = new MainForm(this);
+            MainDashboard = new MainDashboard(this);
         }
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace TechSupport.View
             }
 
             Hide();
-            mainForm.SetUsername(usernameTextBox.Text);
-            mainForm.Show();
+            MainDashboard.SetUsername(usernameTextBox.Text);
+            MainDashboard.Show();
         }
 
         /// <summary>

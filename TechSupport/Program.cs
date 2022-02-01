@@ -13,7 +13,7 @@ namespace TechSupport
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View.MainDashboard());
+            Application.Run(new View.LoginForm());
         }
     }
 }
