@@ -2,7 +2,7 @@
 
 namespace TechSupport.Model
 {
-    class IncidentDB
+    public class IncidentDB
     {
         private string _productCode;
         private DateTime _dateOpened;
