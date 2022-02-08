@@ -11,10 +11,10 @@ namespace TechSupport.DAL
             List<IncidentDB> openIncidentList = new List<IncidentDB>();
 
             string selectStatement =
-                "SELECT ProductCode AS 'ProductCode', DateOpened, c.Name AS 'Customer', t.Name AS 'Technician', Title" +
-                "FROM Incidents AS i" +
-                "INNER JOIN Customers AS c ON (i.CustomerID = c.CustomerID)" +
-                "INNER JOIN Technicians AS t ON (i.TechID = t.TechID)" +
+                "SELECT ProductCode, DateOpened, c.Name AS'Customer', t.Name AS 'Technician', Title " +
+                "FROM Incidents AS i " +
+                "INNER JOIN Customers AS c ON (i.CustomerID = c.CustomerID) " +
+                "INNER JOIN Technicians AS t ON (i.TechID = t.TechID) " +
                 "WHERE DateClosed IS NULL" +
                 ";";
 
