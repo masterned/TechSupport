@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
 using TechSupport.Model;
 
 namespace TechSupport.DAL
@@ -13,13 +10,38 @@ namespace TechSupport.DAL
         {
             List<IncidentDB> openIncidentList = new List<IncidentDB>();
 
-            string selectStatementString =
-                "SELECT ProductCode AS 'Product Code', CAST(DateOpened AS DATE) AS 'Date Opened', c.Name AS 'Customer', t.Name AS 'Technician', Title" +
+            string selectStatement =
+                "SELECT ProductCode AS 'ProductCode', DateOpened, c.Name AS 'Customer', t.Name AS 'Technician', Title" +
                 "FROM Incidents AS i" +
                 "INNER JOIN Customers AS c ON (i.CustomerID = c.CustomerID)" +
                 "INNER JOIN Technicians AS t ON (i.TechID = t.TechID)" +
                 "WHERE DateClosed IS NULL" +
                 ";";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            IncidentDB incident = new IncidentDB
+                            {
+                                ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
+                                DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
+                                CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
+                                TechnicianName = reader.GetString(reader.GetOrdinal("Technician")),
+                                Title = reader.GetString(reader.GetOrdinal("Title"))
+                            };
+
+                            openIncidentList.Add(incident);
+                        }
+                    }
+                }
+            }
 
             return openIncidentList;
         }
