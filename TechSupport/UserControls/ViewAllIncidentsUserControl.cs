@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using TechSupport.Controller;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// Panel contains DataViewGrid with all internally stored incidents and their information.
+    /// </summary>
     public partial class ViewAllIncidentsUserControl : UserControl
     {
         private readonly IncidentController IncidentController;
 
+        /// <summary>
+        /// Creates new ViewAllIncidentsUserControl & initializes its component & controller.
+        /// </summary>
         public ViewAllIncidentsUserControl()
         {
             InitializeComponent();

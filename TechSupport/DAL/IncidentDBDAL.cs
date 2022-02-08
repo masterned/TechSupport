@@ -4,8 +4,15 @@ using TechSupport.Model;
 
 namespace TechSupport.DAL
 {
+    /// <summary>
+    /// Incident DataAccessLayer designed to interface with the TechSupport DataBase.
+    /// </summary>
     public class IncidentDBDAL
     {
+        /// <summary>
+        /// Retrieves all of the open Incidents in the DB.
+        /// </summary>
+        /// <returns>A list of Incident objects containing information on the open incidents</returns>
         public List<IncidentDB> GetOpenIncidents()
         {
             List<IncidentDB> openIncidentList = new List<IncidentDB>();

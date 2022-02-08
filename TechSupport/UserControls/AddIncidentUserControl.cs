@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// Panel containing controls necessary to create a new Incident via the GUI.
+    /// </summary>
     public partial class AddIncidentUserControl : UserControl
     {
         private IncidentController IncidentController;

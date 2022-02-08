@@ -6,16 +6,25 @@ using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// Panel containing the list of open Incidents in the TechSupport DB.
+    /// </summary>
     public partial class DisplayOpenIncidentsUserControl : UserControl
     {
         private IncidentController incidentController;
 
+        /// <summary>
+        /// Creates a new DisplayOpenIncidentsUserControl and initializes its component & controller.
+        /// </summary>
         public DisplayOpenIncidentsUserControl()
         {
             InitializeComponent();
             incidentController = new IncidentController();
         }
 
+        /// <summary>
+        /// Refills the list with fresh data from the TechSupport DB.
+        /// </summary>
         public void RefreshListView()
         {
             openIncidentsListView.Items.Clear();

@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TechSupport.View
 {
+    /// <summary>
+    /// Serves as a primary container for all of the sub-application tabs.
+    /// </summary>
     public partial class MainDashboard : Form
     {
         private readonly LoginForm LoginForm;
 
+        /// <summary>
+        /// Stores reference to parent LoginForm & initializes the component & object.
+        /// </summary>
+        /// <param name="loginForm"></param>
         public MainDashboard(LoginForm loginForm)
         {
             InitializeComponent();

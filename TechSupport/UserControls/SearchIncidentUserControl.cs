@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// Panel contains all necessary controls to search for a specific incident.
+    /// </summary>
     public partial class SearchIncidentUserControl : UserControl
     {
         private readonly IncidentController IncidentController;
 
+        /// <summary>
+        /// Creates new SearchIncidentUserControl & initializes its component & controller.
+        /// </summary>
         public SearchIncidentUserControl()
         {
             InitializeComponent();

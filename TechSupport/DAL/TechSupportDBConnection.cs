@@ -3,14 +3,14 @@
 namespace TechSupport.DAL
 {
     /// <summary>
-    /// Sets up a connection to the TechSupport server.
+    /// Sets up a connection to the TechSupport DataBase.
     /// </summary>
     public static class TechSupportDBConnection
     {
         /// <summary>
-        /// Creates and returns a new Connection to the TechSupport server.
+        /// Creates and returns a new Connection to the TechSupport DataBase.
         /// </summary>
-        /// <returns>A Connection object linked to the TechSupport server</returns>
+        /// <returns>A Connection object linked to the TechSupport DataBase</returns>
         public static SqlConnection GetConnection()
         {
             string connectionString =
