@@ -49,7 +49,7 @@ namespace TechSupport.UserControls
             this.openIncidentsListView.HideSelection = false;
             this.openIncidentsListView.Location = new System.Drawing.Point(0, 0);
             this.openIncidentsListView.Name = "openIncidentsListView";
-            this.openIncidentsListView.Size = new System.Drawing.Size(512, 360);
+            this.openIncidentsListView.Size = new System.Drawing.Size(560, 360);
             this.openIncidentsListView.TabIndex = 0;
             this.openIncidentsListView.UseCompatibleStateImageBehavior = false;
             this.openIncidentsListView.View = System.Windows.Forms.View.Details;
@@ -81,7 +81,7 @@ namespace TechSupport.UserControls
             // 
             this.titleColumnHeader.Text = "Title";
             this.titleColumnHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.titleColumnHeader.Width = 100;
+            this.titleColumnHeader.Width = 150;
             // 
             // DisplayOpenIncidentsUserControl
             // 
@@ -89,7 +89,7 @@ namespace TechSupport.UserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.openIncidentsListView);
             this.Name = "DisplayOpenIncidentsUserControl";
-            this.Size = new System.Drawing.Size(512, 360);
+            this.Size = new System.Drawing.Size(560, 360);
             this.ResumeLayout(false);
 
         }

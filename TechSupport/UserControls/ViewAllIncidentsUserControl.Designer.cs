@@ -49,7 +49,7 @@ namespace TechSupport.UserControls
             this.PrimaryLayoutTable.RowCount = 2;
             this.PrimaryLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.PrimaryLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.PrimaryLayoutTable.Size = new System.Drawing.Size(285, 224);
+            this.PrimaryLayoutTable.Size = new System.Drawing.Size(537, 344);
             this.PrimaryLayoutTable.TabIndex = 6;
             // 
             // IncidentsGridView
@@ -57,7 +57,7 @@ namespace TechSupport.UserControls
             this.IncidentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.IncidentsGridView.Location = new System.Drawing.Point(3, 23);
             this.IncidentsGridView.Name = "IncidentsGridView";
-            this.IncidentsGridView.Size = new System.Drawing.Size(279, 198);
+            this.IncidentsGridView.Size = new System.Drawing.Size(531, 318);
             this.IncidentsGridView.TabIndex = 4;
             // 
             // IncidentsLabel
@@ -76,7 +76,7 @@ namespace TechSupport.UserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.PrimaryLayoutTable);
             this.Name = "ViewAllIncidentsUserControl";
-            this.Size = new System.Drawing.Size(292, 231);
+            this.Size = new System.Drawing.Size(550, 360);
             this.PrimaryLayoutTable.ResumeLayout(false);
             this.PrimaryLayoutTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IncidentsGridView)).EndInit();

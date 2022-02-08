@@ -57,13 +57,13 @@ namespace TechSupport.UserControls
             this.ControlPanel.RowCount = 2;
             this.ControlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.ControlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.ControlPanel.Size = new System.Drawing.Size(280, 61);
+            this.ControlPanel.Size = new System.Drawing.Size(544, 61);
             this.ControlPanel.TabIndex = 11;
             // 
             // AddButton
             // 
             this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AddButton.Location = new System.Drawing.Point(32, 25);
+            this.AddButton.Location = new System.Drawing.Point(98, 25);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
             this.AddButton.TabIndex = 6;
@@ -75,7 +75,7 @@ namespace TechSupport.UserControls
             // ClearButton
             // 
             this.ClearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ClearButton.Location = new System.Drawing.Point(172, 25);
+            this.ClearButton.Location = new System.Drawing.Point(370, 25);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
             this.ClearButton.TabIndex = 7;
@@ -114,7 +114,7 @@ namespace TechSupport.UserControls
             this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.IncidentDataPanel.Size = new System.Drawing.Size(280, 147);
+            this.IncidentDataPanel.Size = new System.Drawing.Size(544, 147);
             this.IncidentDataPanel.TabIndex = 10;
             // 
             // TitleLabel
@@ -132,7 +132,7 @@ namespace TechSupport.UserControls
             this.IncidentDataPanel.SetColumnSpan(this.TitleTextBox, 2);
             this.TitleTextBox.Location = new System.Drawing.Point(3, 16);
             this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(275, 20);
+            this.TitleTextBox.Size = new System.Drawing.Size(541, 20);
             this.TitleTextBox.TabIndex = 0;
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -153,7 +153,7 @@ namespace TechSupport.UserControls
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DescriptionTextBox.Size = new System.Drawing.Size(275, 60);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(541, 60);
             this.DescriptionTextBox.TabIndex = 3;
             this.DescriptionTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -162,7 +162,7 @@ namespace TechSupport.UserControls
             this.CustomerIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.CustomerIDTextBox.Location = new System.Drawing.Point(74, 122);
             this.CustomerIDTextBox.Name = "CustomerIDTextBox";
-            this.CustomerIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CustomerIDTextBox.Size = new System.Drawing.Size(200, 20);
             this.CustomerIDTextBox.TabIndex = 5;
             this.CustomerIDTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
@@ -183,7 +183,7 @@ namespace TechSupport.UserControls
             this.Controls.Add(this.ControlPanel);
             this.Controls.Add(this.IncidentDataPanel);
             this.Name = "AddIncidentUserControl";
-            this.Size = new System.Drawing.Size(286, 220);
+            this.Size = new System.Drawing.Size(550, 220);
             this.ControlPanel.ResumeLayout(false);
             this.ControlPanel.PerformLayout();
             this.IncidentDataPanel.ResumeLayout(false);
