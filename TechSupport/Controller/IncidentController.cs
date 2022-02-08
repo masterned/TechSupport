@@ -10,6 +10,7 @@ namespace TechSupport.Controller
     public class IncidentController
     {
         private IncidentDAL IncidentData;
+        private IncidentDBDAL _incidentDBData;
 
         /// <summary>
         /// Creates a new IncidentController.
@@ -17,6 +18,7 @@ namespace TechSupport.Controller
         public IncidentController()
         {
             IncidentData = new IncidentDAL();
+            _incidentDBData = new IncidentDBDAL();
         }
 
         /// <summary>
@@ -45,6 +47,15 @@ namespace TechSupport.Controller
         public void AddIncident(Incident newIncident)
         {
             IncidentData.Add(newIncident);
+        }
+
+        /// <summary>
+        /// Delegate acquiring all of the open incidents to its DataAccessLayer.
+        /// </summary>
+        /// <returns>The list of open incidents in the DB</returns>
+        public List<IncidentDB> GetOpenIncidents()
+        {
+            return _incidentDBData.GetOpenIncidents();
         }
     }
 }
