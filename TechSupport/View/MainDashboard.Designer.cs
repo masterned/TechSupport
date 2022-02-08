@@ -132,7 +132,7 @@ namespace TechSupport.View
             this.displayOpenIncidentsTabPage.TabIndex = 3;
             this.displayOpenIncidentsTabPage.Text = "Display Open Incidents";
             this.displayOpenIncidentsTabPage.UseVisualStyleBackColor = true;
-            this.displayOpenIncidentsTabPage.Enter += new System.EventHandler(this.displayOpenIncidentsTabPage_Enter);
+            this.displayOpenIncidentsTabPage.Enter += new System.EventHandler(this.DisplayOpenIncidentsTabPage_Enter);
             // 
             // displayOpenIncidentsUserControl
             // 
