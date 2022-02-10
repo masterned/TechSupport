@@ -10,7 +10,6 @@ namespace TechSupport.Model
         private string _productCode;
         private DateTime _dateOpened;
         private string _customerName;
-        private string _technicianName;
         private string _title;
 
         /// <summary>
@@ -22,7 +21,7 @@ namespace TechSupport.Model
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Product Code cannot be empty or null");
+                    throw new ArgumentNullException("ProductCode");
                 
                 _productCode = value;
             }
@@ -36,7 +35,7 @@ namespace TechSupport.Model
             set
             {
                 if (value == null)
-                    throw new ArgumentNullException("Date opened cannot be null");
+                    throw new ArgumentNullException("DateOpened");
 
                 _dateOpened = value;
             }
@@ -50,7 +49,7 @@ namespace TechSupport.Model
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Customer name cannot be null or empty");
+                    throw new ArgumentNullException("CustomerName");
 
                 _customerName = value;
             }
@@ -59,16 +58,7 @@ namespace TechSupport.Model
         /// <summary>
         /// Property which dictates how the TechnicianName field can be accessed and mutated.
         /// </summary>
-        public string TechnicianName {
-            get => _technicianName;
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Technician name cannot be null or empty");
-
-                _technicianName = value;
-            }
-        }
+        public string TechnicianName { get; set; }
 
         /// <summary>
         /// Property which dictates how the Title field can be accessed and mutated.
@@ -78,7 +68,7 @@ namespace TechSupport.Model
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Title cannot be null or empty");
+                    throw new ArgumentNullException("Title");
 
                 _title = value;
             }

@@ -21,7 +21,7 @@ namespace TechSupport.DAL
                 "SELECT ProductCode, DateOpened, c.Name AS'Customer', t.Name AS 'Technician', Title " +
                 "FROM Incidents AS i " +
                 "INNER JOIN Customers AS c ON (i.CustomerID = c.CustomerID) " +
-                "INNER JOIN Technicians AS t ON (i.TechID = t.TechID) " +
+                "LEFT JOIN Technicians AS t ON (i.TechID = t.TechID) " +
                 "WHERE DateClosed IS NULL" +
                 ";";
 
@@ -35,12 +35,14 @@ namespace TechSupport.DAL
                     {
                         while (reader.Read())
                         {
+                            int technicianOrdinal = reader.GetOrdinal("Technician");
+
                             IncidentDB incident = new IncidentDB
                             {
                                 ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
                                 DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
                                 CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
-                                TechnicianName = reader.GetString(reader.GetOrdinal("Technician")),
+                                TechnicianName = reader.IsDBNull(technicianOrdinal) ? string.Empty : reader.GetString(technicianOrdinal),
                                 Title = reader.GetString(reader.GetOrdinal("Title"))
                             };
 
