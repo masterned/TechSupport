@@ -29,181 +29,183 @@ namespace TechSupport.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.ControlPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.AddButton = new System.Windows.Forms.Button();
-            this.ClearButton = new System.Windows.Forms.Button();
-            this.ErrorMessage = new System.Windows.Forms.Label();
-            this.IncidentDataPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.AddIncidentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.CustomerLabel = new System.Windows.Forms.Label();
+            this.ProductLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.DescriptionLabel = new System.Windows.Forms.Label();
+            this.ErrorMessage = new System.Windows.Forms.Label();
+            this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
-            this.CustomerIDTextBox = new System.Windows.Forms.TextBox();
-            this.CustomerIDLabel = new System.Windows.Forms.Label();
-            this.ControlPanel.SuspendLayout();
-            this.IncidentDataPanel.SuspendLayout();
+            this.CustomerComboBox = new System.Windows.Forms.ComboBox();
+            this.ProductComboBox = new System.Windows.Forms.ComboBox();
+            this.CreateIncidentButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.AddIncidentTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ControlPanel
+            // AddIncidentTableLayoutPanel
             // 
-            this.ControlPanel.ColumnCount = 2;
-            this.ControlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ControlPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.ControlPanel.Controls.Add(this.AddButton, 0, 1);
-            this.ControlPanel.Controls.Add(this.ClearButton, 1, 1);
-            this.ControlPanel.Controls.Add(this.ErrorMessage, 0, 0);
-            this.ControlPanel.Location = new System.Drawing.Point(3, 156);
-            this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.RowCount = 2;
-            this.ControlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.ControlPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.ControlPanel.Size = new System.Drawing.Size(544, 61);
-            this.ControlPanel.TabIndex = 11;
+            this.AddIncidentTableLayoutPanel.ColumnCount = 3;
+            this.AddIncidentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.AddIncidentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
+            this.AddIncidentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.CustomerLabel, 0, 0);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.ProductLabel, 0, 1);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.TitleLabel, 0, 2);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.DescriptionLabel, 0, 3);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.ErrorMessage, 1, 4);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.TitleTextBox, 1, 2);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.DescriptionTextBox, 1, 3);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.CustomerComboBox, 1, 0);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.ProductComboBox, 1, 1);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.CreateIncidentButton, 1, 5);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.ClearButton, 2, 5);
+            this.AddIncidentTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.AddIncidentTableLayoutPanel.Name = "AddIncidentTableLayoutPanel";
+            this.AddIncidentTableLayoutPanel.RowCount = 6;
+            this.AddIncidentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.AddIncidentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.AddIncidentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.AddIncidentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.AddIncidentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.AddIncidentTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.AddIncidentTableLayoutPanel.Size = new System.Drawing.Size(544, 314);
+            this.AddIncidentTableLayoutPanel.TabIndex = 0;
             // 
-            // AddButton
+            // CustomerLabel
             // 
-            this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.AddButton.Location = new System.Drawing.Point(98, 25);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 6;
-            this.AddButton.Text = "Add";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.TextChanged += new System.EventHandler(this.AddButton_Click);
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.CustomerLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CustomerLabel.AutoSize = true;
+            this.CustomerLabel.Location = new System.Drawing.Point(3, 7);
+            this.CustomerLabel.Name = "CustomerLabel";
+            this.CustomerLabel.Size = new System.Drawing.Size(54, 13);
+            this.CustomerLabel.TabIndex = 0;
+            this.CustomerLabel.Text = "Customer:";
             // 
-            // ClearButton
+            // ProductLabel
             // 
-            this.ClearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ClearButton.Location = new System.Drawing.Point(370, 25);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(75, 23);
-            this.ClearButton.TabIndex = 7;
-            this.ClearButton.Text = "Clear";
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
-            // ErrorMessage
-            // 
-            this.ErrorMessage.AutoSize = true;
-            this.ControlPanel.SetColumnSpan(this.ErrorMessage, 2);
-            this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
-            this.ErrorMessage.Location = new System.Drawing.Point(3, 0);
-            this.ErrorMessage.Name = "ErrorMessage";
-            this.ErrorMessage.Size = new System.Drawing.Size(75, 13);
-            this.ErrorMessage.TabIndex = 8;
-            this.ErrorMessage.Text = "Error Message";
-            this.ErrorMessage.Visible = false;
-            // 
-            // IncidentDataPanel
-            // 
-            this.IncidentDataPanel.ColumnCount = 2;
-            this.IncidentDataPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.IncidentDataPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.IncidentDataPanel.Controls.Add(this.TitleLabel, 0, 0);
-            this.IncidentDataPanel.Controls.Add(this.TitleTextBox, 0, 1);
-            this.IncidentDataPanel.Controls.Add(this.DescriptionLabel, 0, 2);
-            this.IncidentDataPanel.Controls.Add(this.DescriptionTextBox, 0, 3);
-            this.IncidentDataPanel.Controls.Add(this.CustomerIDTextBox, 1, 4);
-            this.IncidentDataPanel.Controls.Add(this.CustomerIDLabel, 0, 4);
-            this.IncidentDataPanel.Location = new System.Drawing.Point(3, 3);
-            this.IncidentDataPanel.Name = "IncidentDataPanel";
-            this.IncidentDataPanel.RowCount = 5;
-            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.IncidentDataPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.IncidentDataPanel.Size = new System.Drawing.Size(544, 147);
-            this.IncidentDataPanel.TabIndex = 10;
+            this.ProductLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ProductLabel.AutoSize = true;
+            this.ProductLabel.Location = new System.Drawing.Point(3, 34);
+            this.ProductLabel.Name = "ProductLabel";
+            this.ProductLabel.Size = new System.Drawing.Size(47, 13);
+            this.ProductLabel.TabIndex = 1;
+            this.ProductLabel.Text = "Product:";
             // 
             // TitleLabel
             // 
             this.TitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Location = new System.Drawing.Point(3, 0);
+            this.TitleLabel.Location = new System.Drawing.Point(3, 60);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(27, 13);
-            this.TitleLabel.TabIndex = 1;
-            this.TitleLabel.Text = "Title";
-            // 
-            // TitleTextBox
-            // 
-            this.IncidentDataPanel.SetColumnSpan(this.TitleTextBox, 2);
-            this.TitleTextBox.Location = new System.Drawing.Point(3, 16);
-            this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(541, 20);
-            this.TitleTextBox.TabIndex = 0;
-            this.TitleTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.TitleLabel.Size = new System.Drawing.Size(30, 13);
+            this.TitleLabel.TabIndex = 2;
+            this.TitleLabel.Text = "Title:";
             // 
             // DescriptionLabel
             // 
-            this.DescriptionLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.DescriptionLabel.AutoSize = true;
-            this.DescriptionLabel.Location = new System.Drawing.Point(3, 39);
+            this.DescriptionLabel.Location = new System.Drawing.Point(3, 80);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(60, 13);
-            this.DescriptionLabel.TabIndex = 2;
-            this.DescriptionLabel.Text = "Description";
+            this.DescriptionLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.DescriptionLabel.Size = new System.Drawing.Size(63, 23);
+            this.DescriptionLabel.TabIndex = 3;
+            this.DescriptionLabel.Text = "Description:";
+            // 
+            // ErrorMessage
+            // 
+            this.ErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ErrorMessage.AutoSize = true;
+            this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.ErrorMessage.Location = new System.Drawing.Point(210, 246);
+            this.ErrorMessage.Name = "ErrorMessage";
+            this.ErrorMessage.Size = new System.Drawing.Size(75, 13);
+            this.ErrorMessage.TabIndex = 4;
+            this.ErrorMessage.Text = "Error Message";
+            this.ErrorMessage.Visible = false;
+            // 
+            // TitleTextBox
+            // 
+            this.AddIncidentTableLayoutPanel.SetColumnSpan(this.TitleTextBox, 2);
+            this.TitleTextBox.Location = new System.Drawing.Point(103, 57);
+            this.TitleTextBox.Name = "TitleTextBox";
+            this.TitleTextBox.Size = new System.Drawing.Size(370, 20);
+            this.TitleTextBox.TabIndex = 5;
             // 
             // DescriptionTextBox
             // 
-            this.IncidentDataPanel.SetColumnSpan(this.DescriptionTextBox, 2);
-            this.DescriptionTextBox.Location = new System.Drawing.Point(3, 55);
+            this.AddIncidentTableLayoutPanel.SetColumnSpan(this.DescriptionTextBox, 2);
+            this.DescriptionTextBox.Location = new System.Drawing.Point(103, 83);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.DescriptionTextBox.Size = new System.Drawing.Size(541, 60);
-            this.DescriptionTextBox.TabIndex = 3;
-            this.DescriptionTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(370, 160);
+            this.DescriptionTextBox.TabIndex = 6;
             // 
-            // CustomerIDTextBox
+            // CustomerComboBox
             // 
-            this.CustomerIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CustomerIDTextBox.Location = new System.Drawing.Point(74, 122);
-            this.CustomerIDTextBox.Name = "CustomerIDTextBox";
-            this.CustomerIDTextBox.Size = new System.Drawing.Size(200, 20);
-            this.CustomerIDTextBox.TabIndex = 5;
-            this.CustomerIDTextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+            this.AddIncidentTableLayoutPanel.SetColumnSpan(this.CustomerComboBox, 2);
+            this.CustomerComboBox.FormattingEnabled = true;
+            this.CustomerComboBox.Location = new System.Drawing.Point(103, 3);
+            this.CustomerComboBox.Name = "CustomerComboBox";
+            this.CustomerComboBox.Size = new System.Drawing.Size(370, 21);
+            this.CustomerComboBox.TabIndex = 7;
             // 
-            // CustomerIDLabel
+            // ProductComboBox
             // 
-            this.CustomerIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CustomerIDLabel.AutoSize = true;
-            this.CustomerIDLabel.Location = new System.Drawing.Point(3, 126);
-            this.CustomerIDLabel.Name = "CustomerIDLabel";
-            this.CustomerIDLabel.Size = new System.Drawing.Size(65, 13);
-            this.CustomerIDLabel.TabIndex = 4;
-            this.CustomerIDLabel.Text = "Customer ID";
+            this.AddIncidentTableLayoutPanel.SetColumnSpan(this.ProductComboBox, 2);
+            this.ProductComboBox.FormattingEnabled = true;
+            this.ProductComboBox.Location = new System.Drawing.Point(103, 30);
+            this.ProductComboBox.Name = "ProductComboBox";
+            this.ProductComboBox.Size = new System.Drawing.Size(370, 21);
+            this.ProductComboBox.TabIndex = 8;
+            // 
+            // CreateIncidentButton
+            // 
+            this.CreateIncidentButton.AutoSize = true;
+            this.CreateIncidentButton.Location = new System.Drawing.Point(103, 262);
+            this.CreateIncidentButton.Name = "CreateIncidentButton";
+            this.CreateIncidentButton.Size = new System.Drawing.Size(89, 23);
+            this.CreateIncidentButton.TabIndex = 9;
+            this.CreateIncidentButton.Text = "Create Incident";
+            this.CreateIncidentButton.UseVisualStyleBackColor = true;
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.AutoSize = true;
+            this.ClearButton.Location = new System.Drawing.Point(398, 262);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(75, 23);
+            this.ClearButton.TabIndex = 10;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.UseVisualStyleBackColor = true;
             // 
             // AddIncidentUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ControlPanel);
-            this.Controls.Add(this.IncidentDataPanel);
+            this.Controls.Add(this.AddIncidentTableLayoutPanel);
             this.Name = "AddIncidentUserControl";
-            this.Size = new System.Drawing.Size(550, 220);
-            this.ControlPanel.ResumeLayout(false);
-            this.ControlPanel.PerformLayout();
-            this.IncidentDataPanel.ResumeLayout(false);
-            this.IncidentDataPanel.PerformLayout();
+            this.Size = new System.Drawing.Size(550, 320);
+            this.AddIncidentTableLayoutPanel.ResumeLayout(false);
+            this.AddIncidentTableLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel ControlPanel;
-        private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.Label ErrorMessage;
-        private System.Windows.Forms.TableLayoutPanel IncidentDataPanel;
+        private System.Windows.Forms.TableLayoutPanel AddIncidentTableLayoutPanel;
+        private System.Windows.Forms.Label CustomerLabel;
+        private System.Windows.Forms.Label ProductLabel;
         private System.Windows.Forms.Label TitleLabel;
-        private System.Windows.Forms.TextBox TitleTextBox;
         private System.Windows.Forms.Label DescriptionLabel;
+        private System.Windows.Forms.Label ErrorMessage;
+        private System.Windows.Forms.TextBox TitleTextBox;
         private System.Windows.Forms.TextBox DescriptionTextBox;
-        private System.Windows.Forms.TextBox CustomerIDTextBox;
-        private System.Windows.Forms.Label CustomerIDLabel;
+        private System.Windows.Forms.ComboBox CustomerComboBox;
+        private System.Windows.Forms.ComboBox ProductComboBox;
+        private System.Windows.Forms.Button CreateIncidentButton;
+        private System.Windows.Forms.Button ClearButton;
     }
 }

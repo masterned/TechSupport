@@ -28,7 +28,7 @@ namespace TechSupport.UserControls
 
             try
             {
-                Incident newIncident = new Incident(TitleTextBox.Text, DescriptionTextBox.Text, CustomerIDTextBox.Text);
+                Incident newIncident = new Incident(TitleTextBox.Text, DescriptionTextBox.Text, CustomerComboBox.SelectedText);
                 IncidentController.AddIncident(newIncident);
             }
             catch (Exception exception)
@@ -51,7 +51,6 @@ namespace TechSupport.UserControls
         {
             TitleTextBox.Clear();
             DescriptionTextBox.Clear();
-            CustomerIDTextBox.Clear();
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
