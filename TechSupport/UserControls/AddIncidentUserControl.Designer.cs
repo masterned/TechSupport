@@ -145,6 +145,7 @@ namespace TechSupport.UserControls
             // CustomerComboBox
             // 
             this.AddIncidentTableLayoutPanel.SetColumnSpan(this.CustomerComboBox, 2);
+            this.CustomerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CustomerComboBox.FormattingEnabled = true;
             this.CustomerComboBox.Location = new System.Drawing.Point(103, 3);
             this.CustomerComboBox.Name = "CustomerComboBox";
@@ -154,6 +155,7 @@ namespace TechSupport.UserControls
             // ProductComboBox
             // 
             this.AddIncidentTableLayoutPanel.SetColumnSpan(this.ProductComboBox, 2);
+            this.ProductComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProductComboBox.FormattingEnabled = true;
             this.ProductComboBox.Location = new System.Drawing.Point(103, 30);
             this.ProductComboBox.Name = "ProductComboBox";
