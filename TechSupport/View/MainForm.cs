@@ -9,10 +9,7 @@ namespace TechSupport.View
     /// </summary>
     public partial class MainForm : Form
     {
-        private LoginForm LoginForm;
-
-        private AddIncidentDialog AddIncidentDialog;
-        private SearchIncidentDialog SearchIncidentDialog;
+        private readonly LoginForm LoginForm;
 
         private readonly IncidentController IncidentController;
 
@@ -23,12 +20,10 @@ namespace TechSupport.View
         public MainForm(LoginForm loginForm)
         {
             InitializeComponent();
+
             LoginForm = loginForm;
 
             IncidentController = new IncidentController();
-
-            AddIncidentDialog = new AddIncidentDialog();
-            SearchIncidentDialog = new SearchIncidentDialog();
         }
 
         /// <summary>
@@ -64,8 +59,9 @@ namespace TechSupport.View
 
         private void AddIncidentButton_Click(object sender, System.EventArgs e)
         {
-            AddIncidentDialog.ClearAllTextBoxes();
-            DialogResult result = AddIncidentDialog.ShowDialog();
+            AddIncidentDialog addIncidentDialog = new AddIncidentDialog();
+
+            DialogResult result = addIncidentDialog.ShowDialog();
 
             if (result == DialogResult.OK)
                 RefreshDataGrid();
@@ -73,7 +69,7 @@ namespace TechSupport.View
 
         private void SearchIncidentButton_Click(object sender, System.EventArgs e)
         {
-            SearchIncidentDialog.ShowDialog();
+            (new SearchIncidentDialog()).ShowDialog();
         }
 
         private void MainForm_Load(object sender, System.EventArgs e)
