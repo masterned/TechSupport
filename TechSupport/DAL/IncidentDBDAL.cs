@@ -56,7 +56,7 @@ namespace TechSupport.DAL
             return openIncidentList;
         }
 
-        public void AddIncident(int customerID, string productCode, string title, string description)
+        public bool AddIncident(int customerID, string productCode, string title, string description)
         {
             string insertStatement = @"INSERT INTO Incidents (CustomerID, ProductCode, DateOpened, Title, Description)
                                        VALUES (@customerID, @productCode, GetDate(), @title, @description)";
@@ -78,7 +78,7 @@ namespace TechSupport.DAL
                     cmd.Parameters.Add("@description", SqlDbType.VarChar);
                     cmd.Parameters["@description"].Value = description;
 
-                    cmd.ExecuteNonQuery();
+                    return cmd.ExecuteNonQuery() == 1;
                 }
             }
         }

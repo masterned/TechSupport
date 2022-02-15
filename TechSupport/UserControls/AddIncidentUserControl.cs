@@ -34,7 +34,13 @@ namespace TechSupport.UserControls
         {
             ErrorMessage.Hide();
 
-            _incidentController.AddIncident(CustomerComboBox.Text, ProductComboBox.Text, TitleTextBox.Text, DescriptionTextBox.Text);
+            if (_incidentController.AddIncident(
+                ((Customer)CustomerComboBox.SelectedItem).CustomerID.ToString(),
+                ((Product)ProductComboBox.SelectedItem).ProductCode,
+                TitleTextBox.Text,
+                DescriptionTextBox.Text
+                ))
+                MessageBox.Show("Product Successfully Created", "Confirmation");
         }
 
         private void InputField_TextChanged(object sender, EventArgs e)

@@ -57,7 +57,7 @@ namespace TechSupport.Controller
         /// <param name="productCode"></param>
         /// <param name="title"></param>
         /// <param name="description"></param>
-        public void AddIncident(string customerIDString, string productCode, string title, string description)
+        public bool AddIncident(string customerIDString, string productCode, string title, string description)
         {
             if (string.IsNullOrEmpty(customerIDString))
                 throw new Exception("CustomerID cannot be empty");
@@ -81,7 +81,7 @@ namespace TechSupport.Controller
             if (string.IsNullOrEmpty(description))
                 throw new Exception("Description cannot be empty");
 
-            _incidentDBData.AddIncident(customerID, productCode, title, description);
+            return _incidentDBData.AddIncident(customerID, productCode, title, description);
         }
 
 
