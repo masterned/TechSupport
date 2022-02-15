@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using TechSupport.Model;
 
@@ -53,6 +54,33 @@ namespace TechSupport.DAL
             }
 
             return openIncidentList;
+        }
+
+        public void AddIncident(int customerID, string productCode, string title, string description)
+        {
+            string insertStatement = @"INSERT INTO Incidents (CustomerID, ProductCode, DateOpened, Title, Description)
+                                       VALUES (@customerID, @productCode, GetDate(), @title, @description)";
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+                
+                using (SqlCommand cmd = new SqlCommand(insertStatement, connection))
+                {
+                    cmd.Parameters.Add("@customerID", SqlDbType.Int);
+                    cmd.Parameters["@customerID"].Value = customerID;
+
+                    cmd.Parameters.Add("@productCode", SqlDbType.Char);
+                    cmd.Parameters["@productCode"].Value = productCode;
+
+                    cmd.Parameters.Add("@title", SqlDbType.VarChar);
+                    cmd.Parameters["@title"].Value = title;
+
+                    cmd.Parameters.Add("@description", SqlDbType.VarChar);
+                    cmd.Parameters["@description"].Value = description;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

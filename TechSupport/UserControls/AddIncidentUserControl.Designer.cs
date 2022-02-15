@@ -34,13 +34,13 @@ namespace TechSupport.UserControls
             this.ProductLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.DescriptionLabel = new System.Windows.Forms.Label();
-            this.ErrorMessage = new System.Windows.Forms.Label();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.CustomerComboBox = new System.Windows.Forms.ComboBox();
             this.ProductComboBox = new System.Windows.Forms.ComboBox();
             this.CreateIncidentButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.ErrorMessage = new System.Windows.Forms.Label();
             this.AddIncidentTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,13 +54,13 @@ namespace TechSupport.UserControls
             this.AddIncidentTableLayoutPanel.Controls.Add(this.ProductLabel, 0, 1);
             this.AddIncidentTableLayoutPanel.Controls.Add(this.TitleLabel, 0, 2);
             this.AddIncidentTableLayoutPanel.Controls.Add(this.DescriptionLabel, 0, 3);
-            this.AddIncidentTableLayoutPanel.Controls.Add(this.ErrorMessage, 1, 4);
             this.AddIncidentTableLayoutPanel.Controls.Add(this.TitleTextBox, 1, 2);
             this.AddIncidentTableLayoutPanel.Controls.Add(this.DescriptionTextBox, 1, 3);
             this.AddIncidentTableLayoutPanel.Controls.Add(this.CustomerComboBox, 1, 0);
             this.AddIncidentTableLayoutPanel.Controls.Add(this.ProductComboBox, 1, 1);
             this.AddIncidentTableLayoutPanel.Controls.Add(this.CreateIncidentButton, 1, 5);
             this.AddIncidentTableLayoutPanel.Controls.Add(this.ClearButton, 2, 5);
+            this.AddIncidentTableLayoutPanel.Controls.Add(this.ErrorMessage, 0, 4);
             this.AddIncidentTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.AddIncidentTableLayoutPanel.Name = "AddIncidentTableLayoutPanel";
             this.AddIncidentTableLayoutPanel.RowCount = 6;
@@ -113,18 +113,6 @@ namespace TechSupport.UserControls
             this.DescriptionLabel.TabIndex = 3;
             this.DescriptionLabel.Text = "Description:";
             // 
-            // ErrorMessage
-            // 
-            this.ErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ErrorMessage.AutoSize = true;
-            this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
-            this.ErrorMessage.Location = new System.Drawing.Point(210, 246);
-            this.ErrorMessage.Name = "ErrorMessage";
-            this.ErrorMessage.Size = new System.Drawing.Size(75, 13);
-            this.ErrorMessage.TabIndex = 4;
-            this.ErrorMessage.Text = "Error Message";
-            this.ErrorMessage.Visible = false;
-            // 
             // TitleTextBox
             // 
             this.AddIncidentTableLayoutPanel.SetColumnSpan(this.TitleTextBox, 2);
@@ -132,6 +120,7 @@ namespace TechSupport.UserControls
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(370, 20);
             this.TitleTextBox.TabIndex = 5;
+            this.TitleTextBox.TextChanged += new System.EventHandler(this.InputField_TextChanged);
             // 
             // DescriptionTextBox
             // 
@@ -139,48 +128,77 @@ namespace TechSupport.UserControls
             this.DescriptionTextBox.Location = new System.Drawing.Point(103, 83);
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
-            this.DescriptionTextBox.Size = new System.Drawing.Size(370, 160);
+            this.DescriptionTextBox.Size = new System.Drawing.Size(370, 145);
             this.DescriptionTextBox.TabIndex = 6;
+            this.DescriptionTextBox.TextChanged += new System.EventHandler(this.InputField_TextChanged);
             // 
             // CustomerComboBox
             // 
             this.AddIncidentTableLayoutPanel.SetColumnSpan(this.CustomerComboBox, 2);
             this.CustomerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CustomerComboBox.FormattingEnabled = true;
+            this.CustomerComboBox.Items.AddRange(new object[] {
+            "1010",
+            "1117",
+            "1116",
+            "1008"});
             this.CustomerComboBox.Location = new System.Drawing.Point(103, 3);
             this.CustomerComboBox.Name = "CustomerComboBox";
             this.CustomerComboBox.Size = new System.Drawing.Size(370, 21);
             this.CustomerComboBox.TabIndex = 7;
+            this.CustomerComboBox.TextChanged += new System.EventHandler(this.InputField_TextChanged);
             // 
             // ProductComboBox
             // 
             this.AddIncidentTableLayoutPanel.SetColumnSpan(this.ProductComboBox, 2);
             this.ProductComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProductComboBox.FormattingEnabled = true;
+            this.ProductComboBox.Items.AddRange(new object[] {
+            "DRAFT10",
+            "TRNY20",
+            "LEAGD10",
+            "TEAM10"});
             this.ProductComboBox.Location = new System.Drawing.Point(103, 30);
             this.ProductComboBox.Name = "ProductComboBox";
             this.ProductComboBox.Size = new System.Drawing.Size(370, 21);
             this.ProductComboBox.TabIndex = 8;
+            this.ProductComboBox.TextChanged += new System.EventHandler(this.InputField_TextChanged);
             // 
             // CreateIncidentButton
             // 
             this.CreateIncidentButton.AutoSize = true;
-            this.CreateIncidentButton.Location = new System.Drawing.Point(103, 262);
+            this.CreateIncidentButton.Location = new System.Drawing.Point(103, 247);
             this.CreateIncidentButton.Name = "CreateIncidentButton";
             this.CreateIncidentButton.Size = new System.Drawing.Size(89, 23);
             this.CreateIncidentButton.TabIndex = 9;
             this.CreateIncidentButton.Text = "Create Incident";
             this.CreateIncidentButton.UseVisualStyleBackColor = true;
+            this.CreateIncidentButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // ClearButton
             // 
             this.ClearButton.AutoSize = true;
-            this.ClearButton.Location = new System.Drawing.Point(398, 262);
+            this.ClearButton.Location = new System.Drawing.Point(399, 247);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(75, 23);
             this.ClearButton.TabIndex = 10;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // ErrorMessage
+            // 
+            this.ErrorMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ErrorMessage.AutoSize = true;
+            this.AddIncidentTableLayoutPanel.SetColumnSpan(this.ErrorMessage, 3);
+            this.ErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.ErrorMessage.Location = new System.Drawing.Point(234, 231);
+            this.ErrorMessage.Name = "ErrorMessage";
+            this.ErrorMessage.Size = new System.Drawing.Size(75, 13);
+            this.ErrorMessage.TabIndex = 4;
+            this.ErrorMessage.Text = "Error Message";
+            this.ErrorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ErrorMessage.Visible = false;
             // 
             // AddIncidentUserControl
             // 

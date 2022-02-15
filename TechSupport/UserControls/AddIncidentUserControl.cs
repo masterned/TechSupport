@@ -10,8 +10,8 @@ namespace TechSupport.UserControls
     /// </summary>
     public partial class AddIncidentUserControl : UserControl
     {
-        private IncidentController IncidentController;
-        
+        private readonly IncidentController _incidentController;
+
         /// <summary>
         /// Creates a new AddIncidentUserControl
         /// and initializes its IncidentController
@@ -19,36 +19,30 @@ namespace TechSupport.UserControls
         public AddIncidentUserControl()
         {
             InitializeComponent();
-            IncidentController = new IncidentController();
+            _incidentController = new IncidentController();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
             ErrorMessage.Hide();
 
-            try
-            {
-                Incident newIncident = new Incident(TitleTextBox.Text, DescriptionTextBox.Text, CustomerComboBox.SelectedText);
-                IncidentController.AddIncident(newIncident);
-            }
-            catch (Exception exception)
-            {
-                ErrorMessage.Text = exception.Message;
-                ErrorMessage.Show();
-            }
+            _incidentController.AddIncident(CustomerComboBox.Text, ProductComboBox.Text, TitleTextBox.Text, DescriptionTextBox.Text);
         }
 
-        private void TextBox_TextChanged(object sender, EventArgs e)
+        private void InputField_TextChanged(object sender, EventArgs e)
         {
-            if (sender is TextBox)
+            if (sender is TextBox || sender is ComboBox)
                 ErrorMessage.Hide();
         }
 
         /// <summary>
-        /// Clears all of the text boxes in the UserControl.
+        /// Resets Customer & Product ComboBoxes to first items
+        /// and clears Title & Description TextBoxes
         /// </summary>
-        private void ClearAllTextBoxes()
+        private void ResetInputFields()
         {
+            CustomerComboBox.SelectedIndex = 0;
+            ProductComboBox.SelectedIndex = 0;
             TitleTextBox.Clear();
             DescriptionTextBox.Clear();
         }
@@ -56,7 +50,7 @@ namespace TechSupport.UserControls
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ErrorMessage.Hide();
-            ClearAllTextBoxes();
+            ResetInputFields();
         }
     }
 }

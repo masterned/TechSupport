@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TechSupport.DAL;
 using TechSupport.Model;
 
@@ -48,6 +49,41 @@ namespace TechSupport.Controller
         {
             IncidentData.Add(newIncident);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <param name="productCode"></param>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        public void AddIncident(string customerIDString, string productCode, string title, string description)
+        {
+            if (string.IsNullOrEmpty(customerIDString))
+                throw new Exception("CustomerID cannot be empty");
+
+            int customerID;
+
+            try
+            {
+                customerID = int.Parse(customerIDString);
+            } catch (FormatException)
+            {
+                throw new Exception("CustomerID must be a number");
+            }
+
+            if (string.IsNullOrEmpty(productCode))
+                throw new Exception("ProductCode cannot be empty");
+
+            if (string.IsNullOrEmpty(title))
+                throw new Exception("Title cannot be empty");
+
+            if (string.IsNullOrEmpty(description))
+                throw new Exception("Description cannot be empty");
+
+            _incidentDBData.AddIncident(customerID, productCode, title, description);
+        }
+
 
         /// <summary>
         /// Delegate acquiring all of the open incidents to its DataAccessLayer.
