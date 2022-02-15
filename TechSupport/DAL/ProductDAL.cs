@@ -4,7 +4,10 @@ using TechSupport.Model;
 
 namespace TechSupport.DAL
 {
-    class ProductDAL
+    /// <summary>
+    /// Acts as a bridge between the Product controller & database.
+    /// </summary>
+    public class ProductDAL
     {
         /// <summary>
         /// Retrieves all of the Products on the Products table in the TechSupport database.
