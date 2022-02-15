@@ -21,6 +21,10 @@ namespace TechSupport.UserControls
             InitializeComponent();
             _incidentController = new IncidentController();
 
+            CustomerComboBox.Items.Clear();
+            CustomerComboBox.Items.AddRange((new CustomerController()).GetAllCustomers().ToArray());
+            CustomerComboBox.SelectedIndex = 0;
+
             ProductComboBox.Items.Clear();
             ProductComboBox.Items.AddRange((new ProductController()).GetAllProducts().ToArray());
             ProductComboBox.SelectedIndex = 0;

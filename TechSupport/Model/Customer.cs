@@ -39,5 +39,14 @@ namespace TechSupport.Model
                 _name = value;
             }
         }
+
+        /// <summary>
+        /// Overrides the ToString method to display the Customer's name.
+        /// </summary>
+        /// <returns>The Customer's name</returns>
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
