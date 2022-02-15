@@ -31,7 +31,7 @@ namespace TechSupport.DAL
                         {
                             Product product = new Product
                             {
-                                ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
+                                ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")).Trim(),
                                 Name = reader.GetString(reader.GetOrdinal("Name"))
                             };
 

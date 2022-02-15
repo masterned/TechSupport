@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using TechSupport.Model;
@@ -56,13 +57,40 @@ namespace TechSupport.DAL
             return openIncidentList;
         }
 
+        /// <summary>
+        /// If the Product is registered to the Product,
+        /// creates a new Incident with the given parameters.
+        /// </summary>
+        /// <param name="customerID">The ID of the customer</param>
+        /// <param name="productCode">The code of the product</param>
+        /// <param name="title">The title of the Incident</param>
+        /// <param name="description">The description of the Incident</param>
+        /// <returns>Whether or not the insertion was successful</returns>
         public bool AddIncident(int customerID, string productCode, string title, string description)
         {
+            string selectQuery = @"SELECT COUNT(*)
+                                   FROM Registrations
+                                   WHERE CustomerID = @customerID
+                                     AND ProductCode = @ProductCode";
+
             string insertStatement = @"INSERT INTO Incidents (CustomerID, ProductCode, DateOpened, Title, Description)
                                        VALUES (@customerID, @productCode, GetDate(), @title, @description)";
+            
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
                 connection.Open();
+
+                using(SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                {
+                    cmd.Parameters.Add("@customerID", SqlDbType.Int);
+                    cmd.Parameters["@customerID"].Value = customerID;
+
+                    cmd.Parameters.Add("@productCode", SqlDbType.VarChar);
+                    cmd.Parameters["@productCode"].Value = productCode;
+
+                    if ((Int32)cmd.ExecuteScalar() < 1)
+                        throw new Exception("Product is not registered to Customer");
+                }
                 
                 using (SqlCommand cmd = new SqlCommand(insertStatement, connection))
                 {
