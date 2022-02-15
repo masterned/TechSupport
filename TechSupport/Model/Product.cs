@@ -27,5 +27,14 @@ namespace TechSupport.Model
             get => _name;
             set => _name = value ?? throw new ArgumentNullException("Name");
         }
+
+        /// <summary>
+        /// Overrides the ToString method to display the Product's name.
+        /// </summary>
+        /// <returns>The Product's name</returns>
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

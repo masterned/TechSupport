@@ -20,6 +20,10 @@ namespace TechSupport.UserControls
         {
             InitializeComponent();
             _incidentController = new IncidentController();
+
+            ProductComboBox.Items.Clear();
+            ProductComboBox.Items.AddRange((new ProductController()).GetAllProducts().ToArray());
+            ProductComboBox.SelectedIndex = 0;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
