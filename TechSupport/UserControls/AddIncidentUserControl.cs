@@ -47,7 +47,7 @@ namespace TechSupport.UserControls
         /// Resets Customer & Product ComboBoxes to first items
         /// and clears Title & Description TextBoxes
         /// </summary>
-        private void ResetInputFields()
+        public void ResetInputFields()
         {
             CustomerComboBox.SelectedIndex = 0;
             ProductComboBox.SelectedIndex = 0;

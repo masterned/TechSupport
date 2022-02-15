@@ -61,5 +61,10 @@ namespace TechSupport.View
         {
             displayOpenIncidentsUserControl.RefreshListView();
         }
+
+        private void AddIncidentTabPage_Enter(object sender, EventArgs e)
+        {
+            AddIncidentUserControl.ResetInputFields();
+        }
     }
 }

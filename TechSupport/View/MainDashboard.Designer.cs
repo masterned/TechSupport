@@ -31,6 +31,7 @@ namespace TechSupport.View
         {
             this.MainDashboardTabControl = new System.Windows.Forms.TabControl();
             this.AddIncidentTabPage = new System.Windows.Forms.TabPage();
+            this.AddIncidentUserControl = new TechSupport.UserControls.AddIncidentUserControl();
             this.ViewAllIncidentsTabPage = new System.Windows.Forms.TabPage();
             this.ViewAllIncidentsUserControl = new TechSupport.UserControls.ViewAllIncidentsUserControl();
             this.SearchIncidentTabPage = new System.Windows.Forms.TabPage();
@@ -39,7 +40,6 @@ namespace TechSupport.View
             this.displayOpenIncidentsUserControl = new TechSupport.UserControls.DisplayOpenIncidentsUserControl();
             this.LogoutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.UsernameLabel = new System.Windows.Forms.Label();
-            this.AddIncidentUserControl = new TechSupport.UserControls.AddIncidentUserControl();
             this.MainDashboardTabControl.SuspendLayout();
             this.AddIncidentTabPage.SuspendLayout();
             this.ViewAllIncidentsTabPage.SuspendLayout();
@@ -70,6 +70,15 @@ namespace TechSupport.View
             this.AddIncidentTabPage.TabIndex = 0;
             this.AddIncidentTabPage.Text = "Add Incident";
             this.AddIncidentTabPage.UseVisualStyleBackColor = true;
+            this.AddIncidentTabPage.Enter += new System.EventHandler(this.AddIncidentTabPage_Enter);
+            // 
+            // AddIncidentUserControl
+            // 
+            this.AddIncidentUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddIncidentUserControl.Location = new System.Drawing.Point(3, 3);
+            this.AddIncidentUserControl.Name = "AddIncidentUserControl";
+            this.AddIncidentUserControl.Size = new System.Drawing.Size(554, 290);
+            this.AddIncidentUserControl.TabIndex = 0;
             // 
             // ViewAllIncidentsTabPage
             // 
@@ -153,14 +162,6 @@ namespace TechSupport.View
             this.UsernameLabel.Size = new System.Drawing.Size(53, 13);
             this.UsernameLabel.TabIndex = 2;
             this.UsernameLabel.Text = "username";
-            // 
-            // AddIncidentUserControl
-            // 
-            this.AddIncidentUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddIncidentUserControl.Location = new System.Drawing.Point(3, 3);
-            this.AddIncidentUserControl.Name = "AddIncidentUserControl";
-            this.AddIncidentUserControl.Size = new System.Drawing.Size(554, 290);
-            this.AddIncidentUserControl.TabIndex = 0;
             // 
             // MainDashboard
             // 
