@@ -105,29 +105,5 @@ namespace TechSupport.Model
                 _description = value;
             }
         }
-
-        /// <summary>
-        /// Default empty constructor to allow fields to be added post object creation.
-        /// </summary>
-        public IncidentDB()
-        {
-        }
-
-        /// <summary>
-        /// Full constructor requiring all fields to be specified.
-        /// </summary>
-        /// <param name="productCode">The identifier for the affected product</param>
-        /// <param name="dateOpened">The Date the ticket was submitted</param>
-        /// <param name="customerName">The Customer's first and last name</param>
-        /// <param name="technicianName">The Technician's first and last name</param>
-        /// <param name="title">The title of the Ticket</param>
-        public IncidentDB(string productCode, DateTime dateOpened, string customerName, string technicianName, string title)
-        {
-            ProductCode = productCode;
-            DateOpened = dateOpened;
-            CustomerName = customerName;
-            TechnicianName = technicianName;
-            Title = title;
-        }
     }
 }
