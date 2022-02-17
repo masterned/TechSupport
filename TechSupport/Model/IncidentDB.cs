@@ -9,8 +9,10 @@ namespace TechSupport.Model
     {
         private string _productCode;
         private DateTime _dateOpened;
+        private int _customerID;
         private string _customerName;
         private string _title;
+        private string _description;
 
         /// <summary>
         /// Property which dictates how the ProductCode field can be accessed and mutated.
@@ -38,6 +40,21 @@ namespace TechSupport.Model
                     throw new ArgumentNullException("DateOpened");
 
                 _dateOpened = value;
+            }
+        }
+
+        /// <summary>
+        /// Property which dictates how the CustomerID field can be accessed and mutated.
+        /// </summary>
+        public int CustomerID
+        {
+            get => _customerID;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("CustomerID must be greater than or equal to 0");
+
+                _customerID = value;
             }
         }
 
@@ -71,6 +88,21 @@ namespace TechSupport.Model
                     throw new ArgumentNullException("Title");
 
                 _title = value;
+            }
+        }
+
+        /// <summary>
+        /// Property which dictates how the incident's description can be accessed and mutated.
+        /// </summary>
+        public string Description
+        {
+            get => _description;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException("Description");
+
+                _description = value;
             }
         }
 

@@ -51,37 +51,33 @@ namespace TechSupport.Controller
         }
 
         /// <summary>
-        /// 
+        /// Delegates adding a new Incident to the IncidentDAL.
         /// </summary>
-        /// <param name="customerID"></param>
-        /// <param name="productCode"></param>
-        /// <param name="title"></param>
-        /// <param name="description"></param>
+        /// <param name="customerIDString">String representation of the Customer's ID</param>
+        /// <param name="productCode">The Code of the Product referenced in the incident</param>
+        /// <param name="title">The title of the new incident</param>
+        /// <param name="description">The description of the new incident</param>
+        /// <returns>Whether or not adding the incident was successful</returns>
         public bool AddIncident(string customerIDString, string productCode, string title, string description)
         {
-            if (string.IsNullOrEmpty(customerIDString))
-                throw new Exception("CustomerID cannot be empty");
-
             int customerID;
 
             try
             {
                 customerID = int.Parse(customerIDString);
-            } catch (FormatException)
+            }
+            catch (FormatException)
             {
-                throw new Exception("CustomerID must be a number");
+                throw new ArgumentException("CustomerID was not a number");
             }
 
-            if (string.IsNullOrEmpty(productCode))
-                throw new Exception("ProductCode cannot be empty");
-
-            if (string.IsNullOrEmpty(title))
-                throw new Exception("Title cannot be empty");
-
-            if (string.IsNullOrEmpty(description))
-                throw new Exception("Description cannot be empty");
-
-            return _incidentDBData.AddIncident(customerID, productCode, title, description);
+            return _incidentDBData.AddIncident(new IncidentDB
+            {
+                CustomerID = customerID,
+                ProductCode = productCode,
+                Title = title,
+                Description = description
+            });
         }
 
 

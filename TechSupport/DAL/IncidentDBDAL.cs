@@ -59,14 +59,11 @@ namespace TechSupport.DAL
 
         /// <summary>
         /// If the Product is registered to the Product,
-        /// creates a new Incident with the given parameters.
+        /// creates a new Incident in the db from the Incident object.
         /// </summary>
-        /// <param name="customerID">The ID of the customer</param>
-        /// <param name="productCode">The code of the product</param>
-        /// <param name="title">The title of the Incident</param>
-        /// <param name="description">The description of the Incident</param>
+        /// <param name="incident">The incident to add</param>
         /// <returns>Whether or not the insertion was successful</returns>
-        public bool AddIncident(int customerID, string productCode, string title, string description)
+        public bool AddIncident(IncidentDB incident)
         {
             string selectQuery = @"SELECT COUNT(*)
                                    FROM Registrations
@@ -83,10 +80,10 @@ namespace TechSupport.DAL
                 using(SqlCommand cmd = new SqlCommand(selectQuery, connection))
                 {
                     cmd.Parameters.Add("@customerID", SqlDbType.Int);
-                    cmd.Parameters["@customerID"].Value = customerID;
+                    cmd.Parameters["@customerID"].Value = incident.CustomerID;
 
                     cmd.Parameters.Add("@productCode", SqlDbType.VarChar);
-                    cmd.Parameters["@productCode"].Value = productCode;
+                    cmd.Parameters["@productCode"].Value = incident.ProductCode;
 
                     if ((Int32)cmd.ExecuteScalar() < 1)
                         throw new Exception("Product is not registered to Customer");
@@ -95,16 +92,16 @@ namespace TechSupport.DAL
                 using (SqlCommand cmd = new SqlCommand(insertStatement, connection))
                 {
                     cmd.Parameters.Add("@customerID", SqlDbType.Int);
-                    cmd.Parameters["@customerID"].Value = customerID;
+                    cmd.Parameters["@customerID"].Value = incident.CustomerID;
 
                     cmd.Parameters.Add("@productCode", SqlDbType.Char);
-                    cmd.Parameters["@productCode"].Value = productCode;
+                    cmd.Parameters["@productCode"].Value = incident.ProductCode;
 
                     cmd.Parameters.Add("@title", SqlDbType.VarChar);
-                    cmd.Parameters["@title"].Value = title;
+                    cmd.Parameters["@title"].Value = incident.Title;
 
                     cmd.Parameters.Add("@description", SqlDbType.VarChar);
-                    cmd.Parameters["@description"].Value = description;
+                    cmd.Parameters["@description"].Value = incident.Description;
 
                     return cmd.ExecuteNonQuery() == 1;
                 }
