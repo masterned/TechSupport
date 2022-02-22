@@ -130,7 +130,7 @@ namespace TechSupport.DAL
                             {
                                 CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
                                 ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
-                                TechnicianName = reader.IsDBNull(technicianOrdinal) ? string.Empty : reader.GetString(technicianOrdinal),
+                                TechnicianName = reader.IsDBNull(technicianOrdinal) ? "-- Unassigned --" : reader.GetString(technicianOrdinal),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
                                 DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
                                 Description = reader.GetString(reader.GetOrdinal("Description"))

@@ -8,6 +8,7 @@ namespace TechSupport.UserControls
     public partial class UpdateIncidentUserControl : UserControl
     {
         private readonly IncidentController _incidentController;
+        private readonly TechnicianController _technicianController;
 
         /// <summary>
         /// Creates a new UpdateIncidentUserControl and initializes its controller.
@@ -16,6 +17,7 @@ namespace TechSupport.UserControls
         {
             InitializeComponent();
             _incidentController = new IncidentController();
+            _technicianController = new TechnicianController();
         }
 
         private void GetButton_Click(object sender, EventArgs e)
@@ -32,6 +34,12 @@ namespace TechSupport.UserControls
             TechnicianComboBox.Enabled = true;
             TextToAddTextBox.Enabled = true;
             CloseButton.Enabled = true;
+        }
+
+        public void PopulateTechnicianComboBox()
+        {
+            TechnicianComboBox.Items.Clear();
+            TechnicianComboBox.Items.AddRange(_technicianController.GetTechnicians().ToArray());
         }
     }
 }

@@ -49,14 +49,17 @@
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\IncidentController.cs" />
     <Compile Include="Controller\ProductController.cs" />
+    <Compile Include="Controller\TechnicianController.cs" />
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\IncidentDAL.cs" />
     <Compile Include="DAL\ProductDAL.cs" />
     <Compile Include="DAL\RegistrationDAL.cs" />
+    <Compile Include="DAL\TechnicianDAL.cs" />
     <Compile Include="DAL\TechSupportDBConnection.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Incident.cs" />
     <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\Technician.cs" />
     <Compile Include="UserControls\AddIncidentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
