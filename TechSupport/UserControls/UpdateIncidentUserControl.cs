@@ -197,22 +197,37 @@ namespace TechSupport.UserControls
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to close this Incident?\nOnce closed, it can no longer be edited."
-                , "Close this Incident?"
-                , MessageBoxButtons.YesNo);
-
-            switch (result)
+            try
             {
-                case DialogResult.Yes:
-                    MessageBox.Show("Incident has been closed.", "Confirmation");
-                    break;
+                Incident incident = _incidentController.GetIncident(IncidentIDTextBox.Text);
 
-                case DialogResult.No:
-                    break;
+                if (incident.IsClosed)
+                {
+                    CloseButton.Enabled = false;
+                    return;
+                }
 
-                default:
-                    MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
-                    break;
+                DialogResult result = MessageBox.Show("Are you sure you want to close this Incident?\nOnce closed, it can no longer be edited."
+                    , "Close this Incident?"
+                    , MessageBoxButtons.YesNo);
+
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        MessageBox.Show("Incident has been closed.", "Confirmation");
+                        break;
+
+                    case DialogResult.No:
+                        break;
+
+                    default:
+                        MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
+                        break;
+                }
+            }
+            catch (Exception exception)
+            {
+                ShowError(exception.Message);
             }
         }
     }
