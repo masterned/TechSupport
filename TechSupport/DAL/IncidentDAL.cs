@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using TechSupport.Model;
@@ -142,6 +143,9 @@ namespace TechSupport.DAL
                                 IsClosed = !reader.IsDBNull(reader.GetOrdinal("DateClosed")),
                                 Description = reader.GetString(reader.GetOrdinal("Description"))
                             };
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("DateClosed")))
+                                incident.DateClosed = reader.GetDateTime(reader.GetOrdinal("DateClosed"));
                         }
                     }
                 }
@@ -229,6 +233,40 @@ namespace TechSupport.DAL
                     cmd.Parameters["incidentID"].Value = incidentID;
 
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns whether or not the Incident object matches its corresponding entry.
+        /// </summary>
+        /// <param name="incident">The Incident to test</param>
+        /// <returns>Whether the Incident has become stale</returns>
+        public bool HasBecomeStale(Incident incident)
+        {
+            string selectQuery = @"SELECT COUNT(*)
+                                   FROM Incidents
+                                   WHERE IncidentID = @incidentID
+                                       AND DateClosed = @dateClosed
+                                       AND Description = @description
+                                   ;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                {
+                    cmd.Parameters.Add("incidentID", SqlDbType.Int);
+                    cmd.Parameters["incidentID"].Value = incident.IncidentID;
+
+                    cmd.Parameters.Add("dateClosed", SqlDbType.Int);
+                    cmd.Parameters["dateClosed"].Value = incident.DateClosed;
+
+                    cmd.Parameters.Add("description", SqlDbType.Int);
+                    cmd.Parameters["description"].Value = incident.Description;
+
+                    return ((int) cmd.ExecuteScalar()) < 1;
                 }
             }
         }

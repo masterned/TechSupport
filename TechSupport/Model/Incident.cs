@@ -62,6 +62,11 @@ namespace TechSupport.Model
         }
 
         /// <summary>
+        /// Property which dictates how the DateClosed field can be accessed and mutated.
+        /// </summary>
+        public DateTime DateClosed { get; set; }
+
+        /// <summary>
         /// Property which dictates how the IsClosed field can be accessed and mutated.
         /// </summary>
         public bool IsClosed { get; set; }

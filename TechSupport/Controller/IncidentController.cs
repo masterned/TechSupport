@@ -194,6 +194,16 @@ namespace TechSupport.Controller
             _incidentData.CloseIncident(incident.IncidentID);
             return true;
         }
+
+        /// <summary>
+        /// Delegates to the DAL to test if the Data in the app no longer matches the server.
+        /// </summary>
+        /// <param name="incident">The Incident to test</param>
+        /// <returns>Whether or not the Incident has become stale</returns>
+        public bool HasBecomeStale(Incident incident)
+        {
+            return _incidentData.HasBecomeStale(incident);
+        }
     }
 
     /// <summary>
