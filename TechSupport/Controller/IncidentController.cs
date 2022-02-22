@@ -73,16 +73,19 @@ namespace TechSupport.Controller
                 throw new ArgumentException("CustomerID was not a number");
             }
 
-            if (!_registrationData.CustomerHasProductRegistration(customerID, productCode))
-                throw new ArgumentException("Product is not registered to Customer");
-
-            return _incidentDBData.AddIncident(new IncidentDB
+            IncidentDB incident = new IncidentDB
             {
                 CustomerID = customerID,
                 ProductCode = productCode,
                 Title = title,
                 Description = description
-            });
+            };
+
+
+            if (!_registrationData.CustomerHasProductRegistration(customerID, productCode))
+                throw new ArgumentException("Product is not registered to Customer");
+
+            return _incidentDBData.AddIncident(incident);
         }
 
 

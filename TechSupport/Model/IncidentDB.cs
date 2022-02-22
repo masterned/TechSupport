@@ -85,7 +85,7 @@ namespace TechSupport.Model
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Title");
+                    throw new ArgumentException("Please make sure to add both a Title and a Description");
 
                 _title = value;
             }
@@ -100,7 +100,7 @@ namespace TechSupport.Model
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("Description");
+                    throw new ArgumentNullException("Incident requires both a Title and Description");
 
                 _description = value;
             }
