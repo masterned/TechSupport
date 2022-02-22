@@ -10,7 +10,6 @@ namespace TechSupport.Controller
     /// </summary>
     public class IncidentController
     {
-        private IncidentDAL IncidentData;
         private readonly IncidentDBDAL _incidentDBData;
         private readonly RegistrationDAL _registrationData;
 
@@ -19,37 +18,8 @@ namespace TechSupport.Controller
         /// </summary>
         public IncidentController()
         {
-            IncidentData = new IncidentDAL();
             _incidentDBData = new IncidentDBDAL();
             _registrationData = new RegistrationDAL();
-        }
-
-        /// <summary>
-        /// Collects all of the incidents in the system.
-        /// </summary>
-        /// <returns>All of the recorded incidents</returns>
-        public List<Incident> GetIncidents()
-        {
-            return IncidentData.GetIncidents();
-        }
-
-        /// <summary>
-        /// Collects a list of incidents tied to a CustomerID.
-        /// </summary>
-        /// <param name="customerID">The CustomerID to query</param>
-        /// <returns>All of the incidents with a matching CustomerID</returns>
-        public List<Incident> GetIncidentsOfCustomer(int customerID)
-        {
-            return IncidentData.GetIncidentsOfCustomer(customerID);
-        }
-
-        /// <summary>
-        /// Delegates adding a new incident to the collection of incidents.
-        /// </summary>
-        /// <param name="newIncident">The new incident to be added.</param>
-        public void AddIncident(Incident newIncident)
-        {
-            IncidentData.Add(newIncident);
         }
 
         /// <summary>
