@@ -100,42 +100,19 @@ namespace TechSupport.UserControls
         {
             if (!string.IsNullOrEmpty(TextToAddTextBox.Text))
             {
-                try
+                if (DescriptionTextBox.Text.Length >= 200)
                 {
-                    bool wasSuccessful = _incidentController.AppendToDescription(IncidentIDTextBox.Text, DescriptionTextBox.Text, TextToAddTextBox.Text);
-
-                    if (wasSuccessful)
-                    {
-                        DialogResult result = MessageBox.Show("Incident description successfully updated.", "Confirmation");
-
-                        string incidentIDString = IncidentIDTextBox.Text;
-
-                        ResetInputFields();
-
-                        IncidentIDTextBox.Text = incidentIDString;
-
-                        GetButton_Click(GetButton, null);
-                    }
-                    else
-                    {
-                        ShowError("System was unable to update Incident");
-                    }
+                    ShowError("Description already at max length.\nCannot add more text.");
                 }
-                catch (IncidentDescriptionOverflowException exception)
+                else
                 {
-                    DialogResult result = MessageBox.Show($"{exception.Message}\nWould you like to truncate the message?"
-                        , "Description too long."
-                        , MessageBoxButtons.YesNo);
-
-                    switch (result)
+                    try
                     {
-                        case DialogResult.Yes:
-                            _incidentController.UpdateDescription(IncidentIDTextBox.Text
-                                , _incidentController.TruncateNewDescription(
-                                    _incidentController.CreateNewDescription(IncidentIDTextBox.Text
-                                        , TextToAddTextBox.Text)
-                                    )
-                                );
+                        bool wasSuccessful = _incidentController.AppendToDescription(IncidentIDTextBox.Text, DescriptionTextBox.Text, TextToAddTextBox.Text);
+
+                        if (wasSuccessful)
+                        {
+                            DialogResult result = MessageBox.Show("Incident description successfully updated.", "Confirmation");
 
                             string incidentIDString = IncidentIDTextBox.Text;
 
@@ -144,18 +121,48 @@ namespace TechSupport.UserControls
                             IncidentIDTextBox.Text = incidentIDString;
 
                             GetButton_Click(GetButton, null);
-
-                            break;
-                        case DialogResult.No:
-                            break;
-                        default:
-                            MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
-                            break;
+                        }
+                        else
+                        {
+                            ShowError("System was unable to update Incident");
+                        }
                     }
-                }
-                catch (Exception exception)
-                {
-                    ShowError(exception.Message);
+                    catch (IncidentDescriptionOverflowException exception)
+                    {
+                        DialogResult result = MessageBox.Show($"{exception.Message}\nWould you like to truncate the message?"
+                            , "Description too long."
+                            , MessageBoxButtons.YesNo);
+
+                        switch (result)
+                        {
+                            case DialogResult.Yes:
+                                _incidentController.UpdateDescription(IncidentIDTextBox.Text
+                                    , _incidentController.TruncateNewDescription(
+                                        _incidentController.CreateNewDescription(IncidentIDTextBox.Text
+                                            , TextToAddTextBox.Text)
+                                        )
+                                    );
+
+                                string incidentIDString = IncidentIDTextBox.Text;
+
+                                ResetInputFields();
+
+                                IncidentIDTextBox.Text = incidentIDString;
+
+                                GetButton_Click(GetButton, null);
+
+                                break;
+                            case DialogResult.No:
+                                break;
+                            default:
+                                MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
+                                break;
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        ShowError(exception.Message);
+                    }
                 }
             }
 
@@ -164,7 +171,7 @@ namespace TechSupport.UserControls
             if (_incidentController.TechnicianIsDifferent(IncidentIDTextBox.Text, selectedTechnician.TechID))
             {
                 _incidentController.UpdateTechnician(IncidentIDTextBox.Text, selectedTechnician.TechID);
-                MessageBox.Show(selectedTechnician.ToString());
+                MessageBox.Show("Technician Successfully Updated", "Confirmation");
             }
         }
     }
