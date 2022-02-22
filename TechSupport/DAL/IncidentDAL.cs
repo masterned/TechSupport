@@ -142,5 +142,34 @@ namespace TechSupport.DAL
 
             return incident;
         }
+
+        /// <summary>
+        /// Updates the Description of the Incident with the given ID
+        /// </summary>
+        /// <param name="incidentID">The ID of the Incident to update</param>
+        /// <param name="newDescription">The new Description to use for the Incident</param>
+        public void UpdateDescription(int incidentID, string newDescription)
+        {
+            string updateStatement = @"UPDATE Incidents
+                                       SET Description = @newDescription
+                                       WHERE IncidentID = @incidentID
+                                       ;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
+                {
+                    cmd.Parameters.Add("newDescription", SqlDbType.VarChar);
+                    cmd.Parameters["newDescription"].Value = newDescription;
+
+                    cmd.Parameters.Add("incidentID", SqlDbType.Int);
+                    cmd.Parameters["incidentID"].Value = incidentID;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

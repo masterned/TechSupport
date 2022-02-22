@@ -113,10 +113,12 @@ namespace TechSupport.Controller
                 if (incident.Description != currentDescription)
                     throw new Exception("Incident entry does not match input.\nPlease \"Get\" this incident again before attempting to update.");
 
-                string newDescription = currentDescription + "\n<" + DateTime.Now.ToShortDateString() + "> " + textToAdd;
+                string newDescription = currentDescription + "\r\n<" + DateTime.Now.ToShortDateString() + "> " + textToAdd;
 
                 if (newDescription.Length > 200)
                     throw new IncidentDescriptionOverflowException();
+
+                _incidentData.UpdateDescription(incidentID, newDescription);
 
                 return true;
             }

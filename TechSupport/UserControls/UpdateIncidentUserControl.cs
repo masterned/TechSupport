@@ -104,6 +104,12 @@ namespace TechSupport.UserControls
                     {
                         DialogResult result = MessageBox.Show("Incident description successfully updated.", "Confirmation");
 
+                        string incidentIDString = IncidentIDTextBox.Text;
+
+                        ResetInputFields();
+
+                        IncidentIDTextBox.Text = incidentIDString;
+
                         GetButton_Click(GetButton, null);
                     }
                     else
