@@ -5,8 +5,15 @@ using TechSupport.Model;
 
 namespace TechSupport.DAL
 {
+    /// <summary>
+    /// Acts as a bridge between the Controllers and the Technicians table in the TechSupport db
+    /// </summary>
     public class TechnicianDAL
     {
+        /// <summary>
+        /// Retrieves all of the Technicians in the TechSupport db
+        /// </summary>
+        /// <returns>A list of Technician objects, representing the Technicians table</returns>
         public List<Technician> GetTechnicians()
         {
             List<Technician> technicians = new List<Technician>();
