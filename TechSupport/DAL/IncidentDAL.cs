@@ -99,7 +99,8 @@ namespace TechSupport.DAL
         {
             Incident incident = null;
 
-            string selectStatement = @"SELECT TOP 1 c.name AS Customer
+            string selectStatement = @"SELECT TOP 1 IncidentID
+                                            , c.name AS Customer
 	                                        , ProductCode
                                             , i.TechID
 	                                        , t.Name AS Technician
@@ -131,6 +132,7 @@ namespace TechSupport.DAL
 
                             incident = new Incident
                             {
+                                IncidentID = reader.GetInt32(reader.GetOrdinal("IncidentID")),
                                 CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
                                 ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
                                 TechID = reader.IsDBNull(techIDOrdinal) ? -1 : reader.GetInt32(reader.GetOrdinal("TechID")),
@@ -198,6 +200,31 @@ namespace TechSupport.DAL
                     cmd.Parameters.Add("techID", SqlDbType.Int);
                     cmd.Parameters["techID"].Value = techID;
 
+                    cmd.Parameters.Add("incidentID", SqlDbType.Int);
+                    cmd.Parameters["incidentID"].Value = incidentID;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Closes the Incident by setting its DateClosed to the current Date.
+        /// </summary>
+        /// <param name="incidentID">The Incident to close</param>
+        public void CloseIncident(int incidentID)
+        {
+            string updateStatement = @"UPDATE Incidents
+                                       SET DateClosed = GETDATE()
+                                       WHERE IncidentID = @incidentID
+                                       ;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
+                {
                     cmd.Parameters.Add("incidentID", SqlDbType.Int);
                     cmd.Parameters["incidentID"].Value = incidentID;
 

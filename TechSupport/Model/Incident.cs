@@ -7,6 +7,7 @@ namespace TechSupport.Model
     /// </summary>
     public class Incident
     {
+        private int _incidentID;
         private string _productCode;
         private DateTime _dateOpened;
         private int _customerID;
@@ -14,6 +15,21 @@ namespace TechSupport.Model
         private int _techID;
         private string _title;
         private string _description;
+
+        /// <summary>
+        /// Property which dictates how the ProductCode field can be accessed and mutated.
+        /// </summary>
+        public int IncidentID
+        {
+            get => _incidentID;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("IncidentID must be greater than or equal to 0");
+
+                _incidentID = value;
+            }
+        }
 
         /// <summary>
         /// Property which dictates how the ProductCode field can be accessed and mutated.
