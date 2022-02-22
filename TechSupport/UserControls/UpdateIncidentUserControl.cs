@@ -36,6 +36,9 @@ namespace TechSupport.UserControls
             CloseButton.Enabled = true;
         }
 
+        /// <summary>
+        /// Populates the TechnicianComboBox with Technicians in the TechSupport db
+        /// </summary>
         public void PopulateTechnicianComboBox()
         {
             TechnicianComboBox.Items.Clear();
