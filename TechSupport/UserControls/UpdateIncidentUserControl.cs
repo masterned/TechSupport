@@ -91,5 +91,50 @@ namespace TechSupport.UserControls
             ResetInputFields();
             ErrorMessage.Hide();
         }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TextToAddTextBox.Text))
+            {
+                try
+                {
+                    bool wasSuccessful = _incidentController.AppendToDescription(IncidentIDTextBox.Text, DescriptionTextBox.Text, TextToAddTextBox.Text);
+
+                    if (wasSuccessful)
+                    {
+                        DialogResult result = MessageBox.Show("Incident description successfully updated.", "Confirmation");
+
+                        GetButton_Click(GetButton, null);
+                    }
+                    else
+                    {
+                        ShowError("System was unable to update Incident");
+                    }
+                }
+                catch (IncidentDescriptionOverflowException exception)
+                {
+                    DialogResult result = MessageBox.Show($"{exception.Message}\nWould you like to truncate the message?"
+                        , "Description too long."
+                        , MessageBoxButtons.YesNo);
+
+                    switch (result)
+                    {
+                        case DialogResult.Yes:
+                            MessageBox.Show("You said yes", "Result");
+                            break;
+                        case DialogResult.No:
+                            MessageBox.Show("You said no", "Result");
+                            break;
+                        default:
+                            MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
+                            break;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    ShowError(exception.Message);
+                }
+            }
+        }
     }
 }

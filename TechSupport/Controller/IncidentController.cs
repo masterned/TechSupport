@@ -95,5 +95,46 @@ namespace TechSupport.Controller
 
             return _incidentData.GetIncident(incidentID);
         }
+
+        /// <summary>
+        /// Appends the "Text To Add" to the Description if the result is <= 200 characters.
+        /// </summary>
+        /// <param name="incidentIDString">The ID of the incident to append to</param>
+        /// <param name="currentDescription">The description being shown in the form at update time</param>
+        /// <param name="textToAdd">The text to append to the end of the description</param>
+        /// <returns>Whether or not the operation was successful</returns>
+        public bool AppendToDescription(string incidentIDString, string currentDescription, string textToAdd)
+        {
+            try
+            {
+                int incidentID = int.Parse(incidentIDString);
+                Incident incident = _incidentData.GetIncident(incidentID);
+
+                if (incident.Description != currentDescription)
+                    throw new Exception("Incident entry does not match input.\nPlease \"Get\" this incident again before attempting to update.");
+
+                string newDescription = currentDescription + "\n<" + DateTime.Now.ToShortDateString() + "> " + textToAdd;
+
+                if (newDescription.Length > 200)
+                    throw new IncidentDescriptionOverflowException();
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                throw new Exception("Incident ID must be a number >= 0");
+            }
+        }
+    }
+
+    /// <summary>
+    /// Used to indicate when the new Incident description is beyond the maximum length.
+    /// </summary>
+    public class IncidentDescriptionOverflowException : Exception
+    {
+        /// <summary>
+        /// Calls the base (super) contructor with the pre-fabricated message.
+        /// </summary>
+        public IncidentDescriptionOverflowException() : base("The description exceeds the 200 character maximum.") { }
     }
 }
