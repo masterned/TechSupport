@@ -5,6 +5,9 @@ using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// UserControl Used to Update Incidents in the database
+    /// </summary>
     public partial class UpdateIncidentUserControl : UserControl
     {
         private readonly IncidentController _incidentController;
@@ -133,9 +136,9 @@ namespace TechSupport.UserControls
                 switch (result)
                 {
                     case DialogResult.Yes:
-                        _incidentController.UpdateDescription(IncidentIDTextBox.Text
+                        _incidentController.UpdateDescription(incident
                             , _incidentController.TruncateNewDescription(
-                                _incidentController.CreateNewDescription(IncidentIDTextBox.Text
+                                _incidentController.CreateNewDescription(incident
                                     , TextToAddTextBox.Text)
                                 )
                             );
@@ -183,9 +186,9 @@ namespace TechSupport.UserControls
 
                 Technician selectedTechnician = (Technician)TechnicianComboBox.SelectedItem;
 
-                if (_incidentController.TechnicianIsDifferent(IncidentIDTextBox.Text, selectedTechnician.TechID))
+                if (TechnicianComboBox.SelectedIndex != -1 && _incidentController.TechnicianIsDifferent(incident, selectedTechnician.TechID))
                 {
-                    _incidentController.UpdateTechnician(IncidentIDTextBox.Text, selectedTechnician.TechID);
+                    _incidentController.UpdateTechnician(incident, selectedTechnician.TechID);
                     MessageBox.Show("Technician Successfully Updated", "Confirmation");
                 }
             }
@@ -207,6 +210,12 @@ namespace TechSupport.UserControls
                     return;
                 }
 
+                if (incident.TechID == -1 && TechnicianComboBox.SelectedIndex == -1)
+                {
+                    ShowError("Cannot close Incident without assigning a Technician.");
+                    return;
+                }
+
                 DialogResult result = MessageBox.Show("Are you sure you want to close this Incident?\nOnce closed, it can no longer be edited."
                     , "Close this Incident?"
                     , MessageBoxButtons.YesNo);
@@ -214,7 +223,43 @@ namespace TechSupport.UserControls
                 switch (result)
                 {
                     case DialogResult.Yes:
+
+                        Technician selectedTechnician = (Technician)TechnicianComboBox.SelectedItem;
+
+                        if (TechnicianComboBox.SelectedIndex != -1 && _incidentController.TechnicianIsDifferent(incident, selectedTechnician.TechID))
+                            _incidentController.UpdateTechnician(incident, selectedTechnician.TechID);
+
+                        if(!string.IsNullOrEmpty(TextToAddTextBox.Text))
+                        {
+                            string newDescription = _incidentController.CreateNewDescription(incident, TextToAddTextBox.Text);
+
+                            if (newDescription.Length > 200)
+                            {
+                                DialogResult shouldTruncate = MessageBox.Show("The description exceeds the 200 character maximum.\nWould you like to truncate the message?"
+                                    , "Description too long."
+                                    , MessageBoxButtons.YesNo);
+
+                                if (shouldTruncate == DialogResult.Yes)
+                                    _incidentController.UpdateDescription(incident, _incidentController.TruncateNewDescription(newDescription));
+                                else
+                                    return;
+                            }
+                            else
+                            {
+                                _incidentController.UpdateDescription(incident, newDescription);
+                            }
+                        }
+
+                        _incidentController.CloseIncident(incident);
+
                         MessageBox.Show("Incident has been closed.", "Confirmation");
+
+                        ResetInputFields();
+
+                        IncidentIDTextBox.Text = incident.IncidentID.ToString();
+
+                        GetButton_Click(GetButton, null);
+
                         break;
 
                     case DialogResult.No:

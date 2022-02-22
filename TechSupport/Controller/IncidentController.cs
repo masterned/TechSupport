@@ -130,15 +130,11 @@ namespace TechSupport.Controller
         /// Creates a new Description based off of the Description in the Incident
         /// and the "Text To Add"
         /// </summary>
-        /// <param name="incidentIDString">The string representation of the Incident's ID</param>
+        /// <param name="incident">The Incident itself</param>
         /// <param name="textToAdd">The String to append onto the end of the Description</param>
         /// <returns>The newly formatted Description</returns>
-        public string CreateNewDescription(string incidentIDString, string textToAdd)
+        public string CreateNewDescription(Incident incident, string textToAdd)
         {
-            int incidentID = ParseIncidentID(incidentIDString);
-
-            Incident incident = _incidentData.GetIncident(incidentID);
-
             return $"{incident.Description}\r\n<{DateTime.Now.ToShortDateString()}> {textToAdd}";
         }
 
@@ -155,41 +151,47 @@ namespace TechSupport.Controller
         /// <summary>
         /// Delegates updating the Description of the given Incident to the DAL
         /// </summary>
-        /// <param name="incidentIDString">The string representation of the ID of the Incident to update</param>
+        /// <param name="incident">The Incident itself</param>
         /// <param name="newDescription">The new Description for the Incident</param>
         /// <returns></returns>
-        public bool UpdateDescription(string incidentIDString, string newDescription)
+        public bool UpdateDescription(Incident incident, string newDescription)
         {
-            int incidentID = ParseIncidentID(incidentIDString);
-            _incidentData.UpdateDescription(incidentID, newDescription);
+            _incidentData.UpdateDescription(incident.IncidentID, newDescription);
             return true;
         }
 
         /// <summary>
         /// Tests to see if the Tech has changed.
         /// </summary>
-        /// <param name="incidentIDString">The string representation of the Incident's ID</param>
+        /// <param name="incident">The Incident itself</param>
         /// <param name="techID">The Technician's ID</param>
         /// <returns>Whether the Technician has changed</returns>
-        public bool TechnicianIsDifferent(string incidentIDString, int techID)
+        public bool TechnicianIsDifferent(Incident incident, int techID)
         {
-            Incident incident = GetIncident(incidentIDString);
-
             return incident.TechID != techID;
         }
 
         /// <summary>
         /// Delegates assigning a new Technician to the Incident to the DAL
         /// </summary>
-        /// <param name="incidentIDString">The string representation of the Incident's ID</param>
+        /// <param name="incident">The Incident itself</param>
         /// <param name="techID">The Technician's ID</param>
         /// <returns>Whether or not the attepmt was successful</returns>
-        public bool UpdateTechnician(string incidentIDString, int techID)
+        public bool UpdateTechnician(Incident incident, int techID)
         {
-            int incidentID = ParseIncidentID(incidentIDString);
+            _incidentData.UpdateTechnician(incident.IncidentID, techID);
 
-            _incidentData.UpdateTechnician(incidentID, techID);
+            return true;
+        }
 
+        /// <summary>
+        /// Delegates closing the given Incident to the DAL
+        /// </summary>
+        /// <param name="incident">The Incident to close</param>
+        /// <returns>Whether or not the operation was successful</returns>
+        public bool CloseIncident(Incident incident)
+        {
+            _incidentData.CloseIncident(incident.IncidentID);
             return true;
         }
     }
