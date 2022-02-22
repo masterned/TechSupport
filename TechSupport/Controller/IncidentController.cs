@@ -71,10 +71,28 @@ namespace TechSupport.Controller
         /// <summary>
         /// Delegates retrieving the Incident with the associated ID to the DAL.
         /// </summary>
-        /// <param name="incidentID">The ID of the Indicent in question</param>
+        /// <param name="incidentIDString">The ID of the Indicent in question in string form</param>
         /// <returns>The Incident with the given ID</returns>
-        public Incident GetIncident(int incidentID)
+        public Incident GetIncident(string incidentIDString)
         {
+            if (string.IsNullOrEmpty(incidentIDString))
+                throw new ArgumentException("Please enter an Incident ID. (Must be a number >= 0)");
+
+            int incidentID;
+
+            try
+            {
+                incidentID = int.Parse(incidentIDString);
+                Incident incident = _incidentData.GetIncident(incidentID);
+
+                if (incident == null)
+                    throw new KeyNotFoundException("No incident with the ID: " + incidentIDString + " could be found.");
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException("Incident ID must be a number.");
+            }
+
             return _incidentData.GetIncident(incidentID);
         }
     }

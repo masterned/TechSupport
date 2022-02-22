@@ -22,18 +22,33 @@ namespace TechSupport.UserControls
 
         private void GetButton_Click(object sender, EventArgs e)
         {
-            Incident incident = _incidentController.GetIncident(int.Parse(IncidentIDTextBox.Text));
+            try
+            {
+                Incident incident = _incidentController.GetIncident(IncidentIDTextBox.Text);
 
-            CustomerTextBox.Text = incident.CustomerName;
-            ProductTextBox.Text = incident.ProductCode;
-            TitleTextBox.Text = incident.Title;
-            DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
-            DescriptionTextBox.Text = incident.Description;
+                CustomerTextBox.Text = incident.CustomerName;
+                ProductTextBox.Text = incident.ProductCode;
+                TitleTextBox.Text = incident.Title;
+                DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
+                DescriptionTextBox.Text = incident.Description;
 
-            // Enable disabled fields
-            TechnicianComboBox.Enabled = true;
-            TextToAddTextBox.Enabled = true;
-            CloseButton.Enabled = true;
+                ErrorMessage.Hide();
+
+                // Enable disabled fields
+                TechnicianComboBox.Enabled = true;
+                TextToAddTextBox.Enabled = true;
+                CloseButton.Enabled = true;
+            }
+            catch (Exception exception)
+            {
+                ShowError(exception.Message);
+            }
+        }
+
+        private void ShowError(string message)
+        {
+            ErrorMessage.Text = message;
+            ErrorMessage.Show();
         }
 
         /// <summary>
