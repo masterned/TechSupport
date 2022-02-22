@@ -113,14 +113,6 @@ namespace TechSupport.UserControls
                 if (wasSuccessful)
                 {
                     DialogResult result = MessageBox.Show("Incident description successfully updated.", "Confirmation");
-
-                    string incidentIDString = IncidentIDTextBox.Text;
-
-                    ResetInputFields();
-
-                    IncidentIDTextBox.Text = incidentIDString;
-
-                    GetButton_Click(GetButton, null);
                 }
                 else
                 {
@@ -142,14 +134,6 @@ namespace TechSupport.UserControls
                                     , TextToAddTextBox.Text)
                                 )
                             );
-
-                        string incidentIDString = IncidentIDTextBox.Text;
-
-                        ResetInputFields();
-
-                        IncidentIDTextBox.Text = incidentIDString;
-
-                        GetButton_Click(GetButton, null);
 
                         break;
 
@@ -191,6 +175,12 @@ namespace TechSupport.UserControls
                     _incidentController.UpdateTechnician(incident, selectedTechnician.TechID);
                     MessageBox.Show("Technician Successfully Updated", "Confirmation");
                 }
+
+                ResetInputFields();
+
+                IncidentIDTextBox.Text = incident.IncidentID.ToString();
+
+                GetButton_Click(GetButton, null);
             }
             catch (Exception exception)
             {
