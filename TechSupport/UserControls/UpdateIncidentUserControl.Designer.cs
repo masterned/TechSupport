@@ -108,6 +108,7 @@ namespace TechSupport.UserControls
             this.TextToAddTextBox.Name = "TextToAddTextBox";
             this.TextToAddTextBox.Size = new System.Drawing.Size(243, 50);
             this.TextToAddTextBox.TabIndex = 18;
+            this.TextToAddTextBox.TextChanged += new System.EventHandler(this.HandleFormUpdated);
             // 
             // TitleTextBox
             // 
@@ -317,6 +318,7 @@ namespace TechSupport.UserControls
             this.TechnicianComboBox.Name = "TechnicianComboBox";
             this.TechnicianComboBox.Size = new System.Drawing.Size(243, 21);
             this.TechnicianComboBox.TabIndex = 19;
+            this.TechnicianComboBox.SelectedIndexChanged += new System.EventHandler(this.HandleFormUpdated);
             // 
             // ErrorMessage
             // 

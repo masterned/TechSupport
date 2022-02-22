@@ -41,5 +41,11 @@ namespace TechSupport.UserControls
             TechnicianComboBox.Items.Clear();
             TechnicianComboBox.Items.AddRange(_technicianController.GetTechnicians().ToArray());
         }
+
+        private void HandleFormUpdated(object sender, EventArgs e)
+        {
+            UpdateButton.Enabled = true;
+            ErrorMessage.Hide();
+        }
     }
 }
