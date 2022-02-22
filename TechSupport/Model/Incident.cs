@@ -11,6 +11,7 @@ namespace TechSupport.Model
         private DateTime _dateOpened;
         private int _customerID;
         private string _customerName;
+        private int _techID;
         private string _title;
         private string _description;
 
@@ -69,6 +70,21 @@ namespace TechSupport.Model
                     throw new ArgumentNullException("CustomerName");
 
                 _customerName = value;
+            }
+        }
+
+        /// <summary>
+        /// Property which dictates how the TechID field can be accessed and mutated.
+        /// </summary>
+        public int TechID
+        {
+            get => _techID;
+            set
+            {
+                if (value < -1)
+                    throw new ArgumentException("TechID must be greater than or equal to -1");
+
+                _techID = value;
             }
         }
 

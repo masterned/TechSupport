@@ -28,5 +28,15 @@ namespace TechSupport.Controller
         {
             return _technicianData.GetTechnicians();
         }
+
+        /// <summary>
+        /// Delegates acquiring the Technician from their ID to the DAL
+        /// </summary>
+        /// <param name="techID">The ID of the Technician in question</param>
+        /// <returns>A Technician object representing the entry</returns>
+        public Technician GetTechnician(int techID)
+        {
+            return _technicianData.GetTechnician(techID);
+        }
     }
 }

@@ -48,5 +48,21 @@ namespace TechSupport.Model
         {
             return _name;
         }
+
+        /// <summary>
+        /// Override comparison method for sake of indexing.
+        /// Comparing the Technician's ID is enough to know if they are the same.
+        /// </summary>
+        /// <param name="obj">The other Technician to compare this one to.</param>
+        /// <returns>Whether or not the Technicians are the same.</returns>
+        public override bool Equals(object obj)
+        {
+            if ((obj == null) || !GetType().Equals(obj.GetType()))
+                return false;
+
+            Technician tech = (Technician)obj;
+
+            return TechID == tech.TechID;
+        }
     }
 }

@@ -32,6 +32,10 @@ namespace TechSupport.UserControls
                 DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
                 DescriptionTextBox.Text = incident.Description;
 
+                TechnicianComboBox.SelectedIndex = incident.TechID >= 0
+                    ? TechnicianComboBox.Items.IndexOf(_technicianController.GetTechnician(incident.TechID))
+                    : -1;
+
                 ErrorMessage.Hide();
 
                 // Enable disabled fields
@@ -68,7 +72,7 @@ namespace TechSupport.UserControls
             IncidentIDTextBox.Clear();
             CustomerTextBox.Clear();
             ProductTextBox.Clear();
-            TechnicianComboBox.Text = "";
+            TechnicianComboBox.SelectedIndex = -1;
             TitleTextBox.Clear();
             DateOpenedTextBox.Clear();
             DescriptionTextBox.Clear();
@@ -153,6 +157,14 @@ namespace TechSupport.UserControls
                 {
                     ShowError(exception.Message);
                 }
+            }
+
+            Technician selectedTechnician = (Technician)TechnicianComboBox.SelectedItem;
+
+            if (_incidentController.TechnicianIsDifferent(IncidentIDTextBox.Text, selectedTechnician.TechID))
+            {
+                _incidentController.UpdateTechnician(IncidentIDTextBox.Text, selectedTechnician.TechID);
+                MessageBox.Show(selectedTechnician.ToString());
             }
         }
     }

@@ -101,7 +101,8 @@ namespace TechSupport.DAL
 
             string selectStatement = @"SELECT TOP 1 c.name AS Customer
 	                                        , ProductCode
-	                                        , t.name AS Technician
+                                            , i.TechID
+	                                        , t.Name AS Technician
 	                                        , Title
 	                                        , DateOpened
 	                                        , Description
@@ -124,12 +125,14 @@ namespace TechSupport.DAL
                     {
                         while (reader.Read())
                         {
+                            int techIDOrdinal = reader.GetOrdinal("TechID");
                             int technicianOrdinal = reader.GetOrdinal("Technician");
 
                             incident = new Incident
                             {
                                 CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
                                 ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
+                                TechID = reader.IsDBNull(techIDOrdinal) ? -1 : reader.GetInt32(reader.GetOrdinal("TechID")),
                                 TechnicianName = reader.IsDBNull(technicianOrdinal) ? "-- Unassigned --" : reader.GetString(technicianOrdinal),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
                                 DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
@@ -163,6 +166,35 @@ namespace TechSupport.DAL
                 {
                     cmd.Parameters.Add("newDescription", SqlDbType.VarChar);
                     cmd.Parameters["newDescription"].Value = newDescription;
+
+                    cmd.Parameters.Add("incidentID", SqlDbType.Int);
+                    cmd.Parameters["incidentID"].Value = incidentID;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Assignes a new Technician to the Incident in the db
+        /// </summary>
+        /// <param name="incidentID">The ID of the Incident to update</param>
+        /// <param name="techID">The ID of the new Technician</param>
+        public void UpdateTechnician(int incidentID, int techID)
+        {
+            string updateStatement = @"UPDATE Incidents
+                                       SET TechID = @techID
+                                       WHERE IncidentID = @incidentID
+                                       ;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
+                {
+                    cmd.Parameters.Add("techID", SqlDbType.Int);
+                    cmd.Parameters["techID"].Value = techID;
 
                     cmd.Parameters.Add("incidentID", SqlDbType.Int);
                     cmd.Parameters["incidentID"].Value = incidentID;

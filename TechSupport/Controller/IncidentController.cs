@@ -164,6 +164,34 @@ namespace TechSupport.Controller
             _incidentData.UpdateDescription(incidentID, newDescription);
             return true;
         }
+
+        /// <summary>
+        /// Tests to see if the Tech has changed.
+        /// </summary>
+        /// <param name="incidentIDString">The string representation of the Incident's ID</param>
+        /// <param name="techID">The Technician's ID</param>
+        /// <returns>Whether the Technician has changed</returns>
+        public bool TechnicianIsDifferent(string incidentIDString, int techID)
+        {
+            Incident incident = GetIncident(incidentIDString);
+
+            return incident.TechID != techID;
+        }
+
+        /// <summary>
+        /// Delegates assigning a new Technician to the Incident to the DAL
+        /// </summary>
+        /// <param name="incidentIDString">The string representation of the Incident's ID</param>
+        /// <param name="techID">The Technician's ID</param>
+        /// <returns>Whether or not the attepmt was successful</returns>
+        public bool UpdateTechnician(string incidentIDString, int techID)
+        {
+            int incidentID = ParseIncidentID(incidentIDString);
+
+            _incidentData.UpdateTechnician(incidentID, techID);
+
+            return true;
+        }
     }
 
     /// <summary>

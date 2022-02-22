@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using TechSupport.Model;
 
@@ -43,6 +44,46 @@ namespace TechSupport.DAL
             }
 
             return technicians;
+        }
+
+        /// <summary>
+        /// Retrieves a Technician from the db using their ID
+        /// </summary>
+        /// <param name="techID">The ID of the Technician to find</param>
+        /// <returns>A Technician object which represents the db entry</returns>
+        public Technician GetTechnician(int techID)
+        {
+            Technician technician = null;
+
+            string selectStatement = @"SELECT TOP 1 TechID, Name
+                                       FROM Technicians
+                                       WHERE TechID = @techID
+                                       ;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(selectStatement, connection))
+                {
+                    cmd.Parameters.Add("techID", SqlDbType.Int);
+                    cmd.Parameters["techID"].Value = techID;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            technician = new Technician
+                            {
+                                TechID = reader.GetInt32(reader.GetOrdinal("TechID")),
+                                Name = reader.GetString(reader.GetOrdinal("Name"))
+                            };
+                        }
+                    }
+                }
+            }
+
+            return technician;
         }
     }
 }
