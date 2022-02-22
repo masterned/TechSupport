@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using TechSupport.Model;
@@ -58,36 +57,19 @@ namespace TechSupport.DAL
         }
 
         /// <summary>
-        /// If the Product is registered to the Product,
-        /// creates a new Incident in the db from the Incident object.
+        /// Inserts a new Incident in the Incidents table in the
+        /// TechSupport database based off of Incident object.
         /// </summary>
         /// <param name="incident">The incident to add</param>
         /// <returns>Whether or not the insertion was successful</returns>
         public bool AddIncident(IncidentDB incident)
-        {
-            string selectQuery = @"SELECT COUNT(*)
-                                   FROM Registrations
-                                   WHERE CustomerID = @customerID
-                                     AND ProductCode = @ProductCode";
-
+        { 
             string insertStatement = @"INSERT INTO Incidents (CustomerID, ProductCode, DateOpened, Title, Description)
                                        VALUES (@customerID, @productCode, GetDate(), @title, @description)";
             
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
                 connection.Open();
-
-                using(SqlCommand cmd = new SqlCommand(selectQuery, connection))
-                {
-                    cmd.Parameters.Add("@customerID", SqlDbType.Int);
-                    cmd.Parameters["@customerID"].Value = incident.CustomerID;
-
-                    cmd.Parameters.Add("@productCode", SqlDbType.VarChar);
-                    cmd.Parameters["@productCode"].Value = incident.ProductCode;
-
-                    if ((Int32)cmd.ExecuteScalar() < 1)
-                        throw new Exception("Product is not registered to Customer");
-                }
                 
                 using (SqlCommand cmd = new SqlCommand(insertStatement, connection))
                 {

@@ -11,7 +11,8 @@ namespace TechSupport.Controller
     public class IncidentController
     {
         private IncidentDAL IncidentData;
-        private IncidentDBDAL _incidentDBData;
+        private readonly IncidentDBDAL _incidentDBData;
+        private readonly RegistrationDAL _registrationData;
 
         /// <summary>
         /// Creates a new IncidentController.
@@ -20,6 +21,7 @@ namespace TechSupport.Controller
         {
             IncidentData = new IncidentDAL();
             _incidentDBData = new IncidentDBDAL();
+            _registrationData = new RegistrationDAL();
         }
 
         /// <summary>
@@ -70,6 +72,9 @@ namespace TechSupport.Controller
             {
                 throw new ArgumentException("CustomerID was not a number");
             }
+
+            if (_registrationData.CustomerHasProductRegistration(customerID, productCode))
+                throw new ArgumentException("Product is not registered to Customer");
 
             return _incidentDBData.AddIncident(new IncidentDB
             {
