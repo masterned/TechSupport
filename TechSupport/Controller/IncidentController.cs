@@ -95,9 +95,9 @@ namespace TechSupport.Controller
             Incident incident = _incidentData.GetIncident(incidentID);
 
             if (incident == null)
-                throw new KeyNotFoundException("No incident with the ID: " + incidentIDString + " could be found.");
+                throw new KeyNotFoundException($"No incident with the ID: {incidentIDString} could be found.");
            
-            return _incidentData.GetIncident(incidentID);
+            return incident;
         }
 
         /// <summary>
