@@ -152,8 +152,10 @@ namespace TechSupport.UserControls
                                 GetButton_Click(GetButton, null);
 
                                 break;
+
                             case DialogResult.No:
                                 break;
+
                             default:
                                 MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
                                 break;
@@ -172,6 +174,27 @@ namespace TechSupport.UserControls
             {
                 _incidentController.UpdateTechnician(IncidentIDTextBox.Text, selectedTechnician.TechID);
                 MessageBox.Show("Technician Successfully Updated", "Confirmation");
+            }
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to close this Incident?\nOnce closed, it can no longer be edited."
+                , "Close this Incident?"
+                , MessageBoxButtons.YesNo);
+
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    MessageBox.Show("Incident has been closed.", "Confirmation");
+                    break;
+
+                case DialogResult.No:
+                    break;
+
+                default:
+                    MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
+                    break;
             }
         }
     }
