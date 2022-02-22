@@ -65,6 +65,7 @@ namespace TechSupport.View
         private void UpdateIncidentTabPage_Enter(object sender, EventArgs e)
         {
             UpdateIncidentUserControl.PopulateTechnicianComboBox();
+            UpdateIncidentUserControl.ResetInputFields();
         }
     }
 }
