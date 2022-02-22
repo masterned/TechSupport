@@ -67,5 +67,15 @@ namespace TechSupport.Controller
         {
             return _incidentData.GetOpenIncidents();
         }
+
+        /// <summary>
+        /// Delegates retrieving the Incident with the associated ID to the DAL.
+        /// </summary>
+        /// <param name="incidentID">The ID of the Indicent in question</param>
+        /// <returns>The Incident with the given ID</returns>
+        public Incident GetIncident(int incidentID)
+        {
+            return _incidentData.GetIncident(incidentID);
+        }
     }
 }

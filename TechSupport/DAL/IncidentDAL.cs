@@ -89,5 +89,58 @@ namespace TechSupport.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Returns the incident from the TechSupport database with the given ID
+        /// </summary>
+        /// <param name="incidentID">The ID of the incident to query for</param>
+        /// <returns>The Incident associated with the given ID</returns>
+        public Incident GetIncident(int incidentID)
+        {
+            Incident incident = null;
+
+            string selectStatement = @"SELECT TOP 1 c.name AS Customer
+	                                        , ProductCode
+	                                        , t.name AS Technician
+	                                        , Title
+	                                        , DateOpened
+	                                        , Description
+                                       FROM Incidents AS i
+	                                        JOIN Customers AS c ON i.CustomerID = c.CustomerID
+	                                        LEFT JOIN Technicians AS t ON i.TechID = t.TechID
+                                       WHERE IncidentID = @incidentID
+                                       ;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using(SqlCommand cmd = new SqlCommand(selectStatement, connection))
+                {
+                    cmd.Parameters.Add("incidentID", SqlDbType.Int);
+                    cmd.Parameters["incidentID"].Value = incidentID;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int technicianOrdinal = reader.GetOrdinal("Technician");
+
+                            incident = new Incident
+                            {
+                                CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
+                                ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
+                                TechnicianName = reader.IsDBNull(technicianOrdinal) ? string.Empty : reader.GetString(technicianOrdinal),
+                                Title = reader.GetString(reader.GetOrdinal("Title")),
+                                DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
+                                Description = reader.GetString(reader.GetOrdinal("Description"))
+                            };
+                        }
+                    }
+                }
+            }
+
+            return incident;
+        }
     }
 }

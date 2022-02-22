@@ -30,7 +30,7 @@ namespace TechSupport.UserControls
         private void InitializeComponent()
         {
             this.UpdateIncidentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TextToAddTextBox = new System.Windows.Forms.TextBox();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.IncidentIDLabel = new System.Windows.Forms.Label();
             this.CustomerLabel = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@ namespace TechSupport.UserControls
             this.UpdateIncidentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.UpdateIncidentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.UpdateIncidentTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.UpdateIncidentTableLayoutPanel.Controls.Add(this.textBox1, 1, 7);
+            this.UpdateIncidentTableLayoutPanel.Controls.Add(this.TextToAddTextBox, 1, 7);
             this.UpdateIncidentTableLayoutPanel.Controls.Add(this.TitleTextBox, 1, 4);
             this.UpdateIncidentTableLayoutPanel.Controls.Add(this.IncidentIDLabel, 0, 0);
             this.UpdateIncidentTableLayoutPanel.Controls.Add(this.CustomerLabel, 0, 1);
@@ -98,16 +98,16 @@ namespace TechSupport.UserControls
             this.UpdateIncidentTableLayoutPanel.Size = new System.Drawing.Size(357, 336);
             this.UpdateIncidentTableLayoutPanel.TabIndex = 0;
             // 
-            // textBox1
+            // TextToAddTextBox
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.UpdateIncidentTableLayoutPanel.SetColumnSpan(this.textBox1, 2);
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(108, 224);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 50);
-            this.textBox1.TabIndex = 18;
+            this.TextToAddTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.UpdateIncidentTableLayoutPanel.SetColumnSpan(this.TextToAddTextBox, 2);
+            this.TextToAddTextBox.Enabled = false;
+            this.TextToAddTextBox.Location = new System.Drawing.Point(108, 224);
+            this.TextToAddTextBox.Multiline = true;
+            this.TextToAddTextBox.Name = "TextToAddTextBox";
+            this.TextToAddTextBox.Size = new System.Drawing.Size(243, 50);
+            this.TextToAddTextBox.TabIndex = 18;
             // 
             // TitleTextBox
             // 
@@ -264,6 +264,7 @@ namespace TechSupport.UserControls
             this.GetButton.TabIndex = 11;
             this.GetButton.Text = "Get";
             this.GetButton.UseVisualStyleBackColor = true;
+            this.GetButton.Click += new System.EventHandler(this.GetButton_Click);
             // 
             // CustomerTextBox
             // 
@@ -363,7 +364,7 @@ namespace TechSupport.UserControls
         private System.Windows.Forms.Button GetButton;
         private System.Windows.Forms.TextBox CustomerTextBox;
         private System.Windows.Forms.TextBox ProductTextBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TextToAddTextBox;
         private System.Windows.Forms.TextBox TitleTextBox;
         private System.Windows.Forms.TextBox DateOpenedTextBox;
         private System.Windows.Forms.TextBox DescriptionTextBox;
