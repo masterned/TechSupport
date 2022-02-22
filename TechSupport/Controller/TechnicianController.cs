@@ -10,7 +10,7 @@ namespace TechSupport.Controller
     /// </summary>
     public class TechnicianController
     {
-        private  readonly TechnicianDAL _technicianData;
+        private readonly TechnicianDAL _technicianData;
         
         /// <summary>
         /// Creates the TechnicianController and initializes its DAL.
@@ -19,7 +19,7 @@ namespace TechSupport.Controller
         {
             _technicianData = new TechnicianDAL();
         }
-        
+
         /// <summary>
         /// Delegates retrieving all of the Technician from the db to the DAL
         /// </summary>
