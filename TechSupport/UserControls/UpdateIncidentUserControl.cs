@@ -126,10 +126,23 @@ namespace TechSupport.UserControls
                     switch (result)
                     {
                         case DialogResult.Yes:
-                            MessageBox.Show("You said yes", "Result");
+                            _incidentController.UpdateDescription(IncidentIDTextBox.Text
+                                , _incidentController.TruncateNewDescription(
+                                    _incidentController.CreateNewDescription(IncidentIDTextBox.Text
+                                        , TextToAddTextBox.Text)
+                                    )
+                                );
+
+                            string incidentIDString = IncidentIDTextBox.Text;
+
+                            ResetInputFields();
+
+                            IncidentIDTextBox.Text = incidentIDString;
+
+                            GetButton_Click(GetButton, null);
+
                             break;
                         case DialogResult.No:
-                            MessageBox.Show("You said no", "Result");
                             break;
                         default:
                             MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");

@@ -22,6 +22,21 @@ namespace TechSupport.Controller
             _registrationData = new RegistrationDAL();
         }
 
+        private int ParseIncidentID(string incidentIDString)
+        {
+            if (string.IsNullOrEmpty(incidentIDString))
+                throw new ArgumentException("Please enter an Incident ID. (Must be a number >= 0)");
+
+            try
+            {
+                return int.Parse(incidentIDString);
+            }
+            catch (FormatException)
+            {
+                throw new ArgumentException("Incident ID must be a number >= 0.");
+            }
+        }
+
         /// <summary>
         /// Delegates adding a new Incident to the IncidentDAL.
         /// </summary>
@@ -75,24 +90,13 @@ namespace TechSupport.Controller
         /// <returns>The Incident with the given ID</returns>
         public Incident GetIncident(string incidentIDString)
         {
-            if (string.IsNullOrEmpty(incidentIDString))
-                throw new ArgumentException("Please enter an Incident ID. (Must be a number >= 0)");
+            int incidentID = ParseIncidentID(incidentIDString);
 
-            int incidentID;
+            Incident incident = _incidentData.GetIncident(incidentID);
 
-            try
-            {
-                incidentID = int.Parse(incidentIDString);
-                Incident incident = _incidentData.GetIncident(incidentID);
-
-                if (incident == null)
-                    throw new KeyNotFoundException("No incident with the ID: " + incidentIDString + " could be found.");
-            }
-            catch (FormatException)
-            {
-                throw new ArgumentException("Incident ID must be a number.");
-            }
-
+            if (incident == null)
+                throw new KeyNotFoundException("No incident with the ID: " + incidentIDString + " could be found.");
+           
             return _incidentData.GetIncident(incidentID);
         }
 
@@ -105,9 +109,8 @@ namespace TechSupport.Controller
         /// <returns>Whether or not the operation was successful</returns>
         public bool AppendToDescription(string incidentIDString, string currentDescription, string textToAdd)
         {
-            try
-            {
-                int incidentID = int.Parse(incidentIDString);
+            
+                int incidentID = ParseIncidentID(incidentIDString);
                 Incident incident = _incidentData.GetIncident(incidentID);
 
                 if (incident.Description != currentDescription)
@@ -121,11 +124,45 @@ namespace TechSupport.Controller
                 _incidentData.UpdateDescription(incidentID, newDescription);
 
                 return true;
-            }
-            catch (FormatException)
-            {
-                throw new Exception("Incident ID must be a number >= 0");
-            }
+        }
+
+        /// <summary>
+        /// Creates a new Description based off of the Description in the Incident
+        /// and the "Text To Add"
+        /// </summary>
+        /// <param name="incidentIDString">The string representation of the Incident's ID</param>
+        /// <param name="textToAdd">The String to append onto the end of the Description</param>
+        /// <returns>The newly formatted Description</returns>
+        public string CreateNewDescription(string incidentIDString, string textToAdd)
+        {
+            int incidentID = ParseIncidentID(incidentIDString);
+
+            Incident incident = _incidentData.GetIncident(incidentID);
+
+            return $"{incident.Description}\r\n<{DateTime.Now.ToShortDateString()}> {textToAdd}";
+        }
+
+        /// <summary>
+        /// Truncates the Description to 200 characters long.
+        /// </summary>
+        /// <param name="newDescription">The Description to truncate.</param>
+        /// <returns>The shortened Description</returns>
+        public string TruncateNewDescription(string newDescription)
+        {
+            return newDescription.Substring(0, 200);
+        }
+
+        /// <summary>
+        /// Delegates updating the Description of the given Incident to the DAL
+        /// </summary>
+        /// <param name="incidentIDString">The string representation of the ID of the Incident to update</param>
+        /// <param name="newDescription">The new Description for the Incident</param>
+        /// <returns></returns>
+        public bool UpdateDescription(string incidentIDString, string newDescription)
+        {
+            int incidentID = ParseIncidentID(incidentIDString);
+            _incidentData.UpdateDescription(incidentID, newDescription);
+            return true;
         }
     }
 
