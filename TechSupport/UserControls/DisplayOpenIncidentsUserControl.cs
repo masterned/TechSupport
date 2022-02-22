@@ -29,7 +29,7 @@ namespace TechSupport.UserControls
         {
             openIncidentsListView.Items.Clear();
 
-            List<IncidentDB> openIncidentList;
+            List<Incident> openIncidentList;
 
             try
             {
@@ -37,7 +37,7 @@ namespace TechSupport.UserControls
 
                 if (openIncidentList.Count > 0)
                 {
-                    IncidentDB incident;
+                    Incident incident;
                     for (int i = 0; i < openIncidentList.Count; i++)
                     {
                         incident = openIncidentList[i];

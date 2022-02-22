@@ -10,7 +10,7 @@ namespace TechSupport.Controller
     /// </summary>
     public class IncidentController
     {
-        private readonly IncidentDBDAL _incidentDBData;
+        private readonly IncidentDAL _incidentData;
         private readonly RegistrationDAL _registrationData;
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace TechSupport.Controller
         /// </summary>
         public IncidentController()
         {
-            _incidentDBData = new IncidentDBDAL();
+            _incidentData = new IncidentDAL();
             _registrationData = new RegistrationDAL();
         }
 
@@ -43,7 +43,7 @@ namespace TechSupport.Controller
                 throw new ArgumentException("CustomerID was not a number");
             }
 
-            IncidentDB incident = new IncidentDB
+            Incident incident = new Incident
             {
                 CustomerID = customerID,
                 ProductCode = productCode,
@@ -55,7 +55,7 @@ namespace TechSupport.Controller
             if (!_registrationData.CustomerHasProductRegistration(customerID, productCode))
                 throw new ArgumentException("Product is not registered to Customer");
 
-            return _incidentDBData.AddIncident(incident);
+            return _incidentData.AddIncident(incident);
         }
 
 
@@ -63,9 +63,9 @@ namespace TechSupport.Controller
         /// Delegate acquiring all of the open incidents to its DataAccessLayer.
         /// </summary>
         /// <returns>The list of open incidents in the DB</returns>
-        public List<IncidentDB> GetOpenIncidents()
+        public List<Incident> GetOpenIncidents()
         {
-            return _incidentDBData.GetOpenIncidents();
+            return _incidentData.GetOpenIncidents();
         }
     }
 }

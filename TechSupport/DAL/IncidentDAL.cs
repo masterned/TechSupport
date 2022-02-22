@@ -8,15 +8,15 @@ namespace TechSupport.DAL
     /// <summary>
     /// Incident DataAccessLayer designed to interface with the TechSupport DataBase.
     /// </summary>
-    public class IncidentDBDAL
+    public class IncidentDAL
     {
         /// <summary>
         /// Retrieves all of the open Incidents in the DB.
         /// </summary>
         /// <returns>A list of Incident objects containing information on the open incidents</returns>
-        public List<IncidentDB> GetOpenIncidents()
+        public List<Incident> GetOpenIncidents()
         {
-            List<IncidentDB> openIncidentList = new List<IncidentDB>();
+            List<Incident> openIncidentList = new List<Incident>();
 
             string selectStatement =
                 "SELECT ProductCode, DateOpened, c.Name AS'Customer', t.Name AS 'Technician', Title " +
@@ -38,7 +38,7 @@ namespace TechSupport.DAL
                         {
                             int technicianOrdinal = reader.GetOrdinal("Technician");
 
-                            IncidentDB incident = new IncidentDB
+                            Incident incident = new Incident
                             {
                                 ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
                                 DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
@@ -62,7 +62,7 @@ namespace TechSupport.DAL
         /// </summary>
         /// <param name="incident">The incident to add</param>
         /// <returns>Whether or not the insertion was successful</returns>
-        public bool AddIncident(IncidentDB incident)
+        public bool AddIncident(Incident incident)
         { 
             string insertStatement = @"INSERT INTO Incidents (CustomerID, ProductCode, DateOpened, Title, Description)
                                        VALUES (@customerID, @productCode, GetDate(), @title, @description)";

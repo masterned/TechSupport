@@ -5,7 +5,7 @@ namespace TechSupport.Model
     /// <summary>
     /// Represents an Incident as stored in the TechSupport DataBase.
     /// </summary>
-    public class IncidentDB
+    public class Incident
     {
         private string _productCode;
         private DateTime _dateOpened;
