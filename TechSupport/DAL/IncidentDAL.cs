@@ -105,6 +105,7 @@ namespace TechSupport.DAL
 	                                        , t.Name AS Technician
 	                                        , Title
 	                                        , DateOpened
+                                            , DateClosed
 	                                        , Description
                                        FROM Incidents AS i
 	                                        JOIN Customers AS c ON i.CustomerID = c.CustomerID
@@ -136,6 +137,7 @@ namespace TechSupport.DAL
                                 TechnicianName = reader.IsDBNull(technicianOrdinal) ? "-- Unassigned --" : reader.GetString(technicianOrdinal),
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
                                 DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
+                                IsClosed = !reader.IsDBNull(reader.GetOrdinal("DateClosed")),
                                 Description = reader.GetString(reader.GetOrdinal("Description"))
                             };
                         }

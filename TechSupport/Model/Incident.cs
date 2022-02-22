@@ -33,7 +33,8 @@ namespace TechSupport.Model
         /// <summary>
         /// Property which dictates how the DateOpened field can be accessed and mutated.
         /// </summary>
-        public DateTime DateOpened { 
+        public DateTime DateOpened
+        { 
             get => _dateOpened;
             set
             {
@@ -43,6 +44,11 @@ namespace TechSupport.Model
                 _dateOpened = value;
             }
         }
+
+        /// <summary>
+        /// Property which dictates how the IsClosed field can be accessed and mutated.
+        /// </summary>
+        public bool IsClosed { get; set; }
 
         /// <summary>
         /// Property which dictates how the CustomerID field can be accessed and mutated.
