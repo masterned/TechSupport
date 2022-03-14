@@ -9,6 +9,7 @@ namespace TechSupport.UserControls
     public partial class ViewIncidentsByTechnicianUserControl : UserControl
     {
         private readonly TechnicianController _technicianController;
+        private List<Technician> technicians;
 
         public ViewIncidentsByTechnicianUserControl()
         {
@@ -18,9 +19,20 @@ namespace TechSupport.UserControls
 
         private void ViewIncidentsByTechnicianUserControl_Load(object sender, EventArgs e)
         {
-            List<Technician> technicians = _technicianController.GetTechnicians();
+            technicians = _technicianController.GetTechnicians();
 
             nameComboBox.DataSource = technicians;
+        }
+
+        private void nameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (nameComboBox.SelectedIndex < 0) return;
+
+            Technician technician = technicians[nameComboBox.SelectedIndex];
+
+            technicianBindingSource.Clear();
+
+            technicianBindingSource.Add(technician);
         }
     }
 }
