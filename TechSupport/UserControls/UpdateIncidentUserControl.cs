@@ -265,5 +265,26 @@ namespace TechSupport.UserControls
                 ShowError(exception.Message);
             }
         }
+
+        private void IncidentIDTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ClearTextBoxes(CustomerTextBox, ProductTextBox, TitleTextBox, DateOpenedTextBox, DescriptionTextBox, TextToAddTextBox);
+
+            DisableControls(TechnicianComboBox, TextToAddTextBox, UpdateButton, CloseButton);
+
+            ErrorMessage.Hide();
+
+            TechnicianComboBox.SelectedIndex = -1;
+        }
+
+        private void ClearTextBoxes(params TextBoxBase[] textboxes)
+        {
+            foreach (TextBoxBase textBox in textboxes) textBox.Clear();
+        }
+
+        private void DisableControls(params Control[] controls)
+        {
+            foreach (Control control in controls) if (control.Enabled) control.Enabled = false;
+        }
     }
 }

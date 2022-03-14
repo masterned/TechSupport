@@ -259,6 +259,7 @@ namespace TechSupport.UserControls
             this.IncidentIDTextBox.Name = "IncidentIDTextBox";
             this.IncidentIDTextBox.Size = new System.Drawing.Size(100, 20);
             this.IncidentIDTextBox.TabIndex = 10;
+            this.IncidentIDTextBox.TextChanged += new System.EventHandler(this.IncidentIDTextBox_TextChanged);
             // 
             // GetButton
             // 
