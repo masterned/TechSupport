@@ -168,34 +168,28 @@ namespace TechSupport.DAL
         }
 
         /// <summary>
-        /// Updates all editable values in a row in the Incident table.
+        /// Updates TechID, DateClosed, and Description in a row in the Incident table.
+        /// 
         /// Checks the in-memory version of the old Incident against the db
         /// in order to prevent the table from being changed if the in-memory
         /// Incident is not up-to-date with the database.
         /// 
         /// The requirements of the project only require checking against the Description
-        /// and ClosedDate, but for the sake of robustness and future-proofing,
-        /// I added safety around all updated values.
+        /// and ClosedDate, but I checked against the TechID as well.
         /// </summary>
         /// <param name="oldIncident">Old version of Incident used to verify race condition has not occurred</param>
         /// <param name="newIncident">Contains values to update the Incident row with</param>
         public void UpdateIncident(Incident oldIncident, Incident newIncident)
         {
             string updateStatement = @"UPDATE Incidents SET
-                                        CustomerID = @CustomerID,
-                                        ProductCode = @ProductCode,
                                         TechID = @TechID,
-                                        DateOpened = @DateOpened,
                                         DateClosed = @DateClosed,
-                                        Title = @Title,
                                         Description = @Description
                                        WHERE IncidentID = @OldIncidentID
-                                        AND CustomerID = @OldCustomerID
                                         AND ((TechID IS NULL AND @OldTechID IS NULL) OR (TechID = @OldTechID))
-                                        AND DateOpened = @OldDateOpened
                                         AND ((DateClosed IS NULL AND @OldDateClosed IS NULL) OR (DateClosed = @OldDateClosed))
-                                        AND Title = @OldTitle
-                                        AND Description = @OldDescription";
+                                        AND Description = @OldDescription
+                                      ";
 
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
@@ -203,11 +197,6 @@ namespace TechSupport.DAL
 
                 using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
                 {
-                    cmd.Parameters.Add("CustomerID", SqlDbType.Int);
-                    cmd.Parameters["CustomerID"].Value = newIncident.CustomerID;
-
-                    cmd.Parameters.Add("ProductCode", SqlDbType.Char);
-                    cmd.Parameters["ProductCode"].Value = newIncident.ProductCode;
 
                     cmd.Parameters.Add("TechID", SqlDbType.Int);
                     if (newIncident.Technician == null)
@@ -215,17 +204,11 @@ namespace TechSupport.DAL
                     else
                         cmd.Parameters["TechID"].Value = newIncident.Technician.TechID;
 
-                    cmd.Parameters.Add("DateOpened", SqlDbType.DateTime);
-                    cmd.Parameters["DateOpened"].Value = newIncident.DateOpened;
-
                     cmd.Parameters.Add("DateClosed", SqlDbType.DateTime);
                     if (newIncident.DateClosed == null)
                         cmd.Parameters["DateClosed"].Value = DBNull.Value;
                     else
                         cmd.Parameters["DateClosed"].Value = newIncident.DateClosed;
-
-                    cmd.Parameters.Add("Title", SqlDbType.VarChar);
-                    cmd.Parameters["Title"].Value = newIncident.Title;
 
                     cmd.Parameters.Add("Description", SqlDbType.VarChar);
                     cmd.Parameters["Description"].Value = newIncident.Description;
@@ -233,17 +216,11 @@ namespace TechSupport.DAL
                     cmd.Parameters.Add("OldIncidentID", SqlDbType.Int);
                     cmd.Parameters["OldIncidentID"].Value = oldIncident.IncidentID;
 
-                    cmd.Parameters.Add("OldCustomerID", SqlDbType.Int);
-                    cmd.Parameters["OldCustomerID"].Value = oldIncident.CustomerID;
-
                     cmd.Parameters.Add("OldTechID", SqlDbType.Int);
                     if (oldIncident.Technician == null)
                         cmd.Parameters["OldTechID"].Value = DBNull.Value;
                     else
                         cmd.Parameters["OldTechID"].Value = oldIncident.Technician.TechID;
-
-                    cmd.Parameters.Add("OldDateOpened", SqlDbType.DateTime);
-                    cmd.Parameters["OldDateOpened"].Value = oldIncident.DateOpened;
 
                     cmd.Parameters.Add("OldDateClosed", SqlDbType.DateTime);
                     if (oldIncident.DateClosed == null)
@@ -251,36 +228,8 @@ namespace TechSupport.DAL
                     else
                         cmd.Parameters["OldDateClosed"].Value = oldIncident.DateClosed;
 
-                    cmd.Parameters.Add("OldTitle", SqlDbType.VarChar);
-                    cmd.Parameters["OldTitle"].Value = oldIncident.Title;
-
                     cmd.Parameters.Add("OldDescription", SqlDbType.VarChar);
                     cmd.Parameters["OldDescription"].Value = oldIncident.Description;
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Closes the Incident by setting its DateClosed to the current Date.
-        /// </summary>
-        /// <param name="incidentID">The Incident to close</param>
-        public void CloseIncident(int incidentID)
-        {
-            string updateStatement = @"UPDATE Incidents
-                                       SET DateClosed = GETDATE()
-                                       WHERE IncidentID = @incidentID
-                                       ;";
-
-            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
-            {
-                connection.Open();
-
-                using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
-                {
-                    cmd.Parameters.Add("incidentID", SqlDbType.Int);
-                    cmd.Parameters["incidentID"].Value = incidentID;
 
                     cmd.ExecuteNonQuery();
                 }
