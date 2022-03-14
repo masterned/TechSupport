@@ -152,73 +152,19 @@ namespace TechSupport.DAL
                                         },
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
                                 DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
-                                IsClosed = !reader.IsDBNull(reader.GetOrdinal("DateClosed")),
                                 Description = reader.GetString(reader.GetOrdinal("Description"))
                             };
+
+                            int dateClosedOrdinal = reader.GetOrdinal("DateClosed");
+
+                            if (!reader.IsDBNull(dateClosedOrdinal))
+                                incident.DateClosed = reader.GetDateTime(dateClosedOrdinal);
                         }
                     }
                 }
             }
 
             return incident;
-        }
-
-        /// <summary>
-        /// Updates the Description of the Incident with the given ID
-        /// </summary>
-        /// <param name="incidentID">The ID of the Incident to update</param>
-        /// <param name="newDescription">The new Description to use for the Incident</param>
-        public void UpdateDescription(int incidentID, string newDescription)
-        {
-            string updateStatement = @"UPDATE Incidents
-                                       SET Description = @newDescription
-                                       WHERE IncidentID = @incidentID
-                                       ;";
-
-            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
-            {
-                connection.Open();
-
-                using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
-                {
-                    cmd.Parameters.Add("newDescription", SqlDbType.VarChar);
-                    cmd.Parameters["newDescription"].Value = newDescription;
-
-                    cmd.Parameters.Add("incidentID", SqlDbType.Int);
-                    cmd.Parameters["incidentID"].Value = incidentID;
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Assignes a new Technician to the Incident in the db
-        /// </summary>
-        /// <param name="incidentID">The ID of the Incident to update</param>
-        /// <param name="techID">The ID of the new Technician</param>
-        public void UpdateTechnician(int incidentID, int techID)
-        {
-            string updateStatement = @"UPDATE Incidents
-                                       SET TechID = @techID
-                                       WHERE IncidentID = @incidentID
-                                       ;";
-
-            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
-            {
-                connection.Open();
-
-                using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
-                {
-                    cmd.Parameters.Add("techID", SqlDbType.Int);
-                    cmd.Parameters["techID"].Value = techID;
-
-                    cmd.Parameters.Add("incidentID", SqlDbType.Int);
-                    cmd.Parameters["incidentID"].Value = incidentID;
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
         }
 
         /// <summary>
@@ -236,12 +182,12 @@ namespace TechSupport.DAL
         public void UpdateIncident(Incident oldIncident, Incident newIncident)
         {
             string updateStatement = @"UPDATE Incidents SET
-                                        CustomerID = @CustomerID
-                                        ProductCode = @ProductCode
-                                        TechID = @TechID
-                                        DateOpened = @DateOpened
-                                        DateClosed = @DateClosed
-                                        Title = @Title
+                                        CustomerID = @CustomerID,
+                                        ProductCode = @ProductCode,
+                                        TechID = @TechID,
+                                        DateOpened = @DateOpened,
+                                        DateClosed = @DateClosed,
+                                        Title = @Title,
                                         Description = @Description
                                        WHERE IncidentID = @OldIncidentID
                                         AND CustomerID = @OldCustomerID
@@ -250,11 +196,12 @@ namespace TechSupport.DAL
                                         AND ((DateClosed IS NULL AND @OldDateClosed IS NULL) OR (DateClosed = @OldDateClosed))
                                         AND Title = @OldTitle
                                         AND Description = @OldDescription";
+
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
                 connection.Open();
 
-                using (SqlCommand cmd = new SqlCommand(updateStatement))
+                using (SqlCommand cmd = new SqlCommand(updateStatement, connection))
                 {
                     cmd.Parameters.Add("CustomerID", SqlDbType.Int);
                     cmd.Parameters["CustomerID"].Value = newIncident.CustomerID;
