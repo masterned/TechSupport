@@ -166,7 +166,75 @@ namespace TechSupport.UserControls
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Incident oldIncident = _incidentController.GetIncident(IncidentIDTextBox.Text);
 
+                if (oldIncident.IsClosed)
+                {
+                    CloseButton.Enabled = false;
+                    return;
+                }
+
+                Technician selectedTechnician = (Technician)TechnicianComboBox.SelectedItem;
+
+                if (TechnicianComboBox.SelectedIndex == -1 || selectedTechnician == null)
+                {
+                    ShowError("Technician must be set before Incident can be closed.");
+                    return;
+                }
+
+                DialogResult canClose = MessageBox.Show(
+                    $"Are you sure you want to close Incident {oldIncident.IncidentID}?\nOnce closed, it cannot be edited."
+                    , "Are you sure?"
+                    , MessageBoxButtons.YesNo
+                    );
+
+                if (canClose == DialogResult.Yes)
+                {
+                    try
+                    {
+                        _incidentController.CloseIncident(oldIncident, selectedTechnician, TextToAddTextBox.Text);
+
+                        MessageBox.Show($"Incident has been closed.", "Confirmation");
+
+                        ResetInputFields();
+                    }
+                    catch (IncidentDescriptionOverflowException exception)
+                    {
+                        DialogResult result = MessageBox.Show($"{exception.Message}\nWould you like to truncate the message?"
+                            , "Description too long."
+                            , MessageBoxButtons.YesNo);
+
+                        switch (result)
+                        {
+                            case DialogResult.Yes:
+                                MessageBox.Show("Needs to be implemented", "TODO");
+
+                                break;
+
+                            case DialogResult.No:
+                                return;
+
+                            default:
+                                MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
+                                break;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowError(ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Incident has not been closed", "Close Canceled");
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError(ex.Message);
+            }
         }
 
         private void IncidentIDTextBox_TextChanged(object sender, EventArgs e)

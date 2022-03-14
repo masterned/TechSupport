@@ -139,6 +139,30 @@ namespace TechSupport.Controller
 
             _incidentData.UpdateIncident(oldIncident, newIncident);
         }
+
+        public void CloseIncident(Incident oldIncident, Technician selectedTechnician, string textToAdd)
+        {
+            string newDescription = string.IsNullOrWhiteSpace(textToAdd)
+                ? oldIncident.Description
+                : FormatDescriptionApend(oldIncident.Description, textToAdd);
+
+            if (newDescription.Length > 200)
+                throw new IncidentDescriptionOverflowException();
+
+            Incident newIncident = new Incident
+            {
+                IncidentID = oldIncident.IncidentID,
+                CustomerID = oldIncident.CustomerID,
+                ProductCode = oldIncident.ProductCode,
+                Technician = selectedTechnician,
+                DateOpened = oldIncident.DateOpened,
+                DateClosed = DateTime.Now,
+                Title = oldIncident.Title,
+                Description = newDescription
+            };
+
+            _incidentData.UpdateIncident(oldIncident, newIncident);
+        }
     }
 
     /// <summary>
