@@ -9,6 +9,8 @@ namespace TechSupport.Model
     {
         private int _techID;
         private string _name;
+        private string _email;
+        private string _phone;
 
         /// <summary>
         /// Property defines how _techID can be accessed and mutated.
@@ -19,7 +21,7 @@ namespace TechSupport.Model
             set
             {
                 if (value < 0)
-                    throw new ArgumentException("TechID must be greater than or equal to 0");
+                    throw new ArgumentNullException("TechID", "TechID must be greater than or equal to 0");
 
                 _techID = value;
             }
@@ -34,9 +36,33 @@ namespace TechSupport.Model
             set
             {
                 if (string.IsNullOrEmpty(value))
-                    throw new ArgumentException("Name cannot be null or empty");
+                    throw new ArgumentNullException("Name", "Name cannot be null or empty");
 
                 _name = value;
+            }
+        }
+
+        public string Email
+        {
+            get => _email;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException("Email", "Email cannot be null or empty");
+
+                _email = value;
+            }
+        }
+
+        public string Phone
+        {
+            get => _phone;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException("Phone", "Phone cannot be null or empty");
+
+                _phone = value;
             }
         }
 
