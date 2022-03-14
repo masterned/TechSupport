@@ -11,7 +11,7 @@ namespace TechSupport.Model
         private int _customerID;
         private string _customerName;
         private string _productCode;
-        private int _techID;
+        private Technician _technician;
         private DateTime _dateOpened;
         private DateTime _dateClosed;
         private string _title;
@@ -77,25 +77,17 @@ namespace TechSupport.Model
             }
         }
 
+        public Technician Technician { get => _technician; set => _technician = value; }
+
         /// <summary>
         /// Property which dictates how the TechID field can be accessed and mutated.
         /// </summary>
-        public int TechID
-        {
-            get => _techID;
-            set
-            {
-                if (value < -1)
-                    throw new ArgumentException("TechID must be greater than or equal to -1");
-
-                _techID = value;
-            }
-        }
+        public int TechID { get => _technician != null ? _technician.TechID : -1; }
 
         /// <summary>
         /// Property which dictates how the TechnicianName field can be accessed and mutated.
         /// </summary>
-        public string TechnicianName { get; set; }
+        public string TechnicianName { get => _technician?.Name; }
 
         /// <summary>
         /// Property which dictates how the DateOpened field can be accessed and mutated.

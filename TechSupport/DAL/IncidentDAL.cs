@@ -20,7 +20,7 @@ namespace TechSupport.DAL
             List<Incident> openIncidentList = new List<Incident>();
 
             string selectStatement =
-                "SELECT ProductCode, DateOpened, c.Name AS 'Customer', t.Name AS 'Technician', Title " +
+                "SELECT ProductCode, DateOpened, c.Name AS 'Customer', t.TechID AS 'TechID', t.Name AS 'TechName', Title " +
                 "FROM Incidents AS i " +
                 "INNER JOIN Customers AS c ON (i.CustomerID = c.CustomerID) " +
                 "LEFT JOIN Technicians AS t ON (i.TechID = t.TechID) " +
@@ -37,14 +37,21 @@ namespace TechSupport.DAL
                     {
                         while (reader.Read())
                         {
-                            int technicianOrdinal = reader.GetOrdinal("Technician");
+                            int techIDOrdinal = reader.GetOrdinal("TechID");
+                            int techNameOrdinal = reader.GetOrdinal("TechName");
 
                             Incident incident = new Incident
                             {
-                                ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
-                                DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
                                 CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
-                                TechnicianName = reader.IsDBNull(technicianOrdinal) ? string.Empty : reader.GetString(technicianOrdinal),
+                                ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
+                                Technician = (reader.IsDBNull(techIDOrdinal) || reader.IsDBNull(techNameOrdinal))
+                                    ? null
+                                    : new Technician
+                                        {
+                                            TechID = reader.GetInt32(techIDOrdinal),
+                                            Name = reader.GetString(techNameOrdinal)
+                                        },
+                                DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
                                 Title = reader.GetString(reader.GetOrdinal("Title"))
                             };
 
@@ -136,8 +143,13 @@ namespace TechSupport.DAL
                                 IncidentID = reader.GetInt32(reader.GetOrdinal("IncidentID")),
                                 CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
                                 ProductCode = reader.GetString(reader.GetOrdinal("ProductCode")),
-                                TechID = reader.IsDBNull(techIDOrdinal) ? -1 : reader.GetInt32(reader.GetOrdinal("TechID")),
-                                TechnicianName = reader.IsDBNull(technicianOrdinal) ? "-- Unassigned --" : reader.GetString(technicianOrdinal),
+                                Technician = (reader.IsDBNull(techIDOrdinal) || reader.IsDBNull(technicianOrdinal))
+                                    ? null
+                                    : new Technician
+                                        {
+                                            TechID = reader.GetInt32(reader.GetOrdinal("TechID")),
+                                            Name = reader.GetString(technicianOrdinal)
+                                        },
                                 Title = reader.GetString(reader.GetOrdinal("Title")),
                                 DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
                                 IsClosed = !reader.IsDBNull(reader.GetOrdinal("DateClosed")),
@@ -251,10 +263,10 @@ namespace TechSupport.DAL
                     cmd.Parameters["ProductCode"].Value = newIncident.ProductCode;
 
                     cmd.Parameters.Add("TechID", SqlDbType.Int);
-                    if (newIncident.TechID == -1)
+                    if (newIncident.Technician == null)
                         cmd.Parameters["TechID"].Value = DBNull.Value;
                     else
-                        cmd.Parameters["TechID"].Value = newIncident.TechID;
+                        cmd.Parameters["TechID"].Value = newIncident.Technician.TechID;
 
                     cmd.Parameters.Add("DateOpened", SqlDbType.DateTime);
                     cmd.Parameters["DateOpened"].Value = newIncident.DateOpened;
@@ -278,10 +290,10 @@ namespace TechSupport.DAL
                     cmd.Parameters["OldCustomerID"].Value = oldIncident.CustomerID;
 
                     cmd.Parameters.Add("OldTechID", SqlDbType.Int);
-                    if (oldIncident.TechID == -1)
+                    if (oldIncident.Technician == null)
                         cmd.Parameters["OldTechID"].Value = DBNull.Value;
                     else
-                        cmd.Parameters["OldTechID"].Value = oldIncident.TechID;
+                        cmd.Parameters["OldTechID"].Value = oldIncident.Technician.TechID;
 
                     cmd.Parameters.Add("OldDateOpened", SqlDbType.DateTime);
                     cmd.Parameters["OldDateOpened"].Value = oldIncident.DateOpened;
