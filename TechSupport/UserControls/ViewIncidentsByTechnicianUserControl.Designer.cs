@@ -109,7 +109,7 @@ namespace TechSupport.UserControls
             this.nameComboBox.Name = "nameComboBox";
             this.nameComboBox.Size = new System.Drawing.Size(270, 21);
             this.nameComboBox.TabIndex = 4;
-            this.nameComboBox.SelectedIndexChanged += new System.EventHandler(this.nameComboBox_SelectedIndexChanged);
+            this.nameComboBox.SelectedIndexChanged += new System.EventHandler(this.NameComboBox_SelectedIndexChanged);
             // 
             // ViewIncidentsByTechnicianUserControl
             // 

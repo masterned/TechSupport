@@ -24,7 +24,7 @@ namespace TechSupport.UserControls
             nameComboBox.DataSource = technicians;
         }
 
-        private void nameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void NameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (nameComboBox.SelectedIndex < 0) return;
 
