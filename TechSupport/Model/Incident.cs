@@ -13,6 +13,7 @@ namespace TechSupport.Model
         private string _productCode;
         private int _techID;
         private DateTime _dateOpened;
+        private DateTime _dateClosed;
         private string _title;
         private string _description;
 
@@ -110,6 +111,11 @@ namespace TechSupport.Model
                 _dateOpened = value;
             }
         }
+
+        /// <summary>
+        /// Property which dictates how the DateClosed field can be accessed and mutated.
+        /// </summary>
+        public DateTime DateClosed { get => _dateClosed; set => _dateClosed = value; }
 
         /// <summary>
         /// Property which dictates how the IsClosed field can be accessed and mutated.
