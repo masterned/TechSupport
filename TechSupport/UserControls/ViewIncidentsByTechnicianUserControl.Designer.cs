@@ -82,7 +82,7 @@ namespace TechSupport.UserControls
             this.emailTextBox.Location = new System.Drawing.Point(65, 39);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.ReadOnly = true;
-            this.emailTextBox.Size = new System.Drawing.Size(121, 20);
+            this.emailTextBox.Size = new System.Drawing.Size(270, 20);
             this.emailTextBox.TabIndex = 2;
             // 
             // phoneTextBox
@@ -107,7 +107,7 @@ namespace TechSupport.UserControls
             this.nameComboBox.FormattingEnabled = true;
             this.nameComboBox.Location = new System.Drawing.Point(65, 12);
             this.nameComboBox.Name = "nameComboBox";
-            this.nameComboBox.Size = new System.Drawing.Size(121, 21);
+            this.nameComboBox.Size = new System.Drawing.Size(270, 21);
             this.nameComboBox.TabIndex = 4;
             this.nameComboBox.SelectedIndexChanged += new System.EventHandler(this.nameComboBox_SelectedIndexChanged);
             // 
