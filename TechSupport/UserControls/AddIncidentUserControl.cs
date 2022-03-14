@@ -42,7 +42,7 @@ namespace TechSupport.UserControls
                     TitleTextBox.Text,
                     DescriptionTextBox.Text
                     ))
-                    MessageBox.Show("Product Successfully Created", "Confirmation");
+                    MessageBox.Show("Incident Successfully Created", "Confirmation");
             }
             catch (Exception exception)
             {
