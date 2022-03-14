@@ -35,14 +35,15 @@ namespace TechSupport.UserControls
                 DateOpenedTextBox.Text = incident.DateOpened.ToShortDateString();
                 DescriptionTextBox.Text = incident.Description;
 
-                TechnicianComboBox.SelectedIndex = incident.TechID >= 0
-                    ? TechnicianComboBox.Items.IndexOf(_technicianController.GetTechnician(incident.TechID))
+                TechnicianComboBox.SelectedIndex = incident.Technician != null
+                    ? TechnicianComboBox.Items.IndexOf(incident.Technician)
                     : -1;
 
                 ErrorMessage.Hide();
 
                 TechnicianComboBox.Enabled = !incident.IsClosed;
                 TextToAddTextBox.Enabled = !incident.IsClosed;
+                UpdateButton.Enabled = !incident.IsClosed;
                 CloseButton.Enabled = !incident.IsClosed;
             }
             catch (Exception exception)
@@ -71,19 +72,11 @@ namespace TechSupport.UserControls
         /// </summary>
         public void ResetInputFields()
         {
-            IncidentIDTextBox.Clear();
-            CustomerTextBox.Clear();
-            ProductTextBox.Clear();
+            ClearTextBoxes(IncidentIDTextBox, CustomerTextBox, ProductTextBox, TitleTextBox, DateOpenedTextBox, DescriptionTextBox, TextToAddTextBox);
+            
             TechnicianComboBox.SelectedIndex = -1;
-            TitleTextBox.Clear();
-            DateOpenedTextBox.Clear();
-            DescriptionTextBox.Clear();
-            TextToAddTextBox.Clear();
 
-            TechnicianComboBox.Enabled = false;
-            TextToAddTextBox.Enabled = false;
-            UpdateButton.Enabled = false;
-            CloseButton.Enabled = false;
+            DisableControls(TechnicianComboBox, TextToAddTextBox, UpdateButton, CloseButton);
         }
 
         private void HandleFormUpdated(object sender, EventArgs e)
@@ -98,172 +91,82 @@ namespace TechSupport.UserControls
             ErrorMessage.Hide();
         }
 
-        private void UpdateDescription(Incident incident)
-        {
-            if (DescriptionTextBox.Text.Length >= 200)
-            {
-                ShowError("Description already at max length.\nCannot add more text.");
-                return;
-            }
-
-            try
-            {
-                bool wasSuccessful = _incidentController.AppendToDescription(IncidentIDTextBox.Text, DescriptionTextBox.Text, TextToAddTextBox.Text);
-
-                if (wasSuccessful)
-                {
-                    DialogResult result = MessageBox.Show("Incident description successfully updated.", "Confirmation");
-                }
-                else
-                {
-                    ShowError("System was unable to update Incident");
-                }
-            }
-            catch (IncidentDescriptionOverflowException exception)
-            {
-                DialogResult result = MessageBox.Show($"{exception.Message}\nWould you like to truncate the message?"
-                    , "Description too long."
-                    , MessageBoxButtons.YesNo);
-
-                switch (result)
-                {
-                    case DialogResult.Yes:
-                        _incidentController.UpdateDescription(incident
-                            , _incidentController.TruncateNewDescription(
-                                _incidentController.CreateNewDescription(incident
-                                    , TextToAddTextBox.Text)
-                                )
-                            );
-
-                        break;
-
-                    case DialogResult.No:
-                        break;
-
-                    default:
-                        MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                ShowError(exception.Message);
-            }
-        }
-
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             try
             {
-                Incident incident = _incidentController.GetIncident(IncidentIDTextBox.Text);
-
-                if (incident.IsClosed)
+                Incident oldIncident = _incidentController.GetIncident(IncidentIDTextBox.Text);
+            
+                if (oldIncident.IsClosed)
                 {
                     ShowError("Cannot edit closed Incidents.");
                     return;
                 }
 
-                if (!string.IsNullOrEmpty(TextToAddTextBox.Text))
+                Technician selectedTechnician = (Technician) TechnicianComboBox.SelectedItem;
+
+                if ((TechnicianComboBox.SelectedIndex == -1 || selectedTechnician.Equals(oldIncident.Technician)) && string.IsNullOrWhiteSpace(TextToAddTextBox.Text))
                 {
-                    UpdateDescription(incident);
+                    MessageBox.Show("Nothing has changed.", "Incident Not Updated");
+                    return;
                 }
 
-                Technician selectedTechnician = (Technician)TechnicianComboBox.SelectedItem;
-
-                if (TechnicianComboBox.SelectedIndex != -1 && _incidentController.TechnicianIsDifferent(incident, selectedTechnician.TechID))
+                try
                 {
-                    _incidentController.UpdateTechnician(incident, selectedTechnician.TechID);
-                    MessageBox.Show("Technician Successfully Updated", "Confirmation");
+                    _incidentController.UpdateIncident(oldIncident, selectedTechnician, TextToAddTextBox.Text);
+
+                    MessageBox.Show($"Incident has been updated.", "Confirmation");
+
+                    ResetInputFields();
                 }
+                catch (IncidentDescriptionOverflowException exception)
+                {
+                    DialogResult result = MessageBox.Show($"{exception.Message}\nWould you like to truncate the message?"
+                        , "Description too long."
+                        , MessageBoxButtons.YesNo);
 
-                ResetInputFields();
+                    switch (result)
+                    {
+                        case DialogResult.Yes:
+                            string newDescription = _incidentController.FormatDescriptionApend(oldIncident.Description, TextToAddTextBox.Text).Substring(0, 200);
+                        
+                            try
+                            {
+                                _incidentController.UpdateIncidentWithTruncatedDescription(oldIncident, selectedTechnician, newDescription);
 
-                IncidentIDTextBox.Text = incident.IncidentID.ToString();
+                                MessageBox.Show($"Incident has been updated.", "Confirmation");
 
-                GetButton_Click(GetButton, null);
+                                ResetInputFields();
+                            }
+                            catch (Exception ex)
+                            {
+                                ShowError(ex.Message);
+                            }
+
+                            break;
+
+                        case DialogResult.No:
+                            return;
+
+                        default:
+                            MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowError(ex.Message);
+                }
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                ShowError(exception.Message);
+                ShowError(ex.Message);
             }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Incident incident = _incidentController.GetIncident(IncidentIDTextBox.Text);
 
-                if (incident.IsClosed)
-                {
-                    CloseButton.Enabled = false;
-                    return;
-                }
-
-                if (incident.TechID == -1 && TechnicianComboBox.SelectedIndex == -1)
-                {
-                    ShowError("Cannot close Incident without assigning a Technician.");
-                    return;
-                }
-
-                DialogResult result = MessageBox.Show("Are you sure you want to close this Incident?\nOnce closed, it can no longer be edited."
-                    , "Close this Incident?"
-                    , MessageBoxButtons.YesNo);
-
-                switch (result)
-                {
-                    case DialogResult.Yes:
-
-                        Technician selectedTechnician = (Technician)TechnicianComboBox.SelectedItem;
-
-                        if (TechnicianComboBox.SelectedIndex != -1 && _incidentController.TechnicianIsDifferent(incident, selectedTechnician.TechID))
-                            _incidentController.UpdateTechnician(incident, selectedTechnician.TechID);
-
-                        if(!string.IsNullOrEmpty(TextToAddTextBox.Text))
-                        {
-                            string newDescription = _incidentController.CreateNewDescription(incident, TextToAddTextBox.Text);
-
-                            if (newDescription.Length > 200)
-                            {
-                                DialogResult shouldTruncate = MessageBox.Show("The description exceeds the 200 character maximum.\nWould you like to truncate the message?"
-                                    , "Description too long."
-                                    , MessageBoxButtons.YesNo);
-
-                                if (shouldTruncate == DialogResult.Yes)
-                                    _incidentController.UpdateDescription(incident, _incidentController.TruncateNewDescription(newDescription));
-                                else
-                                    return;
-                            }
-                            else
-                            {
-                                _incidentController.UpdateDescription(incident, newDescription);
-                            }
-                        }
-
-                        _incidentController.CloseIncident(incident);
-
-                        MessageBox.Show("Incident has been closed.", "Confirmation");
-
-                        ResetInputFields();
-
-                        IncidentIDTextBox.Text = incident.IncidentID.ToString();
-
-                        GetButton_Click(GetButton, null);
-
-                        break;
-
-                    case DialogResult.No:
-                        break;
-
-                    default:
-                        MessageBox.Show("To be honest, I'm not sure how you got here...", "This shouldn't be seen.");
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                ShowError(exception.Message);
-            }
         }
 
         private void IncidentIDTextBox_TextChanged(object sender, EventArgs e)
