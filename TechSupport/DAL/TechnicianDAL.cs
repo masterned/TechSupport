@@ -19,7 +19,7 @@ namespace TechSupport.DAL
         {
             List<Technician> technicians = new List<Technician>();
             
-            string selectStatement = "SELECT TechID, Name FROM Technicians";
+            string selectStatement = "SELECT TechID, Name, Email, Phone FROM Technicians";
 
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
@@ -34,7 +34,9 @@ namespace TechSupport.DAL
                             Technician technician = new Technician
                             {
                                 TechID = reader.GetInt32(reader.GetOrdinal("TechID")),
-                                Name = reader.GetString(reader.GetOrdinal("Name"))
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                Email = reader.GetString(reader.GetOrdinal("Email")),
+                                Phone = reader.GetString(reader.GetOrdinal("Phone"))
                             };
 
                             technicians.Add(technician);
@@ -55,7 +57,7 @@ namespace TechSupport.DAL
         {
             Technician technician = null;
 
-            string selectStatement = @"SELECT TOP 1 TechID, Name
+            string selectStatement = @"SELECT TOP 1 TechID, Name, Email, Phone
                                        FROM Technicians
                                        WHERE TechID = @techID
                                        ;";
@@ -76,7 +78,9 @@ namespace TechSupport.DAL
                             technician = new Technician
                             {
                                 TechID = reader.GetInt32(reader.GetOrdinal("TechID")),
-                                Name = reader.GetString(reader.GetOrdinal("Name"))
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                Email = reader.GetString(reader.GetOrdinal("Email")),
+                                Phone = reader.GetString(reader.GetOrdinal("Phone"))
                             };
                         }
                     }
