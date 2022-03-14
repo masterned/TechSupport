@@ -13,7 +13,7 @@ namespace TechSupport.Model
         private string _productCode;
         private Technician _technician;
         private DateTime _dateOpened;
-        private DateTime _dateClosed;
+        private DateTime? _dateClosed;
         private string _title;
         private string _description;
 
@@ -107,12 +107,12 @@ namespace TechSupport.Model
         /// <summary>
         /// Property which dictates how the DateClosed field can be accessed and mutated.
         /// </summary>
-        public DateTime DateClosed { get => _dateClosed; set => _dateClosed = value; }
+        public DateTime? DateClosed { get => _dateClosed; set => _dateClosed = value; }
 
         /// <summary>
         /// Property which dictates how the IsClosed field can be accessed and mutated.
         /// </summary>
-        public bool IsClosed { get; set; }
+        public bool IsClosed { get => _dateClosed.HasValue; }
 
         /// <summary>
         /// Property which dictates how the Title field can be accessed and mutated.
