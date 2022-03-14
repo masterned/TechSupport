@@ -8,11 +8,11 @@ namespace TechSupport.Model
     public class Incident
     {
         private int _incidentID;
-        private string _productCode;
-        private DateTime _dateOpened;
         private int _customerID;
         private string _customerName;
+        private string _productCode;
         private int _techID;
+        private DateTime _dateOpened;
         private string _title;
         private string _description;
 
@@ -32,41 +32,6 @@ namespace TechSupport.Model
         }
 
         /// <summary>
-        /// Property which dictates how the ProductCode field can be accessed and mutated.
-        /// </summary>
-        public string ProductCode
-        { 
-            get => _productCode;
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                    throw new ArgumentNullException("ProductCode");
-                
-                _productCode = value;
-            }
-        }
-
-        /// <summary>
-        /// Property which dictates how the DateOpened field can be accessed and mutated.
-        /// </summary>
-        public DateTime DateOpened
-        { 
-            get => _dateOpened;
-            set
-            {
-                if (value == null)
-                    throw new ArgumentNullException("DateOpened");
-
-                _dateOpened = value;
-            }
-        }
-
-        /// <summary>
-        /// Property which dictates how the IsClosed field can be accessed and mutated.
-        /// </summary>
-        public bool IsClosed { get; set; }
-
-        /// <summary>
         /// Property which dictates how the CustomerID field can be accessed and mutated.
         /// </summary>
         public int CustomerID
@@ -84,7 +49,8 @@ namespace TechSupport.Model
         /// <summary>
         /// Property which dictates how the CustomerName field can be accessed and mutated.
         /// </summary>
-        public string CustomerName {
+        public string CustomerName
+        {
             get => _customerName;
             set
             {
@@ -92,6 +58,21 @@ namespace TechSupport.Model
                     throw new ArgumentNullException("CustomerName");
 
                 _customerName = value;
+            }
+        }
+
+        /// <summary>
+        /// Property which dictates how the ProductCode field can be accessed and mutated.
+        /// </summary>
+        public string ProductCode
+        { 
+            get => _productCode;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException("ProductCode");
+                
+                _productCode = value;
             }
         }
 
@@ -114,6 +95,26 @@ namespace TechSupport.Model
         /// Property which dictates how the TechnicianName field can be accessed and mutated.
         /// </summary>
         public string TechnicianName { get; set; }
+
+        /// <summary>
+        /// Property which dictates how the DateOpened field can be accessed and mutated.
+        /// </summary>
+        public DateTime DateOpened
+        { 
+            get => _dateOpened;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("DateOpened");
+
+                _dateOpened = value;
+            }
+        }
+
+        /// <summary>
+        /// Property which dictates how the IsClosed field can be accessed and mutated.
+        /// </summary>
+        public bool IsClosed { get; set; }
 
         /// <summary>
         /// Property which dictates how the Title field can be accessed and mutated.
