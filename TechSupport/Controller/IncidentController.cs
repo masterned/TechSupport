@@ -101,98 +101,43 @@ namespace TechSupport.Controller
         }
 
         /// <summary>
-        /// Appends the "Text To Add" to the Description if the result is <= 200 characters.
+        /// Appends the text to add to the end of the description, formatting it appropriately.
         /// </summary>
-        /// <param name="incidentIDString">The ID of the incident to append to</param>
-        /// <param name="currentDescription">The description being shown in the form at update time</param>
-        /// <param name="textToAdd">The text to append to the end of the description</param>
-        /// <returns>Whether or not the operation was successful</returns>
-        public bool AppendToDescription(string incidentIDString, string currentDescription, string textToAdd)
-        {
-            
-                int incidentID = ParseIncidentID(incidentIDString);
-                Incident incident = _incidentData.GetIncident(incidentID);
-
-                if (incident.Description != currentDescription)
-                    throw new Exception("Incident entry does not match input.\nPlease \"Get\" this incident again before attempting to update.");
-
-                string newDescription = currentDescription + "\r\n<" + DateTime.Now.ToShortDateString() + "> " + textToAdd;
-
-                if (newDescription.Length > 200)
-                    throw new IncidentDescriptionOverflowException();
-
-                _incidentData.UpdateDescription(incidentID, newDescription);
-
-                return true;
-        }
-
-        /// <summary>
-        /// Creates a new Description based off of the Description in the Incident
-        /// and the "Text To Add"
-        /// </summary>
-        /// <param name="incident">The Incident itself</param>
+        /// <param name="currentDescription">The Incident itself</param>
         /// <param name="textToAdd">The String to append onto the end of the Description</param>
         /// <returns>The newly formatted Description</returns>
-        public string CreateNewDescription(Incident incident, string textToAdd)
+        public string FormatDescriptionApend(string currentDescription, string textToAdd)
         {
-            return $"{incident.Description}\r\n<{DateTime.Now.ToShortDateString()}> {textToAdd}";
+            return $"{currentDescription}\r\n<{DateTime.Now.ToShortDateString()}> {textToAdd}";
         }
 
-        /// <summary>
-        /// Truncates the Description to 200 characters long.
-        /// </summary>
-        /// <param name="newDescription">The Description to truncate.</param>
-        /// <returns>The shortened Description</returns>
-        public string TruncateNewDescription(string newDescription)
+        public void UpdateIncident(Incident oldIncident, Technician selectedTechnician, string textToAdd)
         {
-            return newDescription.Substring(0, 200);
+            string newDescription = string.IsNullOrWhiteSpace(textToAdd)
+                ? oldIncident.Description
+                : FormatDescriptionApend(oldIncident.Description, textToAdd);
+
+            if (newDescription.Length > 200)
+                throw new IncidentDescriptionOverflowException();
+
+            UpdateIncidentWithTruncatedDescription(oldIncident, selectedTechnician, newDescription);
         }
 
-        /// <summary>
-        /// Delegates updating the Description of the given Incident to the DAL
-        /// </summary>
-        /// <param name="incident">The Incident itself</param>
-        /// <param name="newDescription">The new Description for the Incident</param>
-        /// <returns></returns>
-        public bool UpdateDescription(Incident incident, string newDescription)
+        public void UpdateIncidentWithTruncatedDescription(Incident oldIncident, Technician selectedTechnician, string newDescription)
         {
-            _incidentData.UpdateDescription(incident.IncidentID, newDescription);
-            return true;
-        }
+            Incident newIncident = new Incident
+            {
+                IncidentID = oldIncident.IncidentID,
+                CustomerID = oldIncident.CustomerID,
+                ProductCode = oldIncident.ProductCode,
+                Technician = selectedTechnician,
+                DateOpened = oldIncident.DateOpened,
+                DateClosed = oldIncident.DateClosed,
+                Title = oldIncident.Title,
+                Description = newDescription
+            };
 
-        /// <summary>
-        /// Tests to see if the Tech has changed.
-        /// </summary>
-        /// <param name="incident">The Incident itself</param>
-        /// <param name="techID">The Technician's ID</param>
-        /// <returns>Whether the Technician has changed</returns>
-        public bool TechnicianIsDifferent(Incident incident, int techID)
-        {
-            return incident.TechID != techID;
-        }
-
-        /// <summary>
-        /// Delegates assigning a new Technician to the Incident to the DAL
-        /// </summary>
-        /// <param name="incident">The Incident itself</param>
-        /// <param name="techID">The Technician's ID</param>
-        /// <returns>Whether or not the attepmt was successful</returns>
-        public bool UpdateTechnician(Incident incident, int techID)
-        {
-            _incidentData.UpdateTechnician(incident.IncidentID, techID);
-
-            return true;
-        }
-
-        /// <summary>
-        /// Delegates closing the given Incident to the DAL
-        /// </summary>
-        /// <param name="incident">The Incident to close</param>
-        /// <returns>Whether or not the operation was successful</returns>
-        public bool CloseIncident(Incident incident)
-        {
-            _incidentData.CloseIncident(incident.IncidentID);
-            return true;
+            _incidentData.UpdateIncident(oldIncident, newIncident);
         }
     }
 
