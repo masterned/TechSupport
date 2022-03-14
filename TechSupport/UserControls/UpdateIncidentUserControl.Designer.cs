@@ -307,6 +307,7 @@ namespace TechSupport.UserControls
             this.DescriptionTextBox.Multiline = true;
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.ReadOnly = true;
+            this.DescriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DescriptionTextBox.Size = new System.Drawing.Size(243, 50);
             this.DescriptionTextBox.TabIndex = 17;
             // 
