@@ -78,6 +78,12 @@
     <Compile Include="UserControls\UpdateIncidentUserControl.Designer.cs">
       <DependentUpon>UpdateIncidentUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ViewIncidentsByTechnicianUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ViewIncidentsByTechnicianUserControl.Designer.cs">
+      <DependentUpon>ViewIncidentsByTechnicianUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UpdateIncidentUserControl.resx">
       <DependentUpon>UpdateIncidentUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ViewIncidentsByTechnicianUserControl.resx">
+      <DependentUpon>ViewIncidentsByTechnicianUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
