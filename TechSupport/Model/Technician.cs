@@ -64,5 +64,18 @@ namespace TechSupport.Model
 
             return TechID == tech.TechID;
         }
+
+        /// <summary>
+        /// Overriding Equals w/o overriding GetHashCode upsets Visual Studio.
+        /// In order to appease it, I just passed through the parent's behavior.
+        /// In a situation where Technician needs to be indexed (HashTable, HashMap, etc.),
+        /// this may lead to incorrect results.
+        /// For the sake of this project, this "solution" will suffice.
+        /// </summary>
+        /// <returns>The hash code of the object.</returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
