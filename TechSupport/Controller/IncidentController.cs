@@ -100,6 +100,11 @@ namespace TechSupport.Controller
             return incident;
         }
 
+        public List<Incident> GetOpenIncidentsWithTech(int techID)
+        {
+            return _incidentData.GetOpenIncidentsWithTech(techID);
+        }
+
         /// <summary>
         /// Appends the text to add to the end of the description, formatting it appropriately.
         /// </summary>

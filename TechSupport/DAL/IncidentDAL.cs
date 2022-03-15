@@ -64,6 +64,49 @@ namespace TechSupport.DAL
             return openIncidentList;
         }
 
+        public List<Incident> GetOpenIncidentsWithTech(int techID)
+        {
+            List<Incident> incidents = new List<Incident>();
+
+            string selectStatement = @"SELECT p.Name AS 'Product', DateOpened, c.Name as 'Customer', Title
+                                       FROM Incidents AS i
+                                         JOIN Customers AS c ON i.CustomerID = c.CustomerID
+                                         JOIN Technicians AS t ON i.TechID = t.TechID
+                                         JOIN Products AS p ON i.ProductCode = p.ProductCode
+                                       WHERE t.TechID = @TechID
+                                         AND DateClosed IS NULL
+                                       ;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand(selectStatement, connection))
+                {
+                    cmd.Parameters.Add("TechID", SqlDbType.Int);
+                    cmd.Parameters["TechID"].Value = techID;
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Incident incident = new Incident
+                            {
+                                ProductName = reader.GetString(reader.GetOrdinal("Product")),
+                                DateOpened = reader.GetDateTime(reader.GetOrdinal("DateOpened")),
+                                CustomerName = reader.GetString(reader.GetOrdinal("Customer")),
+                                Title = reader.GetString(reader.GetOrdinal("Title"))
+                            };
+
+                            incidents.Add(incident);
+                        }
+                    }
+                }
+            }
+
+            return incidents;
+        }
+
         /// <summary>
         /// Inserts a new Incident in the Incidents table in the
         /// TechSupport database based off of Incident object.
