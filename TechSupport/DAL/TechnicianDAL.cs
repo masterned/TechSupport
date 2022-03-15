@@ -48,6 +48,39 @@ namespace TechSupport.DAL
             return technicians;
         }
 
+        public List<Technician> GetTechniciansWithIncidents()
+        {
+            List<Technician> technicians = new List<Technician>();
+
+            string selectStatement = "SELECT TechID, Name, Email, Phone FROM Technicians AS t JOIN Incidents AS i ON t.TechID = i.TechID";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Technician technician = new Technician
+                            {
+                                TechID = reader.GetInt32(reader.GetOrdinal("TechID")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                Email = reader.GetString(reader.GetOrdinal("Email")),
+                                Phone = reader.GetString(reader.GetOrdinal("Phone"))
+                            };
+
+                            technicians.Add(technician);
+                        }
+                    }
+                }
+            }
+
+            return technicians;
+        }
+
         /// <summary>
         /// Retrieves a Technician from the db using their ID
         /// </summary>

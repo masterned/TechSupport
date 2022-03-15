@@ -30,6 +30,15 @@ namespace TechSupport.Controller
         }
 
         /// <summary>
+        /// Delegates retrieving all Technicians assigned to Incidents from the db to the DAL
+        /// </summary>
+        /// <returns>The list of Technicians assigned to Incidents</returns>
+        public List<Technician> GetTechniciansWithIncidents()
+        {
+            return _technicianData.GetTechniciansWithIncidents();
+        }
+
+        /// <summary>
         /// Delegates acquiring the Technician from their ID to the DAL
         /// </summary>
         /// <param name="techID">The ID of the Technician in question</param>

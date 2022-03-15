@@ -9,17 +9,19 @@ namespace TechSupport.UserControls
     public partial class ViewIncidentsByTechnicianUserControl : UserControl
     {
         private readonly TechnicianController _technicianController;
+
         private List<Technician> technicians;
 
         public ViewIncidentsByTechnicianUserControl()
         {
             InitializeComponent();
+
             _technicianController = new TechnicianController();
         }
 
         private void ViewIncidentsByTechnicianUserControl_Load(object sender, EventArgs e)
         {
-            technicians = _technicianController.GetTechnicians();
+            technicians = _technicianController.GetTechniciansWithIncidents();
 
             nameComboBox.DataSource = technicians;
         }
