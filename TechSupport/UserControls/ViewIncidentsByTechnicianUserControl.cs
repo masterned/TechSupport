@@ -6,6 +6,11 @@ using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// Displays a ComboBox allowing the user to select a Technician
+    /// (as long as they have at least one Incident assignment),
+    /// view their email, phone, and open Incidents
+    /// </summary>
     public partial class ViewIncidentsByTechnicianUserControl : UserControl
     {
         private readonly TechnicianController _technicianController;
@@ -14,6 +19,9 @@ namespace TechSupport.UserControls
         private List<Technician> technicians;
         private List<Incident> incidents;
 
+        /// <summary>
+        /// Instantiates the class and constructs its controllers.
+        /// </summary>
         public ViewIncidentsByTechnicianUserControl()
         {
             InitializeComponent();

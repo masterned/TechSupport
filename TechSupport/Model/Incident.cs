@@ -78,6 +78,9 @@ namespace TechSupport.Model
             }
         }
 
+        /// <summary>
+        /// Property which dictates how the ProductName field can be accessed and mutated.
+        /// </summary>
         public string ProductName
         {
             get => _productName;
@@ -90,6 +93,9 @@ namespace TechSupport.Model
             }
         }
 
+        /// <summary>
+        /// Property which dictates how the Technician field can be accessed and mutated.
+        /// </summary>
         public Technician Technician { get => _technician; set => _technician = value; }
 
         /// <summary>

@@ -100,6 +100,11 @@ namespace TechSupport.Controller
             return incident;
         }
 
+        /// <summary>
+        /// Delegates retrieving all open Incidents with the given Technician to the DAL.
+        /// </summary>
+        /// <param name="techID">The ID of the Technician to search for.</param>
+        /// <returns>The list of open Incidents asssigned to the given Technician</returns>
         public List<Incident> GetOpenIncidentsWithTech(int techID)
         {
             return _incidentData.GetOpenIncidentsWithTech(techID);
@@ -128,6 +133,12 @@ namespace TechSupport.Controller
             UpdateIncidentWithTruncatedDescription(oldIncident, selectedTechnician, newDescription);
         }
 
+        /// <summary>
+        /// Updates the Incident while bypassing the description length check.
+        /// </summary>
+        /// <param name="oldIncident">The unchanged Incident as stored in memory</param>
+        /// <param name="selectedTechnician">The Technician to assign the Incident to</param>
+        /// <param name="newDescription">The new Description to give to the Incident</param>
         public void UpdateIncidentWithTruncatedDescription(Incident oldIncident, Technician selectedTechnician, string newDescription)
         {
             Incident newIncident = new Incident
@@ -145,6 +156,12 @@ namespace TechSupport.Controller
             _incidentData.UpdateIncident(oldIncident, newIncident);
         }
 
+        /// <summary>
+        /// Updates and closes the given incident.
+        /// </summary>
+        /// <param name="oldIncident">The Incident as stored in memory</param>
+        /// <param name="selectedTechnician">The technician to assign to the Incident</param>
+        /// <param name="textToAdd">The text to append to the Incident</param>
         public void CloseIncident(Incident oldIncident, Technician selectedTechnician, string textToAdd)
         {
             string newDescription = string.IsNullOrWhiteSpace(textToAdd)

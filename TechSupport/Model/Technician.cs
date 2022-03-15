@@ -42,6 +42,9 @@ namespace TechSupport.Model
             }
         }
 
+        /// <summary>
+        /// Property defines how _email can be accessed and mutated.
+        /// </summary>
         public string Email
         {
             get => _email;
@@ -54,6 +57,9 @@ namespace TechSupport.Model
             }
         }
 
+        /// <summary>
+        /// Property defines how _phone can be accessed and mutated.
+        /// </summary>
         public string Phone
         {
             get => _phone;

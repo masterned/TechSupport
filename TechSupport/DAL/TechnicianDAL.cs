@@ -48,6 +48,10 @@ namespace TechSupport.DAL
             return technicians;
         }
 
+        /// <summary>
+        /// Retrieves all Technicians with at least one Incident assignment.
+        /// </summary>
+        /// <returns>The list of Technicians with Incident assignment(s)</returns>
         public List<Technician> GetTechniciansWithIncidents()
         {
             List<Technician> technicians = new List<Technician>();

@@ -64,6 +64,11 @@ namespace TechSupport.DAL
             return openIncidentList;
         }
 
+        /// <summary>
+        /// Retrieves all opened Incidents assigned to the given Technician.
+        /// </summary>
+        /// <param name="techID">The ID of the Technician to query for</param>
+        /// <returns>The list of all opened Incidents assigned to the given Technician</returns>
         public List<Incident> GetOpenIncidentsWithTech(int techID)
         {
             List<Incident> incidents = new List<Incident>();
