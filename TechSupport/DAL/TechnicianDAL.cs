@@ -52,7 +52,7 @@ namespace TechSupport.DAL
         {
             List<Technician> technicians = new List<Technician>();
 
-            string selectStatement = "SELECT TechID, Name, Email, Phone FROM Technicians AS t JOIN Incidents AS i ON t.TechID = i.TechID";
+            string selectStatement = "SELECT DISTINCT t.TechID, Name, Email, Phone FROM Technicians AS t JOIN Incidents AS i ON t.TechID = i.TechID";
 
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
