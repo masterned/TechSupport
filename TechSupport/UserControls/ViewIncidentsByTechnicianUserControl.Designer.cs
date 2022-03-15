@@ -39,8 +39,8 @@ namespace TechSupport.UserControls
             this.incidentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameComboBox = new System.Windows.Forms.ComboBox();
             this.incidentDataGridView = new System.Windows.Forms.DataGridView();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             emailLabel = new System.Windows.Forms.Label();
@@ -126,8 +126,8 @@ namespace TechSupport.UserControls
             this.incidentDataGridView.AutoGenerateColumns = false;
             this.incidentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.incidentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductName,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn10});
             this.incidentDataGridView.DataSource = this.incidentBindingSource;
@@ -137,19 +137,19 @@ namespace TechSupport.UserControls
             this.incidentDataGridView.Size = new System.Drawing.Size(450, 223);
             this.incidentDataGridView.TabIndex = 6;
             // 
+            // ProductName
+            // 
+            this.ProductName.DataPropertyName = "ProductName";
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "CustomerName";
             this.dataGridViewTextBoxColumn3.HeaderText = "CustomerName";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ProductCode";
-            this.dataGridViewTextBoxColumn4.HeaderText = "ProductCode";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -195,8 +195,8 @@ namespace TechSupport.UserControls
         private System.Windows.Forms.BindingSource incidentBindingSource;
         private System.Windows.Forms.ComboBox nameComboBox;
         private System.Windows.Forms.DataGridView incidentDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }

@@ -9,14 +9,17 @@ namespace TechSupport.UserControls
     public partial class ViewIncidentsByTechnicianUserControl : UserControl
     {
         private readonly TechnicianController _technicianController;
+        private readonly IncidentController _incidentController;
 
         private List<Technician> technicians;
+        private List<Incident> incidents;
 
         public ViewIncidentsByTechnicianUserControl()
         {
             InitializeComponent();
 
             _technicianController = new TechnicianController();
+            _incidentController = new IncidentController();
         }
 
         private void ViewIncidentsByTechnicianUserControl_Load(object sender, EventArgs e)
@@ -35,6 +38,10 @@ namespace TechSupport.UserControls
             technicianBindingSource.Clear();
 
             technicianBindingSource.Add(technician);
+
+            incidents = _incidentController.GetOpenIncidentsWithTech(technician.TechID);
+
+            incidentDataGridView.DataSource = incidents;
         }
     }
 }
