@@ -42,7 +42,7 @@ namespace TechSupport.UserControls
                 ErrorMessage.Hide();
 
                 TechnicianComboBox.Enabled = !incident.IsClosed;
-                TextToAddTextBox.Enabled = !incident.IsClosed;
+                TextToAddTextBox.Enabled = !incident.IsClosed && (incident.Description.Length < 200);
                 UpdateButton.Enabled = !incident.IsClosed;
                 CloseButton.Enabled = !incident.IsClosed;
             }
@@ -141,6 +141,7 @@ namespace TechSupport.UserControls
                             catch (Exception ex)
                             {
                                 ShowError(ex.Message);
+                                return;
                             }
 
                             break;
@@ -209,7 +210,21 @@ namespace TechSupport.UserControls
                         switch (result)
                         {
                             case DialogResult.Yes:
-                                MessageBox.Show("Needs to be implemented", "TODO");
+                                string newDescription = _incidentController.FormatDescriptionApend(oldIncident.Description, TextToAddTextBox.Text).Substring(0, 200);
+
+                                try
+                                {
+                                    _incidentController.CloseIncidentUsingDescription(oldIncident, selectedTechnician, newDescription);
+
+                                    MessageBox.Show($"Incident has been closed.", "Confirmation");
+
+                                    ResetInputFields();
+                                }
+                                catch (Exception ex)
+                                {
+                                    ShowError(ex.Message);
+                                    return;
+                                }
 
                                 break;
 

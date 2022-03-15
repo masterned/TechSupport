@@ -185,6 +185,29 @@ namespace TechSupport.Controller
 
             _incidentData.UpdateIncident(oldIncident, newIncident);
         }
+
+        /// <summary>
+        /// Updates and closes the given incident while bypassing the Description length check.
+        /// </summary>
+        /// <param name="oldIncident">The Incident as stored in memory</param>
+        /// <param name="selectedTechnician">The technician to assign to the Incident</param>
+        /// <param name="newDescription">The new Description for the Incident</param>
+        public void CloseIncidentUsingDescription(Incident oldIncident, Technician selectedTechnician, string newDescription)
+        { 
+            Incident newIncident = new Incident
+            {
+                IncidentID = oldIncident.IncidentID,
+                CustomerID = oldIncident.CustomerID,
+                ProductCode = oldIncident.ProductCode,
+                Technician = selectedTechnician,
+                DateOpened = oldIncident.DateOpened,
+                DateClosed = DateTime.Now,
+                Title = oldIncident.Title,
+                Description = newDescription
+            };
+
+            _incidentData.UpdateIncident(oldIncident, newIncident);
+        }
     }
 
     /// <summary>
