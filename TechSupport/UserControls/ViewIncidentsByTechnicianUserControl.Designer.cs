@@ -38,11 +38,17 @@ namespace TechSupport.UserControls
             this.phoneTextBox = new System.Windows.Forms.TextBox();
             this.incidentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameComboBox = new System.Windows.Forms.ComboBox();
+            this.incidentDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             emailLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             phoneLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.technicianBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.incidentBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.incidentDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // emailLabel
@@ -109,12 +115,61 @@ namespace TechSupport.UserControls
             this.nameComboBox.Name = "nameComboBox";
             this.nameComboBox.Size = new System.Drawing.Size(270, 21);
             this.nameComboBox.TabIndex = 4;
+            this.nameComboBox.ValueMember = "TechID";
             this.nameComboBox.SelectedIndexChanged += new System.EventHandler(this.NameComboBox_SelectedIndexChanged);
+            // 
+            // incidentDataGridView
+            // 
+            this.incidentDataGridView.AllowUserToAddRows = false;
+            this.incidentDataGridView.AllowUserToDeleteRows = false;
+            this.incidentDataGridView.AllowUserToOrderColumns = true;
+            this.incidentDataGridView.AutoGenerateColumns = false;
+            this.incidentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.incidentDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn10});
+            this.incidentDataGridView.DataSource = this.incidentBindingSource;
+            this.incidentDataGridView.Location = new System.Drawing.Point(21, 94);
+            this.incidentDataGridView.Name = "incidentDataGridView";
+            this.incidentDataGridView.ReadOnly = true;
+            this.incidentDataGridView.Size = new System.Drawing.Size(450, 223);
+            this.incidentDataGridView.TabIndex = 6;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "CustomerName";
+            this.dataGridViewTextBoxColumn3.HeaderText = "CustomerName";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "ProductCode";
+            this.dataGridViewTextBoxColumn4.HeaderText = "ProductCode";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "DateOpened";
+            this.dataGridViewTextBoxColumn8.HeaderText = "DateOpened";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Title";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Title";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // ViewIncidentsByTechnicianUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.incidentDataGridView);
             this.Controls.Add(emailLabel);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(nameLabel);
@@ -122,10 +177,11 @@ namespace TechSupport.UserControls
             this.Controls.Add(phoneLabel);
             this.Controls.Add(this.phoneTextBox);
             this.Name = "ViewIncidentsByTechnicianUserControl";
-            this.Size = new System.Drawing.Size(474, 286);
+            this.Size = new System.Drawing.Size(474, 320);
             this.Load += new System.EventHandler(this.ViewIncidentsByTechnicianUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.technicianBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.incidentBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.incidentDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,5 +194,10 @@ namespace TechSupport.UserControls
         private System.Windows.Forms.TextBox phoneTextBox;
         private System.Windows.Forms.BindingSource incidentBindingSource;
         private System.Windows.Forms.ComboBox nameComboBox;
+        private System.Windows.Forms.DataGridView incidentDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }
