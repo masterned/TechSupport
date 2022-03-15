@@ -10,6 +10,7 @@ namespace TechSupport.Model
         private int _incidentID;
         private int _customerID;
         private string _customerName;
+        private string _productName;
         private string _productCode;
         private Technician _technician;
         private DateTime _dateOpened;
@@ -74,6 +75,18 @@ namespace TechSupport.Model
                     throw new ArgumentNullException("ProductCode");
                 
                 _productCode = value;
+            }
+        }
+
+        public string ProductName
+        {
+            get => _productName;
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentNullException("ProductName");
+
+                _productName = value;
             }
         }
 
