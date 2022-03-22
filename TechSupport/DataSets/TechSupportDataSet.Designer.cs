@@ -862,6 +862,7 @@ FROM Incidents
 	 JOIN [Customers] ON [Customers].[CustomerID] = [Incidents].[CustomerID]
 	 JOIN [Technicians] ON [Technicians].[TechID] = [Incidents].[TechID]
 WHERE [DateClosed] IS NULL
+ORDER BY 'Product Name', 'Incident Title', 'Customer Name'
 ;";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

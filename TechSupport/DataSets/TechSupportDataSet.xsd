@@ -22,6 +22,7 @@ FROM Incidents
 	 JOIN [Customers] ON [Customers].[CustomerID] = [Incidents].[CustomerID]
 	 JOIN [Technicians] ON [Technicians].[TechID] = [Incidents].[TechID]
 WHERE [DateClosed] IS NULL
+ORDER BY 'Product Name', 'Incident Title', 'Customer Name'
 ;</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -45,7 +46,7 @@ WHERE [DateClosed] IS NULL
   <xs:element name="TechSupportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TechSupportDataSet" msprop:Generator_UserDSName="TechSupportDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Incidents" msprop:Generator_TableClassName="IncidentsDataTable" msprop:Generator_TableVarName="tableIncidents" msprop:Generator_RowChangedName="IncidentsRowChanged" msprop:Generator_TablePropName="Incidents" msprop:Generator_RowDeletingName="IncidentsRowDeleting" msprop:Generator_RowChangingName="IncidentsRowChanging" msprop:Generator_RowEvHandlerName="IncidentsRowChangeEventHandler" msprop:Generator_RowDeletedName="IncidentsRowDeleted" msprop:Generator_RowClassName="IncidentsRow" msprop:Generator_UserTableName="Incidents" msprop:Generator_RowEvArgName="IncidentsRowChangeEvent">
+        <xs:element name="Incidents" msprop:Generator_TableClassName="IncidentsDataTable" msprop:Generator_TableVarName="tableIncidents" msprop:Generator_TablePropName="Incidents" msprop:Generator_RowDeletingName="IncidentsRowDeleting" msprop:Generator_RowChangingName="IncidentsRowChanging" msprop:Generator_RowEvHandlerName="IncidentsRowChangeEventHandler" msprop:Generator_RowDeletedName="IncidentsRowDeleted" msprop:Generator_UserTableName="Incidents" msprop:Generator_RowChangedName="IncidentsRowChanged" msprop:Generator_RowEvArgName="IncidentsRowChangeEvent" msprop:Generator_RowClassName="IncidentsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Product_x0020_Name" msprop:Generator_ColumnVarNameInTable="columnProduct_Name" msprop:Generator_ColumnPropNameInRow="Product_Name" msprop:Generator_ColumnPropNameInTable="Product_NameColumn" msprop:Generator_UserColumnName="Product Name">
