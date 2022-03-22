@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Reports\OpenIncidentsReport.rdlc" />
     <EmbeddedResource Include="UserControls\AddIncidentUserControl.resx">
       <DependentUpon>AddIncidentUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,5 +197,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
