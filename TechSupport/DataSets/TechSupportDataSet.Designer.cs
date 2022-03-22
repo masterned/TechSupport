@@ -279,15 +279,15 @@ namespace TechSupport.DataSets {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class IncidentsDataTable : global::System.Data.TypedTableBase<IncidentsRow> {
             
-            private global::System.Data.DataColumn columnProduct_Name;
+            private global::System.Data.DataColumn columnProductName;
             
-            private global::System.Data.DataColumn columnIncident_Title;
+            private global::System.Data.DataColumn columnTitle;
             
-            private global::System.Data.DataColumn columnCustomer_Name;
+            private global::System.Data.DataColumn columnCustomerName;
             
-            private global::System.Data.DataColumn columnDate_Opened;
+            private global::System.Data.DataColumn columnDateOpened;
             
-            private global::System.Data.DataColumn columnTechnician_Name;
+            private global::System.Data.DataColumn columnTechnicianName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -324,41 +324,41 @@ namespace TechSupport.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Product_NameColumn {
+            public global::System.Data.DataColumn ProductNameColumn {
                 get {
-                    return this.columnProduct_Name;
+                    return this.columnProductName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Incident_TitleColumn {
+            public global::System.Data.DataColumn TitleColumn {
                 get {
-                    return this.columnIncident_Title;
+                    return this.columnTitle;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Customer_NameColumn {
+            public global::System.Data.DataColumn CustomerNameColumn {
                 get {
-                    return this.columnCustomer_Name;
+                    return this.columnCustomerName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Date_OpenedColumn {
+            public global::System.Data.DataColumn DateOpenedColumn {
                 get {
-                    return this.columnDate_Opened;
+                    return this.columnDateOpened;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Technician_NameColumn {
+            public global::System.Data.DataColumn TechnicianNameColumn {
                 get {
-                    return this.columnTechnician_Name;
+                    return this.columnTechnicianName;
                 }
             }
             
@@ -399,14 +399,14 @@ namespace TechSupport.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public IncidentsRow AddIncidentsRow(string Product_Name, string Incident_Title, string Customer_Name, string Date_Opened, string Technician_Name) {
+            public IncidentsRow AddIncidentsRow(string ProductName, string Title, string CustomerName, System.DateTime DateOpened, string TechnicianName) {
                 IncidentsRow rowIncidentsRow = ((IncidentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Product_Name,
-                        Incident_Title,
-                        Customer_Name,
-                        Date_Opened,
-                        Technician_Name};
+                        ProductName,
+                        Title,
+                        CustomerName,
+                        DateOpened,
+                        TechnicianName};
                 rowIncidentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowIncidentsRow);
                 return rowIncidentsRow;
@@ -429,36 +429,35 @@ namespace TechSupport.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnProduct_Name = base.Columns["Product Name"];
-                this.columnIncident_Title = base.Columns["Incident Title"];
-                this.columnCustomer_Name = base.Columns["Customer Name"];
-                this.columnDate_Opened = base.Columns["Date Opened"];
-                this.columnTechnician_Name = base.Columns["Technician Name"];
+                this.columnProductName = base.Columns["ProductName"];
+                this.columnTitle = base.Columns["Title"];
+                this.columnCustomerName = base.Columns["CustomerName"];
+                this.columnDateOpened = base.Columns["DateOpened"];
+                this.columnTechnicianName = base.Columns["TechnicianName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnProduct_Name = new global::System.Data.DataColumn("Product Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProduct_Name);
-                this.columnIncident_Title = new global::System.Data.DataColumn("Incident Title", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIncident_Title);
-                this.columnCustomer_Name = new global::System.Data.DataColumn("Customer Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCustomer_Name);
-                this.columnDate_Opened = new global::System.Data.DataColumn("Date Opened", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDate_Opened);
-                this.columnTechnician_Name = new global::System.Data.DataColumn("Technician Name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTechnician_Name);
-                this.columnProduct_Name.AllowDBNull = false;
-                this.columnProduct_Name.MaxLength = 50;
-                this.columnIncident_Title.AllowDBNull = false;
-                this.columnIncident_Title.MaxLength = 50;
-                this.columnCustomer_Name.AllowDBNull = false;
-                this.columnCustomer_Name.MaxLength = 50;
-                this.columnDate_Opened.ReadOnly = true;
-                this.columnDate_Opened.MaxLength = 4000;
-                this.columnTechnician_Name.AllowDBNull = false;
-                this.columnTechnician_Name.MaxLength = 50;
+                this.columnProductName = new global::System.Data.DataColumn("ProductName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductName);
+                this.columnTitle = new global::System.Data.DataColumn("Title", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTitle);
+                this.columnCustomerName = new global::System.Data.DataColumn("CustomerName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCustomerName);
+                this.columnDateOpened = new global::System.Data.DataColumn("DateOpened", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateOpened);
+                this.columnTechnicianName = new global::System.Data.DataColumn("TechnicianName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTechnicianName);
+                this.columnProductName.AllowDBNull = false;
+                this.columnProductName.MaxLength = 50;
+                this.columnTitle.AllowDBNull = false;
+                this.columnTitle.MaxLength = 50;
+                this.columnCustomerName.AllowDBNull = false;
+                this.columnCustomerName.MaxLength = 50;
+                this.columnDateOpened.AllowDBNull = false;
+                this.columnTechnicianName.AllowDBNull = false;
+                this.columnTechnicianName.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -601,74 +600,57 @@ namespace TechSupport.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Product_Name {
+            public string ProductName {
                 get {
-                    return ((string)(this[this.tableIncidents.Product_NameColumn]));
+                    return ((string)(this[this.tableIncidents.ProductNameColumn]));
                 }
                 set {
-                    this[this.tableIncidents.Product_NameColumn] = value;
+                    this[this.tableIncidents.ProductNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Incident_Title {
+            public string Title {
                 get {
-                    return ((string)(this[this.tableIncidents.Incident_TitleColumn]));
+                    return ((string)(this[this.tableIncidents.TitleColumn]));
                 }
                 set {
-                    this[this.tableIncidents.Incident_TitleColumn] = value;
+                    this[this.tableIncidents.TitleColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Customer_Name {
+            public string CustomerName {
                 get {
-                    return ((string)(this[this.tableIncidents.Customer_NameColumn]));
+                    return ((string)(this[this.tableIncidents.CustomerNameColumn]));
                 }
                 set {
-                    this[this.tableIncidents.Customer_NameColumn] = value;
+                    this[this.tableIncidents.CustomerNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Date_Opened {
+            public System.DateTime DateOpened {
                 get {
-                    try {
-                        return ((string)(this[this.tableIncidents.Date_OpenedColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Date Opened\' in table \'Incidents\' is DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableIncidents.DateOpenedColumn]));
                 }
                 set {
-                    this[this.tableIncidents.Date_OpenedColumn] = value;
+                    this[this.tableIncidents.DateOpenedColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Technician_Name {
+            public string TechnicianName {
                 get {
-                    return ((string)(this[this.tableIncidents.Technician_NameColumn]));
+                    return ((string)(this[this.tableIncidents.TechnicianNameColumn]));
                 }
                 set {
-                    this[this.tableIncidents.Technician_NameColumn] = value;
+                    this[this.tableIncidents.TechnicianNameColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsDate_OpenedNull() {
-                return this.IsNull(this.tableIncidents.Date_OpenedColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetDate_OpenedNull() {
-                this[this.tableIncidents.Date_OpenedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -831,11 +813,11 @@ namespace TechSupport.DataSets.TechSupportDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Incidents";
-            tableMapping.ColumnMappings.Add("Product Name", "Product Name");
-            tableMapping.ColumnMappings.Add("Incident Title", "Incident Title");
-            tableMapping.ColumnMappings.Add("Customer Name", "Customer Name");
-            tableMapping.ColumnMappings.Add("Date Opened", "Date Opened");
-            tableMapping.ColumnMappings.Add("Technician Name", "Technician Name");
+            tableMapping.ColumnMappings.Add("ProductName", "ProductName");
+            tableMapping.ColumnMappings.Add("Title", "Title");
+            tableMapping.ColumnMappings.Add("CustomerName", "CustomerName");
+            tableMapping.ColumnMappings.Add("DateOpened", "DateOpened");
+            tableMapping.ColumnMappings.Add("TechnicianName", "TechnicianName");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -852,17 +834,17 @@ namespace TechSupport.DataSets.TechSupportDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT [Products].[Name] AS 'Product Name'
-	 , [Title] AS 'Incident Title'
-	 , [Customers].[Name] AS 'Customer Name'
-	 , FORMAT([DateOpened], 'M/d/yyyy') AS 'Date Opened'
-	 , [Technicians].[Name] AS 'Technician Name'
+            this._commandCollection[0].CommandText = @"SELECT [Products].[Name] AS 'ProductName'
+	 , [Title]
+	 , [Customers].[Name] AS 'CustomerName'
+	 , [DateOpened]
+	 , [Technicians].[Name] AS 'TechnicianName'
 FROM Incidents
 	 JOIN [Products] ON [Products].[ProductCode] = [Incidents].[ProductCode]
 	 JOIN [Customers] ON [Customers].[CustomerID] = [Incidents].[CustomerID]
 	 JOIN [Technicians] ON [Technicians].[TechID] = [Incidents].[TechID]
 WHERE [DateClosed] IS NULL
-ORDER BY 'Product Name', 'Incident Title', 'Customer Name'
+ORDER BY 'ProductName', [Title], 'CustomerName'
 ;";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
