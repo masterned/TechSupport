@@ -67,5 +67,10 @@ namespace TechSupport.View
             UpdateIncidentUserControl.PopulateTechnicianComboBox();
             UpdateIncidentUserControl.ResetInputFields();
         }
+
+        private void OpenIncidentReportTabPage_Enter(object sender, EventArgs e)
+        {
+            OpenIncidentsReportUserControl.RefreshReport();
+        }
     }
 }

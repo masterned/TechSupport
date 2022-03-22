@@ -8,12 +8,17 @@ namespace TechSupport.UserControls
         public OpenIncidentsReportUserControl()
         {
             InitializeComponent();
+            incidentsTableAdapter.ClearBeforeFill = true;
         }
 
         private void OpenIncidentsReportUserControl_Load(object sender, EventArgs e)
         {
-            incidentsTableAdapter.Fill(techSupportDataSet.Incidents);
+            RefreshReport();
+        }
 
+        public void RefreshReport()
+        {
+            incidentsTableAdapter.Fill(techSupportDataSet.Incidents);
             OpenIncidentsReportViewer.RefreshReport();
         }
     }
