@@ -80,6 +80,14 @@
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Technician.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="DataSets\TechSupportDataSet.cs">
+      <DependentUpon>TechSupportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\TechSupportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TechSupportDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\AddIncidentUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -158,6 +166,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="DataSets\TechSupportDataSet.xsc">
+      <DependentUpon>TechSupportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\TechSupportDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TechSupportDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\TechSupportDataSet.xss">
+      <DependentUpon>TechSupportDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
