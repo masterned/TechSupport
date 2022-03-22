@@ -16,5 +16,12 @@ namespace TechSupport.UserControls
         {
             InitializeComponent();
         }
+
+        private void OpenIncidentsReportUserControl_Load(object sender, EventArgs e)
+        {
+            incidentsTableAdapter.Fill(techSupportDataSet.Incidents);
+
+            OpenIncidentsReportViewer.RefreshReport();
+        }
     }
 }

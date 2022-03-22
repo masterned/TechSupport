@@ -29,32 +29,62 @@ namespace TechSupport.UserControls
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.OpenIncidentsReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.techSupportDataSet = new TechSupport.DataSets.TechSupportDataSet();
+            this.incidentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.incidentsTableAdapter = new TechSupport.DataSets.TechSupportDataSetTableAdapters.IncidentsTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.techSupportDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.incidentsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // OpenIncidentsReportViewer
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "TechSupport.Reports.OpenIncidentsReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(402, 253);
-            this.reportViewer1.TabIndex = 0;
+            this.OpenIncidentsReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "OpenIncidentsReportDataSet";
+            reportDataSource2.Value = this.incidentsBindingSource;
+            this.OpenIncidentsReportViewer.LocalReport.DataSources.Add(reportDataSource2);
+            this.OpenIncidentsReportViewer.LocalReport.ReportEmbeddedResource = "TechSupport.Reports.OpenIncidentsReport.rdlc";
+            this.OpenIncidentsReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.OpenIncidentsReportViewer.Name = "OpenIncidentsReportViewer";
+            this.OpenIncidentsReportViewer.ServerReport.BearerToken = null;
+            this.OpenIncidentsReportViewer.Size = new System.Drawing.Size(402, 253);
+            this.OpenIncidentsReportViewer.TabIndex = 0;
+            // 
+            // techSupportDataSet
+            // 
+            this.techSupportDataSet.DataSetName = "TechSupportDataSet";
+            this.techSupportDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // incidentsBindingSource
+            // 
+            this.incidentsBindingSource.DataMember = "Incidents";
+            this.incidentsBindingSource.DataSource = this.techSupportDataSet;
+            // 
+            // incidentsTableAdapter
+            // 
+            this.incidentsTableAdapter.ClearBeforeFill = true;
             // 
             // OpenIncidentsReportUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.reportViewer1);
+            this.Controls.Add(this.OpenIncidentsReportViewer);
             this.Name = "OpenIncidentsReportUserControl";
             this.Size = new System.Drawing.Size(402, 253);
+            this.Load += new System.EventHandler(this.OpenIncidentsReportUserControl_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.techSupportDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.incidentsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Microsoft.Reporting.WinForms.ReportViewer OpenIncidentsReportViewer;
+        private System.Windows.Forms.BindingSource incidentsBindingSource;
+        private DataSets.TechSupportDataSet techSupportDataSet;
+        private DataSets.TechSupportDataSetTableAdapters.IncidentsTableAdapter incidentsTableAdapter;
     }
 }
