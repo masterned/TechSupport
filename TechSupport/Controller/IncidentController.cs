@@ -121,11 +121,23 @@ namespace TechSupport.Controller
             return $"{currentDescription}\r\n<{DateTime.Now.ToShortDateString()}> {textToAdd}";
         }
 
+        /// <summary>
+        /// Updates the incident in the database with a new Technician and/or more text in its description.
+        /// </summary>
+        /// <param name="oldIncident">The incident to update</param>
+        /// <param name="selectedTechnician">The technician to assign to the incident</param>
+        /// <param name="textToAdd">Text to add to the incident's description</param>
         public void UpdateIncident(Incident oldIncident, Technician selectedTechnician, string textToAdd)
         {
+            if (oldIncident.IsClosed)
+                throw new InvalidOperationException("Incident already closed. Cannot update a closed incident.");
+
             string newDescription = string.IsNullOrWhiteSpace(textToAdd)
                 ? oldIncident.Description
                 : FormatDescriptionApend(oldIncident.Description, textToAdd);
+
+            if (oldIncident.Technician.Equals(selectedTechnician) && oldIncident.Description == newDescription)
+                throw new Exception("No changes in fields. Cannot update with already stored information.");
 
             if (newDescription.Length > 200)
                 throw new IncidentDescriptionOverflowException();
@@ -141,6 +153,12 @@ namespace TechSupport.Controller
         /// <param name="newDescription">The new Description to give to the Incident</param>
         public void UpdateIncidentWithTruncatedDescription(Incident oldIncident, Technician selectedTechnician, string newDescription)
         {
+            if (oldIncident.IsClosed)
+                throw new InvalidOperationException("Incident already closed. Cannot update a closed incident.");
+
+            if (oldIncident.Technician.Equals(selectedTechnician) && oldIncident.Description == newDescription)
+                throw new Exception("No changes in fields. Cannot update with already stored information.");
+
             Incident newIncident = new Incident
             {
                 IncidentID = oldIncident.IncidentID,
@@ -164,9 +182,15 @@ namespace TechSupport.Controller
         /// <param name="textToAdd">The text to append to the Incident</param>
         public void CloseIncident(Incident oldIncident, Technician selectedTechnician, string textToAdd)
         {
+            if (oldIncident.IsClosed)
+                throw new InvalidOperationException("Incident already closed. Cannot close a closed incident.");
+
             string newDescription = string.IsNullOrWhiteSpace(textToAdd)
                 ? oldIncident.Description
                 : FormatDescriptionApend(oldIncident.Description, textToAdd);
+
+            if (oldIncident.Technician.Equals(selectedTechnician) && oldIncident.Description == newDescription)
+                throw new Exception("No changes in fields. Cannot update with already stored information.");
 
             if (newDescription.Length > 200)
                 throw new IncidentDescriptionOverflowException();
@@ -193,7 +217,13 @@ namespace TechSupport.Controller
         /// <param name="selectedTechnician">The technician to assign to the Incident</param>
         /// <param name="newDescription">The new Description for the Incident</param>
         public void CloseIncidentUsingDescription(Incident oldIncident, Technician selectedTechnician, string newDescription)
-        { 
+        {
+            if (oldIncident.IsClosed)
+                throw new InvalidOperationException("Incident already closed. Cannot close a closed incident.");
+
+            if (oldIncident.Technician.Equals(selectedTechnician) && oldIncident.Description == newDescription)
+                throw new Exception("No changes in fields. Cannot update with already stored information.");
+
             Incident newIncident = new Incident
             {
                 IncidentID = oldIncident.IncidentID,
